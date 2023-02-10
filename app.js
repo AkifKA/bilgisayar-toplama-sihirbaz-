@@ -45,7 +45,7 @@ const getData = (data) => {
               alt=" "
             />
           </div>
-          <div class="col-md-8 text-start">
+          <div class="col text-start">
             <div class="card-body">
               <h5 class="card-title">${cpuData[0].name}</h5>
               <p class="card-text">Özellikleri: ${cpuData[0].description}</p>

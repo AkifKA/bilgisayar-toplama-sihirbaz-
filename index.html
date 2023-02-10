@@ -4,13 +4,23 @@
     <meta charset="UTF-8" />
     <meta http-equiv="X-UA-Compatible" content="IE=edge" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <link rel="stylesheet" href="style.css" />
+
     <link
       href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
       rel="stylesheet"
       integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
       crossorigin="anonymous"
     />
+
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.2.0/css/all.min.css"
+      integrity="sha512-xh6O/CkQoPOWDdYTDqeRdPCVd1SpvCA9XXcUnZS2FmJNp1coAFzvtCN9BmamE+4aHK8yyUHUSCcJHgXloTyT2A=="
+      crossorigin="anonymous"
+      referrerpolicy="no-referrer"
+    />
+
+    <link rel="stylesheet" href="style.css" />
     <title>Bilgisayar Toplama Sihirbazı</title>
   </head>
   <body>
@@ -81,21 +91,37 @@
         <!--? İşlemci Bölümü -->
         <section class="contanier cpu-section border border-1">
           <div class="row p-1"><h2 class="text-start">İşlemci</h2></div>
-          <div class="row justify-content-center align-items-start p-1">
+          <div class="row justify-content-between align-items-start p-1">
             <!--! Select Box sütunu -->
-            <div class="col-3">
+            <div class="col-2">
               <select class="form-select cpu-select" name="cpu" id="cpu-select">
                 <option value="">İşlemci Seçiniz</option>
               </select>
             </div>
             <!--! Seçilen nesnenin özellikleri -->
-            <div class="col-6 cpu-div">
+            <div class="col-5 text-center align-items-center cpu-div">
               <p class="text-danger">
                 Seçilen işlemci özellikleri burada görüntülecektir.
               </p>
             </div>
+
+            <!--! Adet arttır ya da azalt butonları  -->
+            <div
+              class="col-2 d-flex justify-content-center align-items-baseline gap-2"
+            >
+              <div class="row">
+                <i class="fa-solid fa-circle-plus"></i>
+              </div>
+              <div class="row">
+                <p><span class="quantity">1</span> <span>Adet</span></p>
+              </div>
+              <div class="row">
+                <i class="fa-solid fa-circle-minus"></i>
+              </div>
+            </div>
+
             <!--! ekle çıkar butonları,  -->
-            <div class="col-3">
+            <div class="col-2 d-flex justify-content-center gap-2">
               <button type="button" class="btn btn-success">Seç</button>
               <button type="button" class="btn btn-success">Çıkar</button>
             </div>
@@ -105,9 +131,9 @@
         <!--? Anakart bölümü  -->
         <section class="contanier main-board-section border border-1 mt-3">
           <div class="row p-1"><h2 class="text-start">Anakart</h2></div>
-          <div class="row justify-content-center align-items-start p-1">
+          <div class="row justify-content-between align-items-start p-1">
             <!--! Select Box sütunu -->
-            <div class="col-3">
+            <div class="col-2">
               <select
                 class="form-select main-board-select"
                 name="main-board"
@@ -117,13 +143,27 @@
               </select>
             </div>
             <!--! Seçilen nesnenin özellikleri -->
-            <div class="col-6 main-board-div">
+            <div class="col-5 text-center align-items-center main-board-div">
               <p class="text-danger">
                 Seçilen anakart özellikleri burada görüntülecektir.
               </p>
             </div>
+            <!--! Adet arttır ya da azalt butonları  -->
+            <div
+              class="col-2 d-flex justify-content-center align-items-baseline gap-2"
+            >
+              <div class="row">
+                <i class="fa-solid fa-circle-plus"></i>
+              </div>
+              <div class="row">
+                <p><span class="quantity">1</span> <span>Adet</span></p>
+              </div>
+              <div class="row">
+                <i class="fa-solid fa-circle-minus"></i>
+              </div>
+            </div>
             <!--! ekle çıkar butonları,  -->
-            <div class="col-3">
+            <div class="col-2 d-flex justify-content-center gap-2">
               <button type="button" class="btn btn-success">Seç</button>
               <button type="button" class="btn btn-success">Çıkar</button>
             </div>
@@ -133,21 +173,35 @@
         <!--? Bellek Ram Bölümü  -->
         <section class="contanier ram-section border border-1 mt-3">
           <div class="row p-1"><h2 class="text-start">Bellek (RAM)</h2></div>
-          <div class="row justify-content-center align-items-start p-1">
+          <div class="row justify-content-between align-items-start p-1">
             <!--! Select Box sütunu -->
-            <div class="col-3">
+            <div class="col-2">
               <select class="form-select ram-select" name="ram" id="ram-select">
                 <option value="">RAM Seçiniz</option>
               </select>
             </div>
             <!--! Seçilen nesnenin özellikleri -->
-            <div class="col-6 ram-div">
+            <div class="col-5 text-center align-items-center ram-div">
               <p class="text-danger">
                 Seçilen RAM özellikleri burada görüntülecektir.
               </p>
             </div>
+            <!--! Adet arttır ya da azalt butonları  -->
+            <div
+              class="col-2 d-flex justify-content-center align-items-baseline gap-2"
+            >
+              <div class="row">
+                <i class="fa-solid fa-circle-plus"></i>
+              </div>
+              <div class="row">
+                <p><span class="quantity">1</span> <span>Adet</span></p>
+              </div>
+              <div class="row">
+                <i class="fa-solid fa-circle-minus"></i>
+              </div>
+            </div>
             <!--! ekle çıkar butonları,  -->
-            <div class="col-3">
+            <div class="col-2 d-flex justify-content-center gap-2">
               <button type="button" class="btn btn-success">Seç</button>
               <button type="button" class="btn btn-success">Çıkar</button>
             </div>
@@ -157,21 +211,35 @@
         <!--? Ekran Kartı Bölümü -->
         <section class="contanier gpu-section border border-1 mt-3">
           <div class="row p-1"><h2 class="text-start">Ekran Kartı</h2></div>
-          <div class="row justify-content-center align-items-start p-1">
+          <div class="row justify-content-between align-items-start p-1">
             <!--! Select Box sütunu -->
-            <div class="col-3">
+            <div class="col-2">
               <select class="form-select gpu-select" name="gpu" id="gpu-select">
                 <option value="">Ekran Kartı Seçiniz</option>
               </select>
             </div>
             <!--! Seçilen nesnenin özellikleri -->
-            <div class="col-6 gpu-div">
+            <div class="col-5 gpu-div">
               <p class="text-danger">
                 Seçilen ekran kartı özellikleri burada görüntülecektir.
               </p>
             </div>
+            <!--! Adet arttır ya da azalt butonları  -->
+            <div
+              class="col-2 d-flex justify-content-center align-items-baseline gap-2"
+            >
+              <div class="row">
+                <i class="fa-solid fa-circle-plus"></i>
+              </div>
+              <div class="row">
+                <p><span class="quantity">1</span> <span>Adet</span></p>
+              </div>
+              <div class="row">
+                <i class="fa-solid fa-circle-minus"></i>
+              </div>
+            </div>
             <!--! ekle çıkar butonları,  -->
-            <div class="col-3">
+            <div class="col-2 d-flex justify-content-center gap-2">
               <button type="button" class="btn btn-success">Seç</button>
               <button type="button" class="btn btn-success">Çıkar</button>
             </div>
@@ -181,21 +249,35 @@
         <!--? Kasa Bölümü -->
         <section class="contanier kasa-section border border-1 mt-3">
           <div class="row p-1"><h2 class="text-start">Kasa</h2></div>
-          <div class="row justify-content-center align-items-start p-1">
+          <div class="row justify-content-between align-items-start p-1">
             <!--! Select Box sütunu -->
-            <div class="col-3">
+            <div class="col-2">
               <select class="form-select cpu-select" name="cpu" id="cpu-select">
                 <option value="">Kasa Seçiniz</option>
               </select>
             </div>
             <!--! Seçilen nesnenin özellikleri -->
-            <div class="col-6 kasa-div">
+            <div class="col-5 kasa-div">
               <p class="text-danger">
                 Seçilen kasa özellikleri burada görüntülecektir.
               </p>
             </div>
+            <!--! Adet arttır ya da azalt butonları  -->
+            <div
+              class="col-2 d-flex justify-content-center align-items-baseline gap-2"
+            >
+              <div class="row">
+                <i class="fa-solid fa-circle-plus"></i>
+              </div>
+              <div class="row">
+                <p><span class="quantity">1</span> <span>Adet</span></p>
+              </div>
+              <div class="row">
+                <i class="fa-solid fa-circle-minus"></i>
+              </div>
+            </div>
             <!--! ekle çıkar butonları,  -->
-            <div class="col-3">
+            <div class="col-2 d-flex justify-content-center gap-2">
               <button type="button" class="btn btn-success">Seç</button>
               <button type="button" class="btn btn-success">Çıkar</button>
             </div>
@@ -205,21 +287,35 @@
         <!--? SSD  Bölümü -->
         <section class="contanier ssd-section border border-1 mt-3">
           <div class="row p-1"><h2 class="text-start">SSD</h2></div>
-          <div class="row justify-content-center align-items-start p-1">
+          <div class="row justify-content-between align-items-start p-1">
             <!--! Select Box sütunu -->
-            <div class="col-3">
+            <div class="col-2">
               <select class="form-select ssd-select" name="ssd" id="ssd-select">
                 <option value="">SSD Seçiniz</option>
               </select>
             </div>
             <!--! Seçilen nesnenin özellikleri -->
-            <div class="col-6 ssd-div">
+            <div class="col-5 ssd-div">
               <p class="text-danger">
                 Seçilen SSD özellikleri burada görüntülecektir.
               </p>
             </div>
+            <!--! Adet arttır ya da azalt butonları  -->
+            <div
+              class="col-2 d-flex justify-content-center align-items-baseline gap-2"
+            >
+              <div class="row">
+                <i class="fa-solid fa-circle-plus"></i>
+              </div>
+              <div class="row">
+                <p><span class="quantity">1</span> <span>Adet</span></p>
+              </div>
+              <div class="row">
+                <i class="fa-solid fa-circle-minus"></i>
+              </div>
+            </div>
             <!--! ekle çıkar butonları,  -->
-            <div class="col-3">
+            <div class="col-2 d-flex justify-content-center gap-2">
               <button type="button" class="btn btn-success">Seç</button>
               <button type="button" class="btn btn-success">Çıkar</button>
             </div>
@@ -229,9 +325,9 @@
         <!--? Soğutma Sistemleri -->
         <section class="contanier cold-section border border-1 mt-3">
           <div class="row p-1"><h2 class="text-start">Soğutma Sistemi</h2></div>
-          <div class="row justify-content-center align-items-start p-1">
+          <div class="row justify-content-between align-items-start p-1">
             <!--! Select Box sütunu -->
-            <div class="col-3">
+            <div class="col-2">
               <select
                 class="form-select cold-select"
                 name="cold"
@@ -241,13 +337,27 @@
               </select>
             </div>
             <!--! Seçilen nesnenin özellikleri -->
-            <div class="col-6 cold-div">
+            <div class="col-5 cold-div">
               <p class="text-danger">
                 Seçilen soğutma sistemi özellikleri burada görüntülecektir.
               </p>
             </div>
+            <!--! Adet arttır ya da azalt butonları  -->
+            <div
+              class="col-2 d-flex justify-content-center align-items-baseline gap-2"
+            >
+              <div class="row">
+                <i class="fa-solid fa-circle-plus"></i>
+              </div>
+              <div class="row">
+                <p><span class="quantity">1</span> <span>Adet</span></p>
+              </div>
+              <div class="row">
+                <i class="fa-solid fa-circle-minus"></i>
+              </div>
+            </div>
             <!--! ekle çıkar butonları,  -->
-            <div class="col-3">
+            <div class="col-2 d-flex justify-content-center gap-2">
               <button type="button" class="btn btn-success">Seç</button>
               <button type="button" class="btn btn-success">Çıkar</button>
             </div>
@@ -257,21 +367,35 @@
         <!--? Hard Disk Bölümü -->
         <section class="contanier hdd-section border border-1 mt-3">
           <div class="row p-1"><h2 class="text-start">Hard Disk</h2></div>
-          <div class="row justify-content-center align-items-start p-1">
+          <div class="row justify-content-between align-items-start p-1">
             <!--! Select Box sütunu -->
-            <div class="col-3">
+            <div class="col-2">
               <select class="form-select hdd-select" name="hdd" id="hdd-select">
                 <option value="">Hard Disk Seçiniz</option>
               </select>
             </div>
             <!--! Seçilen nesnenin özellikleri -->
-            <div class="col-6 hdd-div">
+            <div class="col-5 hdd-div">
               <p class="text-danger">
                 Seçilen harddisk özellikleri burada görüntülecektir.
               </p>
             </div>
+            <!--! Adet arttır ya da azalt butonları  -->
+            <div
+              class="col-2 d-flex justify-content-center align-items-baseline gap-2"
+            >
+              <div class="row">
+                <i class="fa-solid fa-circle-plus"></i>
+              </div>
+              <div class="row">
+                <p><span class="quantity">1</span> <span>Adet</span></p>
+              </div>
+              <div class="row">
+                <i class="fa-solid fa-circle-minus"></i>
+              </div>
+            </div>
             <!--! ekle çıkar butonları,  -->
-            <div class="col-3">
+            <div class="col-2 d-flex justify-content-center gap-2">
               <button type="button" class="btn btn-success">Seç</button>
               <button type="button" class="btn btn-success">Çıkar</button>
             </div>
@@ -281,9 +405,9 @@
         <!--? Monitör Bölümü -->
         <section class="contanier monitor-section border border-1 mt-3">
           <div class="row p-1"><h2 class="text-start">Monitör</h2></div>
-          <div class="row justify-content-center align-items-start p-1">
+          <div class="row justify-content-between align-items-start p-1">
             <!--! Select Box sütunu -->
-            <div class="col-3">
+            <div class="col-2">
               <select
                 class="form-select monitor-select"
                 name="monitor"
@@ -293,18 +417,34 @@
               </select>
             </div>
             <!--! Seçilen nesnenin özellikleri -->
-            <div class="col-6 monitor-div">
+            <div class="col-5 monitor-div">
               <p class="text-danger">
                 Seçilen monitör özellikleri burada görüntülecektir.
               </p>
             </div>
+              <!--! Adet arttır ya da azalt butonları  -->
+              <div
+              class="col-2 d-flex justify-content-center align-items-baseline gap-2"
+            >
+              <div class="row">
+                <i class="fa-solid fa-circle-plus"></i>
+              </div>
+              <div class="row">
+                <p><span class="quantity">1</span> <span>Adet</span></p>
+              </div>
+              <div class="row">
+                <i class="fa-solid fa-circle-minus"></i>
+              </div>
+            </div>
             <!--! ekle çıkar butonları,  -->
-            <div class="col-3">
+            <div class="col-2 d-flex justify-content-center gap-2">
               <button type="button" class="btn btn-success">Seç</button>
               <button type="button" class="btn btn-success">Çıkar</button>
             </div>
           </div>
+          </div>
         </section>
+        
       </form>
     </main>
 

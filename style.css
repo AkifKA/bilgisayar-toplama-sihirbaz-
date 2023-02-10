@@ -5,3 +5,19 @@ a {
 a.dropdown-item {
   color: #8c52ff !important;
 }
+
+.quantity {
+  font-size: 1.1rem;
+}
+
+.fa-solid {
+  font-size: 1.5rem;
+  color: #198754;
+  opacity: 0.7;
+  cursor: pointer;
+}
+
+.fa-solid:hover {
+  color: #198754;
+  opacity: 1;
+}
