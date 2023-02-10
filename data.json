@@ -1,0 +1,92 @@
+
+ {"cpu":[
+ {
+    "name":"Intel Core i9 12900KS",
+    "description": "Soket 1700 3.4GHz 12. Nesil 30MB Önbellek 10nm İşlemci",
+    "price":19529,
+    "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/intel/thumb/133125-1_small.jpg"
+ },
+ {
+    "name":"AMD Ryzen™ 9 7900X",
+    "description": "Soket AM5 4.7GHz 64MB 170W 5nm İşlemci",
+    "price":11437,
+    "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/amd/thumb/100-100000589wof_small.jpg"
+ },
+ {
+    "name":"Intel Core i7 12700K",
+    "description": " Soket 1700 12. Nesil 2.70GHz 25MB Önbellek 10nm İşlemci",
+    "price":11162,
+    "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/intel/thumb/130810-1_small.jpg"
+ },
+ {
+   "name":"AMD Ryzen™5 7600X",
+   "description": "Soket AM5 4.7GHz 32MB 105W 5nm İşlemci",
+   "price":6275,
+   "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/amd/thumb/100-100000593wof_small.jpg"
+},
+ {
+   "name":"Intel Core i5 13600KF",
+   "description": "Soket 1700 13.Nesil 3.50GHz 24MB Önbellek 10nm İşlemci",
+   "price":7333,
+   "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/intel/thumb/135927-1_small.jpg"
+},
+ {
+   "name":"AMD Ryzen™3 4100",
+   "description": "SSoket AM4 3.4GHz 6MB 65W 7nm MPK Kutusuz İşlemci",
+   "price":1752,
+   "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/amd/thumb/100-100000065mpk-9_small.jpg"
+},
+
+ {
+   "name":"Intel Core i3 10320",
+   "description": "Soket 1200 10.Nesil 3.80GHz 8MB Önbellek 14nm İşlemci",
+   "price":7333,
+   "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/intel/thumb/134445-1_small.jpg"
+}
+ ],
+ "mainBoard":[
+   {
+      "name":"MSI MPG Z790 EDGE WIFI",
+      "description": "DDR4 Intel Z790 Soket 1700 DDR4 5333MHz (OC) M.2 Anakart (Önerilir)",
+      "price":8791,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/msi/thumb/136232-1_small.jpg"
+   },
+   {
+      "name":"ASUS TUF GAMING H670-PRO WIFI D4",
+      "description": "Intel Soket 1700 DDR4 3200MHz (OC)M.2 Anakart",
+      "price":8791,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/msi/thumb/136232-1_small.jpg"
+   },
+   {
+      "name":"MSI MAG B660M BAZOOKA",
+      "description": "4800MHz(OC) DDR4 Soket 1700 M.2 HDMI DP ATX Anakart",
+      "price":4767,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/msi/thumb/1-133931_small.jpg"
+   },
+   {
+      "name":"MSI PRO B760-P WIFI",
+      "description": "Intel B760 Soket 1700 DDR4 5333MHz (OC) M.2 Anakart",
+      "price":4686,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/msi/thumb/1-133931_small.jpg"
+   },
+   {
+      "name":"MSI PRO B660M-P DDR4",
+      "description": "Intel B660 Soket 1700 DDR4 4600MHz (OC) M.2 Anakart",
+      "price":3227,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/msi/thumb/1-134038_small.jpg"
+   },
+   {
+      "name":"GIGABYTE B660M DS3H",
+      "description": "5333MHz (OC) DDR4 Soket 1700 M.2 HDMI DP D-SUB mATX Anakart",
+      "price":2777,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/gigabyte/thumb/136257-1_small.jpg"
+   },
+   {
+      "name":"MSI PRO H610M-G",
+      "description": "Intel H610 Soket 1700 DDR4 3200MHz (OC) M.2 Anakart",
+      "price":2672,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/msi/thumb/pro-h610m-g-ddr4_small.jpg"
+   }
+
+ ]
+}

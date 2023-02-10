@@ -14,7 +14,10 @@
     <title>Bilgisayar Toplama Sihirbazı</title>
   </head>
   <body>
-    <nav class="navbar navbar-expand-md" style="background-color: #8c52ff">
+    <nav
+      class="navbar navbar-expand-md text-success"
+      style="background-color: #8c52ff"
+    >
       <div class="container-fluid align-items-center">
         <a class="navbar-brand" href="#">
           <img
@@ -40,13 +43,12 @@
         <div class="collapse navbar-collapse" id="navbarNavDropdown">
           <ul class="navbar-nav">
             <li class="nav-item">
-              <a class="nav-link active" aria-current="page" href="#">Home</a>
+              <a class="nav-link active" aria-current="page" href="#"
+                >Bilgisayar Toplama Sihirbazı</a
+              >
             </li>
             <li class="nav-item">
-              <a class="nav-link" href="#">Features</a>
-            </li>
-            <li class="nav-item">
-              <a class="nav-link" href="#">Pricing</a>
+              <a class="nav-link" href="#">Alışveriş Sepeti</a>
             </li>
             <li class="nav-item dropdown">
               <a
@@ -56,13 +58,12 @@
                 data-bs-toggle="dropdown"
                 aria-expanded="false"
               >
-                Dropdown link
+                Kısa Yollar
               </a>
               <ul class="dropdown-menu">
-                <li><a class="dropdown-item" href="#">Action</a></li>
-                <li><a class="dropdown-item" href="#">Another action</a></li>
+                <li><a class="dropdown-item" href="#">Sepete Git</a></li>
                 <li>
-                  <a class="dropdown-item" href="#">Something else here</a>
+                  <a class="dropdown-item" href="#">Alışverişe devam et</a>
                 </li>
               </ul>
             </li>
@@ -70,6 +71,214 @@
         </div>
       </div>
     </nav>
+
+    <!--? ANA İÇERİK  -->
+    <main class="container main-container m-3">
+      <h3 class="text-center">Bilgisayar Toplama Sihirbazı</h3>
+
+      <form action="sepet.html">
+        <!--? İşlemci Bölümü -->
+        <section class="contanier cpu-section border border-1">
+          <div class="row p-1"><h2 class="text-start">İşlemci</h2></div>
+          <div class="row justify-content-center align-items-start p-1">
+            <!--! Select Box sütunu -->
+            <div class="col-3">
+              <select class="form-select cpu-select" name="cpu" id="cpu-select">
+                <option value="">İşlemci Seçiniz</option>
+              </select>
+            </div>
+            <!--! Seçilen nesnenin özellikleri -->
+            <div class="col-6 cpu-div">
+              <p class="text-danger">
+                Seçilen işlemci özellikleri burada görüntülecektir.
+              </p>
+            </div>
+            <!--! ekle çıkar butonları,  -->
+            <div class="col-3">
+              <button type="button" class="btn btn-success">Seç</button>
+              <button type="button" class="btn btn-success">Çıkar</button>
+            </div>
+          </div>
+        </section>
+
+        <!--? Anakart bölümü  -->
+        <section class="contanier main-board-section border border-1 mt-3">
+          <div class="row p-1"><h2 class="text-start">Anakart</h2></div>
+          <div class="row justify-content-center align-items-start p-1">
+            <!--! Select Box sütunu -->
+            <div class="col-3">
+              <select
+                class="form-select main-board-select"
+                name="main-board"
+                id="main-board-select"
+              >
+                <option value="">Anakart Seçiniz</option>
+              </select>
+            </div>
+            <!--! Seçilen nesnenin özellikleri -->
+            <div class="col-6 main-board-div">
+              <p class="text-danger">
+                Seçilen anakart özellikleri burada görüntülecektir.
+              </p>
+            </div>
+            <!--! ekle çıkar butonları,  -->
+            <div class="col-3">
+              <button type="button" class="btn btn-success">Seç</button>
+              <button type="button" class="btn btn-success">Çıkar</button>
+            </div>
+          </div>
+        </section>
+
+        <!--? Bellek Ram Bölümü  -->
+        <section class="contanier ram-section border border-1 mt-3">
+          <div class="row p-1"><h2 class="text-start">Bellek (RAM)</h2></div>
+          <div class="row justify-content-center align-items-start p-1">
+            <!--! Select Box sütunu -->
+            <div class="col">
+              <select class="form-select ram-select" name="ram" id="ram-select">
+                <option value="">RAM Seçiniz</option>
+              </select>
+            </div>
+            <!--! Seçilen nesnenin özellikleri -->
+            <div class="col ram-div">
+              <p class="text-danger">
+                Seçilen RAM özellikleri burada görüntülecektir.
+              </p>
+            </div>
+            <!--! ekle çıkar butonları,  -->
+            <div class="col">
+              <button type="button" class="btn btn-success">Seç</button>
+              <button type="button" class="btn btn-success">Çıkar</button>
+            </div>
+          </div>
+        </section>
+
+        <!--? Ekran Kartı Bölümü -->
+        <section class="contanier gpu-section border border-1 mt-3">
+          <div class="row p-1"><h2 class="text-start">Ekran Kartı</h2></div>
+          <div class="row justify-content-center align-items-start p-1">
+            <!--! Select Box sütunu -->
+            <div class="col">
+              <select class="form-select gpu-select" name="gpu" id="gpu-select">
+                <option value="">Ekran Kartı Seçiniz</option>
+              </select>
+            </div>
+            <!--! Seçilen nesnenin özellikleri -->
+            <div class="col gpu-div">
+              <p class="text-danger">
+                Seçilen ekran kartı özellikleri burada görüntülecektir.
+              </p>
+            </div>
+            <!--! ekle çıkar butonları,  -->
+            <div class="col">
+              <button type="button" class="btn btn-success">Seç</button>
+              <button type="button" class="btn btn-success">Çıkar</button>
+            </div>
+          </div>
+        </section>
+
+        <!--? Kasa Bölümü -->
+        <section class="contanier kasa-section border border-1 mt-3">
+          <div class="row p-1"><h2 class="text-start">Kasa</h2></div>
+          <div class="row justify-content-center align-items-start p-1">
+            <!--! Select Box sütunu -->
+            <div class="col">
+              <select class="form-select cpu-select" name="cpu" id="cpu-select">
+                <option value="">Kasa Seçiniz</option>
+              </select>
+            </div>
+            <!--! Seçilen nesnenin özellikleri -->
+            <div class="col kasa-div">
+              <p class="text-danger">
+                Seçilen kasa özellikleri burada görüntülecektir.
+              </p>
+            </div>
+            <!--! ekle çıkar butonları,  -->
+            <div class="col">
+              <button type="button" class="btn btn-success">Seç</button>
+              <button type="button" class="btn btn-success">Çıkar</button>
+            </div>
+          </div>
+        </section>
+
+        <!--? SSD  Bölümü -->
+        <section class="contanier ssd-section border border-1 mt-3">
+          <div class="row p-1"><h2 class="text-start">SSD</h2></div>
+          <div class="row justify-content-center align-items-start p-1">
+            <!--! Select Box sütunu -->
+            <div class="col">
+              <select class="form-select ssd-select" name="ssd" id="ssd-select">
+                <option value="">SSD Seçiniz</option>
+              </select>
+            </div>
+            <!--! Seçilen nesnenin özellikleri -->
+            <div class="col ssd-div">
+              <p class="text-danger">
+                Seçilen SSD özellikleri burada görüntülecektir.
+              </p>
+            </div>
+            <!--! ekle çıkar butonları,  -->
+            <div class="col">
+              <button type="button" class="btn btn-success">Seç</button>
+              <button type="button" class="btn btn-success">Çıkar</button>
+            </div>
+          </div>
+        </section>
+
+        <!--? Hard Disk Bölümü -->
+        <section class="contanier hdd-section border border-1 mt-3">
+          <div class="row p-1"><h2 class="text-start">Hard Disk</h2></div>
+          <div class="row justify-content-center align-items-start p-1">
+            <!--! Select Box sütunu -->
+            <div class="col">
+              <select class="form-select hdd-select" name="hdd" id="hdd-select">
+                <option value="">Hard Disk Seçiniz</option>
+              </select>
+            </div>
+            <!--! Seçilen nesnenin özellikleri -->
+            <div class="col hdd-div">
+              <p class="text-danger">
+                Seçilen harddisk özellikleri burada görüntülecektir.
+              </p>
+            </div>
+            <!--! ekle çıkar butonları,  -->
+            <div class="col">
+              <button type="button" class="btn btn-success">Seç</button>
+              <button type="button" class="btn btn-success">Çıkar</button>
+            </div>
+          </div>
+        </section>
+
+        <!--? Monitör Bölümü -->
+        <section class="contanier monitor-section border border-1 mt-3">
+          <div class="row p-1"><h2 class="text-start">Monitör</h2></div>
+          <div class="row justify-content-center align-items-start p-1">
+            <!--! Select Box sütunu -->
+            <div class="col">
+              <select
+                class="form-select monitor-select"
+                name="monitor"
+                id="monitor-select"
+              >
+                <option value="">Monitör Seçiniz</option>
+              </select>
+            </div>
+            <!--! Seçilen nesnenin özellikleri -->
+            <div class="col monitor-div">
+              <p class="text-danger">
+                Seçilen monitör özellikleri burada görüntülecektir.
+              </p>
+            </div>
+            <!--! ekle çıkar butonları,  -->
+            <div class="col">
+              <button type="button" class="btn btn-success">Seç</button>
+              <button type="button" class="btn btn-success">Çıkar</button>
+            </div>
+          </div>
+        </section>
+      </form>
+    </main>
+
     <script
       src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
       integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"

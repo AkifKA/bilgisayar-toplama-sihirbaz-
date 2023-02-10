@@ -1,3 +1,7 @@
-.navbar-brand img {
-  background-color: #8c52ff !important;
+a {
+  color: aliceblue !important;
+}
+
+a.dropdown-item {
+  color: #8c52ff !important;
 }
