@@ -73,7 +73,7 @@ const getData = (data) => {
                   <h5 class="card-title">${cpuData[1].name}</h5>
                   <p class="card-text">Özellikleri: ${cpuData[1].description}</p>
                   <p>Fiyatı: ${cpuData[1].price} TL</p>
-                  <p>Stok Adedi:${cpuStok[1]} </p>
+                  <p>Stok Adedi: ${cpuStok[1]} </p>
                 </div>
               </div>
             </div>
@@ -96,7 +96,7 @@ const getData = (data) => {
                       <h5 class="card-title">${cpuData[2].name}</h5>
                       <p class="card-text">Özellikleri: ${cpuData[2].description}</p>
                       <p>Fiyatı: ${cpuData[2].price} TL</p>
-                      <p>Stok Adedi:${cpuStok[2]} </p>
+                      <p>Stok Adedi: ${cpuStok[2]} </p>
                     </div>
                   </div>
                 </div>
@@ -119,7 +119,7 @@ const getData = (data) => {
                           <h5 class="card-title">${cpuData[3].name}</h5>
                           <p class="card-text">Özellikleri: ${cpuData[3].description}</p>
                           <p>Fiyatı: ${cpuData[3].price} TL</p>
-                          <p>Stok Adedi:${cpuStok[3]} </p>
+                          <p>Stok Adedi: ${cpuStok[3]} </p>
                         </div>
                       </div>
                     </div>
@@ -142,7 +142,7 @@ const getData = (data) => {
                               <h5 class="card-title">${cpuData[4].name}</h5>
                               <p class="card-text">Özellikleri: ${cpuData[4].description}</p>
                               <p>Fiyatı: ${cpuData[4].price} TL</p>
-                              <p>Stok Adedi:${cpuStok[4]} </p>
+                              <p>Stok Adedi: ${cpuStok[4]} </p>
                             </div>
                           </div>
                         </div>
@@ -165,7 +165,7 @@ const getData = (data) => {
                                   <h5 class="card-title">${cpuData[5].name}</h5>
                                   <p class="card-text">Özellikleri: ${cpuData[5].description}</p>
                                   <p>Fiyatı: ${cpuData[5].price} TL</p>
-                                  <p>Stok Adedi:${cpuStok[5]} </p>
+                                  <p>Stok Adedi: ${cpuStok[5]} </p>
                                 </div>
                               </div>
                             </div>
@@ -188,7 +188,7 @@ const getData = (data) => {
                                       <h5 class="card-title">${cpuData[6].name}</h5>
                                       <p class="card-text">Özellikleri: ${cpuData[6].description}</p>
                                       <p>Fiyatı: ${cpuData[6].price} TL</p>
-                                      <p>Stok Adedi:${cpuStok[6]} </p>
+                                      <p>Stok Adedi: ${cpuStok[6]} </p>
                                     </div>
                                   </div>
                                 </div>
@@ -359,7 +359,7 @@ const getData = (data) => {
                                       <h5 class="card-title">${mainBoardData[6].name}</h5>
                                       <p class="card-text">Özellikleri: ${mainBoardData[6].description}</p>
                                       <p>Fiyatı: ${mainBoardData[6].price} TL</p>
-                                      <p>Stok Adedi: ${mainBoardStok[6]} </p>
+                                      <p>Stok Adedi:${mainBoardStok[6]} </p>
                                     </div>
                                   </div>
                                 </div>
