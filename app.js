@@ -1244,7 +1244,7 @@ const getData = (data) => {
               <div class="col-md-8 text-start">
                 <div class="card-body">
                 <h5 class="card-title">${hddData[1].name}</h5>
-                <p class="card-text">Özellikleri: ${hddData[0].description}
+                <p class="card-text">Özellikleri: ${hddData[1].description}
                   <p>Stok Adedi: ${hddStok[1]} </p>
                 </div>
               </div>
@@ -1252,7 +1252,7 @@ const getData = (data) => {
             </div>
             `;
           break;
-        case "Samsung 2TB T7 Shield":
+        case "Seagate Barracuda 3.5'":
           hddDiv.innerHTML = `
                 <div class="card mb-3" style="max-width: 540px">
                 <div class="row g-0 justify-content-center align-content-center">
