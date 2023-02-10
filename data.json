@@ -88,5 +88,281 @@
       "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/msi/thumb/pro-h610m-g-ddr4_small.jpg"
    }
 
- ]
+ ],
+"ram":[
+      {
+      "name":"GSKILL 16GB (2x8GB)",
+      "description": "Ripjaws V DDR4 4000MHz CL18 1.35V Dual Kit Ram",
+      "price":1527,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/gskill/thumb/TeoriV2-108120_small.jpg" 
+      },
+      {
+      "name":"XPG 16GB (2x8GB)",
+      "description": "Spectrix D41 RGB DDR4 3200MHz CL16 1.35V Dual Kit PC Ram",
+      "price":1305,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/xpg/thumb/basliksiz-8_small.jpg" 
+      },
+      {
+      "name":"Crucial 8GB (1x8GB)",
+      "description": "Ballistix Siyah DDR4 3600MHz CL16 1.35V PC Ram",
+      "price":1458,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/xpg/thumb/basliksiz-8_small.jpg" 
+      },
+      {
+      "name":"Kingston 8GB (1x8GB)",
+      "description": "DDR4 3200MHz CL22 PC Ram",
+      "price":843,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/kingston/thumb/1_small.jpg" 
+      },
+      {
+      "name":"Kıngston 8GB (1x8GB) Fury Beast",
+      "description": " RGB DDR4 3600MHz CL17 PC Ram",
+      "price":699,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/kingston/thumb/133724_small.jpg" 
+      },
+      {
+      "name":"Kıngston 8GB (1x8GB) Fury Beast ",
+      "description": "RGB DDR4 3200MHz CL16 PC Ram",
+      "price":636,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/kingston/thumb/133724_small.jpg" 
+      }
+],
+"gpu":[
+      {
+         "name":"GIGABYTE GeForce RTX 3090",
+         "description": "GAMING OC 24GB GDDR6X 384Bit Nvidia Ekran Kartı",
+         "price":48450,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/gigabyte/thumb/115928_small.jpg" 
+         },
+      {
+         "name":"MSI GEFORCE RTX 3080",
+         "description": "GAMING OC 24GB GDDR6X 384Bit Nvidia Ekran Kartı",
+         "price":11999,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/msi/thumb/128657-3_small.jpg" 
+         },
+      {
+         "name":"ASUS GeForce TUF RTX3070TI",
+         "description": "O8G V2 GAMING OC 8GB GDDR6X 256Bit Nvidia Ekran Kartı",
+         "price":19403,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/asus/thumb/136893-1_small.jpg" 
+         },
+      {
+         "name":"MSI GEFORCE RTX 3060 TI",
+         "description": "GAMING X TRIO 8GB 8GD6X 256Bit Ekran Kartı",
+         "price":14586,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/msi/thumb/137470-1_small.jpg" 
+         },
+      {
+         "name":"MSI GEFORCE RTX 3070 VENTUS",
+         "description": "3XPLUS 8G OC LHR 8GB GDDR6 256Bit NVIDIA Ekran Kartı",
+         "price":11449,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/msi/thumb/137051-1_small.jpg" 
+         },
+      {
+         "name":"MSI GEFORCE GTX 1660 SUPER",
+         "description": "VENTUS XS OC 6GB GDDR6 192bit NVIDIA Ekran Kartı",
+         "price":6199,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/msi/thumb/TeoriV2-104821_small.jpg" 
+         }
+],
+"hdd":[
+      {
+         "name":"Toshiba 3.5' 8TB S300 7200",
+         "description": "GSATA 3.0GB 256MB Önbellek 7200Rpm 7/24 Güvenlik Disk",
+         "price":4237,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/toshiba/thumb/134930-1_small.jpg" 
+         },
+      {
+         "name":"Toshiba 3,5' 4TB S300",
+         "description": "SATA 3.0 256MB Önbellek 5400Rpm 7/24 Güvenlik Diski",
+         "price":2007,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/toshiba/thumb/133068-1_small.jpg" 
+         },
+      {
+         "name":"Seagate 2.5' 1TB Barracuda",
+         "description": "Sata 3.0 128MB Cache 5400Rpm Notebook Disk",
+         "price":1143,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/seagate/thumb/v2-84175_small.jpg" 
+         },
+      {
+         "name":"Seagate Barracuda 3.5'",
+         "description": "1TB Sata 3.0 64MB Cache 7200Rpm Harddisk",
+         "price":1019,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/seagate/thumb/TeoriV2-85141_small.jpg" 
+         },
+      {
+         "name":"Toshiba 2,5' 1TB L200 ",
+         "description": "SATA 3.0 128MB Önbellek 5400Rpm 7mm Harddisk",
+         "price":981,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/toshiba/thumb/TeoriV2-105034_small.jpg" 
+         },
+      {
+         "name":"Toshiba 3.5'",
+         "description": "1TB P300 SATA 3.0 64MB Önbellek 7200 Rpm Harddisk",
+         "price":892,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/toshiba/thumb/v2-90424_small.jpg" 
+         }  
+],
+"ssd":[
+      {
+         "name":"Samsung 2TB 980 PRO",
+         "description": "NVMe M.2 SSD (Okuma Hızı 7000MB / Yazma Hızı 5100MB)",
+         "price":5339,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/samsung/thumb/131162-1_small.jpg" 
+         },
+      
+      {
+         "name":"Crucial 2TB P5 Plus Serisi",
+         "description": "NVMe M.2 SSD (Okuma 6600MB / Yazma 5000MB)",
+         "price":5149,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/crucial/thumb/130566-1_small.jpg" 
+         },
+      
+      {
+         "name":"Samsung 2TB T7 Shield ",
+         "description": "USB 3.2 Siyah (Okuma 1050MB / Yazma 1000MB) Harici SSD",
+         "price":5007,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/samsung/thumb/1-133671_small.jpg" 
+         },
+      
+      {
+         "name":"ROG Strix SQ7",
+         "description": " M.2 2280 NVMe Gen 4x4 SSD 1TB",
+         "price":4625,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/asus/thumb/1-134044_small.jpg" 
+         },
+      
+      {
+         "name":"Kioxia 2TB Exceria PRO Serisi ",
+         "description": " NVMe M.2 SSD (7300MB/s Okuma / 6400MB/s Yazma)",
+         "price":4499,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/kioxia/thumb/1-1_small.jpg" 
+         },
+      
+      {
+         "name":"Samsung 2TB 870 EVO",
+         "description": " SATA 3.0 (Okuma 560MB / Yazma 530MB)",
+         "price":53386239,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/samsung/thumb/118046_small.jpg" 
+         }
+],
+"cold":[
+   {
+      "name":"MSI MPG CORELIQUID K240",
+      "description": "2x120mm ARGB FANLI SIVI SOĞUTMA SİSTEMİ",
+      "price":4709,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/samsung/thumb/131162-1_small.jpg" 
+   },
+   
+   {
+      "name":"THERMALTAKE FLOE RİİNG RGB",
+      "description": "280 TT PREMIUM SIVI SOĞUTMA SİSTEMİ",
+      "price":4605,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/thermaltake/thumb/TeoriV2-91531_small.jpg" 
+   },
+   
+   {
+      "name":"ASUS ROG RYUO 120 RGB",
+      "description": " RGB 1x120mm FANLI SIVI SOĞUTUCU",
+      "price":3882,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/asus/thumb/asus-rog-ryuo-120-131152-gorsel-1_small.jpg" 
+   },
+   
+   {
+      "name":"COUGAR HELOR 240 ",
+      "description": "x120mm ARGB FANLI İŞLEMCİ SIVI SOĞUTUCU",
+      "price":3529,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/cougar/thumb/117629_small.jpg" 
+   },
+   
+   {
+      "name":"RAMPAGE EXTREME X240",
+      "description": "2x120mm RGB FANLI SIVI SOĞUTMA SİSTEMİ",
+      "price":1970,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/rampage/thumb/TeoriV2-106716_small.jpg" 
+   },
+   
+   {
+      "name":"COUGAR AQUA 120 ",
+      "description": "x120mm FANLI İŞLEMCİ SIVI SOĞUTUCU",
+      "price":1779,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/cougar/thumb/122673_small.jpg" 
+   }
+   ],
+"power":[
+      {
+         "name":"THERMALTAKE TOUGHPOWER GF3 1650W",
+         "description": " GOLD 80 PLUS FULL MODÜLLER GÜÇ KAYNAĞI",
+         "price":12182,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/thermaltake/thumb/137127-1_small.jpg" 
+      }, 
+      {
+         "name":"THERMALTAKE TOUGHPOWER GF3 1350W",
+         "description": "GOLD 80 PLUS FULL MODÜLLER GÜÇ KAYNAĞI",
+         "price":9324,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/thermaltake/thumb/137129-1_small.jpg" 
+      }, 
+      {
+         "name":"COOLER MASTER MWE V2 80 PLUS",
+         "description": " GOLD 1250W FULL MODÜLER 140MM FANLI GÜÇ KAYNAĞI",
+         "price":5729,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/cooler-master/thumb/131080-1_small.jpg" 
+      }, 
+      {
+         "name":"ASUS ROG STRIX 850W",
+         "description": "80 PLUS GOLD GÜÇ KAYNAĞI",
+         "price":4391,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/asus/thumb/TeoriV2-108785_small.jpg" 
+      }, 
+      {
+         "name":"THERMALTAKE TOUGHPOWER GF1 850W",
+         "description": "GOLD 80PLUS FULL MODÜLLER GÜÇ KAYNAĞI",
+         "price":5799,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/thermaltake/thumb/137129-1_small.jpg" 
+      }, 
+      {
+         "name":"COOLER MASTER MWE 80 PLUS",
+         "description": "BRONZE 650W 2xEPS, AKTİF PFC 120MM FANLI GÜÇ KAYNAĞI",
+         "price":1519,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/thermaltake/thumb/137129-1_small.jpg" 
+      }
+      ],
+"monitor":[
+      {
+         "name":"ASUS 27' PA279CV",
+         "description": "ProArt 5Ms 4K UHD HDR DP HDMI USB TYPE-C Monitör",
+         "price":14001,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/asus/thumb/129772_small.jpg" 
+      },
+      {
+         "name":"ASUS 27' VG279QM",
+         "description": "1Ms 280Hz HDMI DP FREESYNC IPS Gaming Monitör",
+         "price":8475,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/asus/thumb/129772_small.jpg" 
+      },
+      {
+         "name":"ASUS 27' PA279CV",
+         "description": "ProArt 5Ms 4K UHD HDR DP HDMI USB TYPE-C Monitör",
+         "price":14001,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/asus/thumb/TeoriV2-105987_small.jpg" 
+      },
+      {
+         "name":"VIEWSONIC 32' VX3218-PC-MHDJ ",
+         "description": "1ms 165hz FHD FreeSync Curve Pivot Gaming Monitor",
+         "price":7110,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/viewsonic/thumb/134563-1_small.jpg" 
+      },
+      {
+         "name":"ASUS 23,8' ROG STRIX",
+         "description": "1MS 270HZ FullHD DP HDMI USB-C IPS FREESYNC GAMING MONITOR",
+         "price":6869,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/asus/thumb/137239-1_small.jpg" 
+      },
+      {
+         "name":"ASUS 21,5' VP228QG Full HD ",
+         "description": "1ms 75Hz FreeSync DP+HDMI+VGA+MM+VESA Gaming Monitör",
+         "price":2725,
+         "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/asus/thumb/v2-91183-6_small.jpg" 
+      }
+   ]
 }
