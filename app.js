@@ -10,6 +10,26 @@ let hddStok = [20, 22, 24, 26, 20, 32, 34];
 let coldStok = [28, 16, 14, 24, 26, 46, 40];
 let powerStok = [30, 20, 36, 28, 26, 40, 42];
 
+//? Stokları Local Storage'de Saklama
+localStorage.setItem("cpuStok", cpuStok);
+localStorage.setItem("mainBoardStok", mainBoardStok);
+localStorage.setItem("ramStok", ramStok);
+localStorage.setItem("gpuStok", gpuStok);
+localStorage.setItem("monitorStok", monitorStok);
+localStorage.setItem("hddStok", hddStok);
+localStorage.setItem("coldStok", coldStok);
+localStorage.setItem("powerStok", powerStok);
+
+//? Fiyatları Tanımla
+let cpuPrice = 0;
+
+//? Form'u tanımlama
+const form = document.querySelector("form");
+
+const quantity = document.querySelector(".quantity");
+console.log(quantity.innerText);
+let cpuData = "";
+
 //? Yerel dosyadan veri çek
 fetch("data.json")
   .then((res) => res.json())
@@ -18,7 +38,7 @@ fetch("data.json")
 //? Çekilen veriyi ayıkla
 const getData = (data) => {
   //? CPU verisini ayıkla
-  const cpuData = data.cpu;
+  cpuData = data.cpu;
 
   //? CPU isimlerini map() ile Select-Box'a bastır
   cpuData.map((item) => {
@@ -109,7 +129,6 @@ const getData = (data) => {
   });
 
   //? Form öğesindeki select box dseçimlerini yakalama
-  const form = document.querySelector("form");
   form.addEventListener("change", (e) => {
     //? Eğer CPU Select Box'tan Seçim Yapılırsa
     if (e.target.className === "form-select cpu-select") {
@@ -1657,6 +1676,22 @@ const getData = (data) => {
         default:
           break;
       }
+    }
+  });
+};
+
+const incriseDecrise = () => {
+  form.addEventListener("click", (e) => {
+    //? Eğer + butonuna tıklanırsa
+    if (e.target.className === "fa-solid fa-circle-plus") {
+      e.target.closest(".row").nextElementSibling.firstChild.nextElementSibling
+        .firstChild.innerText++;
+      cpuPrice = quantity.cpuData[0].price;
+    }
+    //? Eğer - butonuna tıklanırsa
+    if (e.target.className === "fa-solid fa-circle-minus") {
+      e.target.closest(".row").previousSibling.previousSibling.firstChild
+        .nextElementSibling.firstChild.innerText--;
     }
   });
 };
