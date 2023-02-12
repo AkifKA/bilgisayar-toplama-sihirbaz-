@@ -46,3 +46,8 @@ select {
 .btn-active {
   background-color: blue;
 }
+
+.main-row-2 {
+  top: 12vh;
+  left: 62vw;
+}
