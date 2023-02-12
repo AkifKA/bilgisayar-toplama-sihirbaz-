@@ -11,7 +11,7 @@ let coldStok = [28, 16, 14, 24, 26, 46, 40];
 let powerStok = [30, 20, 36, 28, 26, 40, 42];
 
 //? Stokları Local Storage'de Saklama
-localStorage.setItem("cpuStok", cpuStok);
+localStorage.setItem("cpuStok", JSON.stringify(cpuStok));
 localStorage.setItem("mainBoardStok", mainBoardStok);
 localStorage.setItem("ramStok", ramStok);
 localStorage.setItem("gpuStok", gpuStok);
@@ -26,9 +26,11 @@ let cpuPrice = 0;
 //? Form'u tanımlama
 const form = document.querySelector("form");
 
-const quantity = document.querySelector(".quantity");
-console.log(quantity.innerText);
-let cpuData = "";
+//? CPU Select Box'u Tanımla
+const cpuSelect = document.getElementById("cpu-select");
+
+//? Özet Alanı Div'ini tanımla
+const ozet = document.querySelector(".ozet");
 
 //? Yerel dosyadan veri çek
 fetch("data.json")
@@ -38,7 +40,7 @@ fetch("data.json")
 //? Çekilen veriyi ayıkla
 const getData = (data) => {
   //? CPU verisini ayıkla
-  cpuData = data.cpu;
+  const cpuData = data.cpu;
 
   //? CPU isimlerini map() ile Select-Box'a bastır
   cpuData.map((item) => {
@@ -76,7 +78,7 @@ const getData = (data) => {
 
   //? Monitör verisini ayıkla
   const monitorData = data.monitor;
-  //?  MOnitor isimlerini map() ile Select-Box'a bastır
+  //?  Monitor isimlerini map() ile Select-Box'a bastır
   monitorData.map((monitor) => {
     document.getElementById("monitor-select").innerHTML += `
   <option value="${monitor.name}">${monitor.name}</option>
@@ -1678,20 +1680,129 @@ const getData = (data) => {
       }
     }
   });
-};
 
-const incriseDecrise = () => {
   form.addEventListener("click", (e) => {
-    //? Eğer + butonuna tıklanırsa
+    let cpuStok = JSON.parse(localStorage.getItem("cpuStok")); //? local storage'daki işlemci stok adedini çağır
+    //? Eğer + butonuna tıklanılırsa
     if (e.target.className === "fa-solid fa-circle-plus") {
       e.target.closest(".row").nextElementSibling.firstChild.nextElementSibling
         .firstChild.innerText++;
-      cpuPrice = quantity.cpuData[0].price;
     }
     //? Eğer - butonuna tıklanırsa
     if (e.target.className === "fa-solid fa-circle-minus") {
       e.target.closest(".row").previousSibling.previousSibling.firstChild
         .nextElementSibling.firstChild.innerText--;
     }
+    //? Eğer Seç Butonununa Tıklanırsa
+    if (e.target.classList.contains("btn")) {
+      let count = 1; //? Sıra sayısı için sayaç
+      let cpuPrice = 0; //? Seçilen işelemcinin fiyatı
+      let toplam = 0; //? Seçilen tüm ürünlerin toplam fiyatı
+      let cpuAdet = Number(
+        //? Seçilen işlemin adedi
+        e.target.parentNode.previousSibling.previousSibling.previousSibling
+          .previousSibling.children[1].children[0].children[0].textContent
+      );
+
+      const secBtn = document.querySelector(".btn");
+      let selectedIndex = cpuSelect[cpuSelect.selectedIndex].textContent;
+      switch (selectedIndex) {
+        case "Intel Core i9 12900KS":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (cpuAdet > cpuStok[0]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(`Yeteri kadar ${cpuData[0].name} stoğu bulunmamaktadır.`);
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              cpuPrice = cpuData[0].price * cpuAdet;
+              toplam += cpuPrice;
+              ozet.innerHTML += `
+              <thead>
+              <tr>
+                <th scope="col">Sıra</th>
+                <th scope="col">Ürün</th>
+                <th scope="col">Adet</th>
+                <th scope="col">Fiyatı</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">${count}</th>
+                <td>${cpuData[0].name}</td>
+                <td>${cpuAdet}</td>
+                <td>${cpuPrice} TL</td>
+              </tr>
+              <th>TOPLAM</th>
+              <td><td>
+              <td style="font-weight: 700">${toplam} TL<td>
+            </tbody>
+              `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+
+          break;
+        case "AMD Ryzen™ 9 7900X":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (cpuAdet > cpuStok[1]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(`Yeteri kadar ${cpuData[1].name} stoğu bulunmamaktadır.`);
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              cpuPrice = cpuData[1].price * cpuAdet;
+              toplam += cpuPrice;
+              ozet.innerHTML += `
+              <thead>
+              <tr>
+                <th scope="col">Sıra</th>
+                <th scope="col">Ürün</th>
+                <th scope="col">Adet</th>
+                <th scope="col">Fiyatı</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">${count}</th>
+                <td>${cpuData[1].name}</td>
+                <td>${cpuAdet}</td>
+                <td>${cpuPrice} TL</td>
+              </tr>
+              <th>TOPLAM</th>
+              <td><td>
+              <td style="font-weight: 700">${toplam} TL<td>
+            </tbody>
+              `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+
+        //
+        //
+      }
+    }
   });
+};
+
+const toggleSec = () => {
+  for (let i = 0; i < secBtn.length; i++) {
+    if (secBtn[i].innerText === "Seç") {
+      secBtn[i].innerText = "Seçildi✓";
+    }
+    if (secBtn[i].innerText === "Seçildi✓") {
+      secBtn[i].innerText = "Seç";
+    }
+  }
 };

@@ -1,3 +1,10 @@
+div.container {
+  margin-left: 0;
+}
+
+div.col-2 {
+  text-align: center;
+}
 a {
   color: aliceblue !important;
 }
@@ -6,12 +13,19 @@ a.dropdown-item {
   color: #8c52ff !important;
 }
 
+button,
+p,
+span,
+i,
+table {
+  font-size: 0.8rem !important;
+}
 .quantity {
   font-size: 1.1rem;
 }
 
 .fa-solid {
-  font-size: 1.5rem;
+  font-size: 1.2rem;
   color: #198754;
   opacity: 0.85;
   cursor: pointer;
@@ -21,4 +35,14 @@ a.dropdown-item {
 .fa-solid:hover {
   color: #198754;
   opacity: 1;
+}
+
+h4,
+h5,
+select {
+  font-size: 1rem;
+}
+
+.btn-active {
+  background-color: blue;
 }
