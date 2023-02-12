@@ -133,44 +133,6 @@
       "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/gskill/thumb/v2-92902_small.jpg" 
       }
 ],
-"kasa":[
-   {
-      "name":"COUGAR BLAZER",
-      "description": "TEMPER CAMLI USB3.0 MidT ATX GAMING KASA",
-      "price":5943,
-      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/cougar/thumb/TeoriV2-106035_small.jpg" 
-      },
-   {
-      "name":"XIGMATEK X7",
-      "description": "7x120mm ARGB FANLI TEMPERED CAMLI GAMING KASA",
-      "price":5943,
-      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/xigmatek/thumb/125905_small.jpg" 
-      },
-   {
-      "name":"THERMALTAKE DIVIDER",
-      "description": "7500 TG AIR SIYAH 2x120mm FANLI MESH MidT ATX GAMING KASA",
-      "price":3704,
-      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/thermaltake/thumb/1-11_small.jpg" 
-      },
-   {
-      "name":"MSI MAG VAMPIRIC",
-      "description": "300R TEMPERED GLASS 1x120mm ARGB FANLI ATX KASA",
-      "price":1625,
-      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/msi/thumb/117895_small.jpg" 
-      },
-   {
-      "name":"COUGAR MX440 MESH RGB",
-      "description": "USB 3.0 MESH 4x120mm RGB FAN ATX SİYAH KASA",
-      "price":3412,
-      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/cougar/thumb/127657_small.jpg" 
-      },
-   {
-      "name":"POWERBOOST VK-M202B",
-      "description": "7x120mm ARGB FANLI TEMPERED CAMLI GAMING KASA",
-      "price":5943,
-      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/power-boost/thumb/134150-1_small.jpg" 
-      }
-],
 "gpu":[
       {
          "name":"GIGABYTE GeForce RTX 3090",
@@ -224,8 +186,8 @@
    },
    {
       "name":"ASUS 27' PA279CV",
-      "description": "ProArt 5Ms 4K UHD HDR DP HDMI USB TYPE-C Monitör",
-      "price":14001,
+      "description": "5MS 75HZ FullHD IPS DP HDMI Type-C PROART MONITOR",
+      "price":7433,
       "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/asus/thumb/TeoriV2-105987_small.jpg" 
    },
    {
@@ -246,6 +208,44 @@
       "price":2725,
       "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/asus/thumb/v2-91183-6_small.jpg" 
    }
+],
+"kasa":[
+   {
+      "name":"COUGAR BLAZER",
+      "description": "TEMPER CAMLI USB3.0 MidT ATX GAMING KASA",
+      "price":5943,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/cougar/thumb/TeoriV2-106035_small.jpg" 
+      },
+   {
+      "name":"XIGMATEK X7",
+      "description": "7x120mm ARGB FANLI TEMPERED CAMLI GAMING KASA",
+      "price":5943,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/xigmatek/thumb/125905_small.jpg" 
+      },
+   {
+      "name":"THERMALTAKE DIVIDER",
+      "description": "7500 TG AIR SIYAH 2x120mm FANLI MESH MidT ATX GAMING KASA",
+      "price":3704,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/thermaltake/thumb/1-11_small.jpg" 
+      },
+   {
+      "name":"MSI MAG VAMPIRIC",
+      "description": "300R TEMPERED GLASS 1x120mm ARGB FANLI ATX KASA",
+      "price":1625,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/msi/thumb/117895_small.jpg" 
+      },
+   {
+      "name":"COUGAR MX440 MESH RGB",
+      "description": "USB 3.0 MESH 4x120mm RGB FAN ATX SİYAH KASA",
+      "price":3412,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/cougar/thumb/127657_small.jpg" 
+      },
+   {
+      "name":"POWERBOOST VK-M202B",
+      "description": "7x120mm ARGB FANLI TEMPERED CAMLI GAMING KASA",
+      "price":5943,
+      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/power-boost/thumb/134150-1_small.jpg" 
+      }
 ],
 "ssd":[
       {
@@ -410,3 +410,4 @@
       }
       ]
 }
+

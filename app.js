@@ -1714,9 +1714,9 @@ const getData = (data) => {
     let cpuStok = JSON.parse(localStorage.getItem("cpuStok")); //? local storage'daki işlemci stok adedini çağır
     let mainBoardStok = JSON.parse(localStorage.getItem("mainBoardStok")); //? local storage'daki anakart stok adedini çağır
     let ramStok = JSON.parse(localStorage.getItem("ramStok")); //? local storage'daki ram stok adedini çağır
-    let kasaStok = JSON.parse(localStorage.getItem("kasaStok")); //? local storage'daki kasa stok adedini çağır
     let gpuStok = JSON.parse(localStorage.getItem("gpuStok")); //? local storage'daki ekran kartı stok adedini çağır
     let monitorStok = JSON.parse(localStorage.getItem("monitorStok")); //? local storage'daki monitor stok adedini çağır
+    let kasaStok = JSON.parse(localStorage.getItem("kasaStok")); //? local storage'daki kasa stok adedini çağır
     let ssdStok = JSON.parse(localStorage.getItem("ssdStok")); //? local storage'daki ssd stok adedini çağır
     let hddStok = JSON.parse(localStorage.getItem("hddStok")); //? local storage'daki hdd stok adedini çağır
     let coldStok = JSON.parse(localStorage.getItem("coldStok")); //? local storage'daki soğıtma sistemi stok adedini çağır
@@ -1730,8 +1730,10 @@ const getData = (data) => {
     let mainBoardPrice = 0; //? Anakart fiyatı
     let ramAdet = ramAdetSpan.innerText; //? Ram adedi
     let ramPrice = 0; //? Ram fiyatı
+    let gpuAdet = gpuAdetSpan.innerText; //? Ram adedi
+    let gpuPrice = 0; //? Ram fiyatı
     let monitorAdet = monitorAdetSpan.innerText; //? Monitör adedi
-    let monitor = 0; //? Monitör fiyatı
+    let monitorPrice = 0; //? Monitör fiyatı
     let ssdAdet = ssdAdetSpan.innerText; //? SSD adedi
     let ssdPrice = 0; //? SSD fiyatı
     let hddBoardAdet = hddAdetSpan.innerText; //? HDD adedi
@@ -2942,6 +2944,899 @@ const getData = (data) => {
                       )} TL<td>
                       </tbody>
                     `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+      }
+    }
+    //? Eğer Ekran kartı Seç Butonununa Tıklanırsa
+    if (e.target.classList.contains("gpu-btn")) {
+      //? Ekran Kartı Seç Butonunu tanımla
+      const secBtn = document.querySelector(".gpu-btn");
+      //? Seçilen index'i tanımla
+      let selectedIndex = gpuSelect[gpuSelect.selectedIndex].textContent;
+      localStorage.setItem("selectedIndexFromGPUSelect", selectedIndex);
+      switch (selectedIndex) {
+        case "GIGABYTE GeForce RTX 3090":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (gpuAdet > gpuStok[0]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${gpuAdet} adet  ${gpuData[0].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              gpuPrice = gpuData[0].price * gpuAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += gpuPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("gpuPrice", gpuPrice);
+              ozet.innerHTML = `
+        <thead>
+                <tr>
+                  <th scope="col">Sıra</th>
+                  <th scope="col">Ürün</th>
+                  <th scope="col">Adet</th>
+                  <th scope="col">Fiyatı</th>
+                </tr>
+              </thead>
+        <tbody>
+          <tr>
+          </tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+          <td>${cpuAdet}</td>
+          <td>${localStorage.getItem("cpuPrice")} TL</td>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+          <td>${mainBoardAdet}</td>
+          <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+        <td>${ramAdet}</td>
+        <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+      </tr>
+      <tr>
+        <th scope="row">${count++}</th>
+        <td>${gpuData[0].name}</td>
+        <td>${gpuAdet}</td>
+        <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+      </tr>
+        <th>TOPLAM</th>
+        <td><td>
+        <td style="font-weight: 700">${Number(
+          localStorage.getItem("toplam")
+        )} TL<td>
+        </tbody>
+      `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "MSI GEFORCE RTX 3080":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (gpuAdet > gpuStok[1]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${gpuAdet} adet  ${gpuData[1].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              gpuPrice = gpuData[1].price * gpuAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += gpuPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("gpuPrice", gpuPrice);
+              ozet.innerHTML = `
+        <thead>
+                <tr>
+                  <th scope="col">Sıra</th>
+                  <th scope="col">Ürün</th>
+                  <th scope="col">Adet</th>
+                  <th scope="col">Fiyatı</th>
+                </tr>
+              </thead>
+        <tbody>
+          <tr>
+          </tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+          <td>${cpuAdet}</td>
+          <td>${localStorage.getItem("cpuPrice")} TL</td>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+          <td>${mainBoardAdet}</td>
+          <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+        <td>${ramAdet}</td>
+        <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+      </tr>
+      <tr>
+        <th scope="row">${count++}</th>
+        <td>${gpuData[1].name}</td>
+        <td>${gpuAdet}</td>
+        <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+      </tr>
+        <th>TOPLAM</th>
+        <td><td>
+        <td style="font-weight: 700">${Number(
+          localStorage.getItem("toplam")
+        )} TL<td>
+        </tbody>
+      `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "ASUS GeForce TUF RTX3070 TI":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (gpuAdet > gpuStok[2]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${gpuAdet} adet  ${gpuData[2].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              gpuPrice = gpuData[2].price * gpuAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += gpuPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("gpuPrice", gpuPrice);
+              ozet.innerHTML = `
+          <thead>
+                  <tr>
+                    <th scope="col">Sıra</th>
+                    <th scope="col">Ürün</th>
+                    <th scope="col">Adet</th>
+                    <th scope="col">Fiyatı</th>
+                  </tr>
+                </thead>
+          <tbody>
+            <tr>
+            </tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+            <td>${cpuAdet}</td>
+            <td>${localStorage.getItem("cpuPrice")} TL</td>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+            <td>${mainBoardAdet}</td>
+            <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+          <td>${ramAdet}</td>
+          <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+        </tr>
+        <tr>
+          <th scope="row">${count++}</th>
+          <td>${gpuData[2].name}</td>
+          <td>${gpuAdet}</td>
+          <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+        </tr>
+          <th>TOPLAM</th>
+          <td><td>
+          <td style="font-weight: 700">${Number(
+            localStorage.getItem("toplam")
+          )} TL<td>
+          </tbody>
+        `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "MSI GEFORCE RTX 3060 TI":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (gpuAdet > gpuStok[3]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${gpuAdet} adet  ${gpuData[3].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              gpuPrice = gpuData[3].price * gpuAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += gpuPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("gpuPrice", gpuPrice);
+              ozet.innerHTML = `
+          <thead>
+                  <tr>
+                    <th scope="col">Sıra</th>
+                    <th scope="col">Ürün</th>
+                    <th scope="col">Adet</th>
+                    <th scope="col">Fiyatı</th>
+                  </tr>
+                </thead>
+          <tbody>
+            <tr>
+            </tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+            <td>${cpuAdet}</td>
+            <td>${localStorage.getItem("cpuPrice")} TL</td>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+            <td>${mainBoardAdet}</td>
+            <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+          <td>${ramAdet}</td>
+          <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+        </tr>
+        <tr>
+          <th scope="row">${count++}</th>
+          <td>${gpuData[3].name}</td>
+          <td>${gpuAdet}</td>
+          <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+        </tr>
+          <th>TOPLAM</th>
+          <td><td>
+          <td style="font-weight: 700">${Number(
+            localStorage.getItem("toplam")
+          )} TL<td>
+          </tbody>
+        `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "MSI GEFORCE RTX 3070 VENTUS":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (gpuAdet > gpuStok[4]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${gpuAdet} adet  ${gpuData[4].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              gpuPrice = gpuData[4].price * gpuAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += gpuPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("gpuPrice", gpuPrice);
+              ozet.innerHTML = `
+            <thead>
+                    <tr>
+                      <th scope="col">Sıra</th>
+                      <th scope="col">Ürün</th>
+                      <th scope="col">Adet</th>
+                      <th scope="col">Fiyatı</th>
+                    </tr>
+                  </thead>
+            <tbody>
+              <tr>
+              </tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+              <td>${cpuAdet}</td>
+              <td>${localStorage.getItem("cpuPrice")} TL</td>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem(
+                "selectedIndexFromMainBoardSelect"
+              )}</td>
+              <td>${mainBoardAdet}</td>
+              <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+            <td>${ramAdet}</td>
+            <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+          </tr>
+          <tr>
+            <th scope="row">${count++}</th>
+            <td>${gpuData[4].name}</td>
+            <td>${gpuAdet}</td>
+            <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+          </tr>
+            <th>TOPLAM</th>
+            <td><td>
+            <td style="font-weight: 700">${Number(
+              localStorage.getItem("toplam")
+            )} TL<td>
+            </tbody>
+          `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "MSI GEFORCE GTX 1660 SUPER":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (gpuAdet > gpuStok[5]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${gpuAdet} adet  ${gpuData[5].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              gpuPrice = gpuData[5].price * gpuAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += gpuPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("gpuPrice", gpuPrice);
+              ozet.innerHTML = `
+            <thead>
+                    <tr>
+                      <th scope="col">Sıra</th>
+                      <th scope="col">Ürün</th>
+                      <th scope="col">Adet</th>
+                      <th scope="col">Fiyatı</th>
+                    </tr>
+                  </thead>
+            <tbody>
+              <tr>
+              </tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+              <td>${cpuAdet}</td>
+              <td>${localStorage.getItem("cpuPrice")} TL</td>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem(
+                "selectedIndexFromMainBoardSelect"
+              )}</td>
+              <td>${mainBoardAdet}</td>
+              <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+            <td>${ramAdet}</td>
+            <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+          </tr>
+          <tr>
+            <th scope="row">${count++}</th>
+            <td>${gpuData[5].name}</td>
+            <td>${gpuAdet}</td>
+            <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+          </tr>
+            <th>TOPLAM</th>
+            <td><td>
+            <td style="font-weight: 700">${Number(
+              localStorage.getItem("toplam")
+            )} TL<td>
+            </tbody>
+          `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+      }
+    }
+    //? Eğer Monitör Seç Butonununa Tıklanırsa
+    if (e.target.classList.contains("monitor-btn")) {
+      //? Ekran Kartı Seç Butonunu tanımla
+      const secBtn = document.querySelector(".monitor-btn");
+      //? Seçilen index'i tanımla
+      let selectedIndex =
+        monitorSelect[monitorSelect.selectedIndex].textContent;
+      localStorage.setItem("selectedIndexFromMonitorSelect", selectedIndex);
+      switch (selectedIndex) {
+        case "ASUS 27' PA279CV":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (monitorAdet > monitorStok[0]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${monitorAdet} adet  ${monitorData[0].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              monitorPrice = monitorData[0].price * monitorAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += monitorPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("monitorPrice", monitorPrice);
+              ozet.innerHTML = `
+              <thead>
+              <tr>
+                <th scope="col">Sıra</th>
+                <th scope="col">Ürün</th>
+                <th scope="col">Adet</th>
+                <th scope="col">Fiyatı</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              </tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+              <td>${cpuAdet}</td>
+              <td>${localStorage.getItem("cpuPrice")} TL</td>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem(
+                "selectedIndexFromMainBoardSelect"
+              )}</td>
+              <td>${mainBoardAdet}</td>
+              <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+              <td>${ramAdet}</td>
+              <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+              <td>${gpuAdet}</td>
+              <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${monitorData[0].name}</td>
+              <td>${monitorAdet}</td>
+              <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+              </tr>
+              <th>TOPLAM</th>
+              <td><td>
+              <td style="font-weight: 700">${Number(
+                localStorage.getItem("toplam")
+              )} TL<td>
+              </tbody>
+      `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "ASUS 27' VG279QM":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (monitorAdet > monitorStok[1]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${monitorAdet} adet  ${monitorData[1].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              monitorPrice = monitorData[1].price * monitorAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += monitorPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("monitorPrice", monitorPrice);
+              ozet.innerHTML = `
+                <thead>
+                <tr>
+                  <th scope="col">Sıra</th>
+                  <th scope="col">Ürün</th>
+                  <th scope="col">Adet</th>
+                  <th scope="col">Fiyatı</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                </tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+                <td>${cpuAdet}</td>
+                <td>${localStorage.getItem("cpuPrice")} TL</td>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem(
+                  "selectedIndexFromMainBoardSelect"
+                )}</td>
+                <td>${mainBoardAdet}</td>
+                <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+                <td>${ramAdet}</td>
+                <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+                <td>${gpuAdet}</td>
+                <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${monitorData[1].name}</td>
+                <td>${monitorAdet}</td>
+                <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                </tr>
+                <th>TOPLAM</th>
+                <td><td>
+                <td style="font-weight: 700">${Number(
+                  localStorage.getItem("toplam")
+                )} TL<td>
+                </tbody>
+        `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "ASUS 27' PA279CV":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (monitorAdet > monitorStok[2]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${monitorAdet} adet  ${monitorData[2].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              monitorPrice = monitorData[2].price * monitorAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += monitorPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("monitorPrice", monitorPrice);
+              ozet.innerHTML = `
+                  <thead>
+                  <tr>
+                    <th scope="col">Sıra</th>
+                    <th scope="col">Ürün</th>
+                    <th scope="col">Adet</th>
+                    <th scope="col">Fiyatı</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                  </tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+                  <td>${cpuAdet}</td>
+                  <td>${localStorage.getItem("cpuPrice")} TL</td>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromMainBoardSelect"
+                  )}</td>
+                  <td>${mainBoardAdet}</td>
+                  <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+                  <td>${ramAdet}</td>
+                  <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+                  <td>${gpuAdet}</td>
+                  <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${monitorData[2].name}</td>
+                  <td>${monitorAdet}</td>
+                  <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                  </tr>
+                  <th>TOPLAM</th>
+                  <td><td>
+                  <td style="font-weight: 700">${Number(
+                    localStorage.getItem("toplam")
+                  )} TL<td>
+                  </tbody>
+          `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "VIEWSONIC 32' VX3218-PC-MHDJ":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (monitorAdet > monitorStok[3]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${monitorAdet} adet  ${monitorData[3].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              monitorPrice = monitorData[3].price * monitorAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += monitorPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("monitorPrice", monitorPrice);
+              ozet.innerHTML = `
+                    <thead>
+                    <tr>
+                      <th scope="col">Sıra</th>
+                      <th scope="col">Ürün</th>
+                      <th scope="col">Adet</th>
+                      <th scope="col">Fiyatı</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    </tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromCpuSelect"
+                    )}</td>
+                    <td>${cpuAdet}</td>
+                    <td>${localStorage.getItem("cpuPrice")} TL</td>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromMainBoardSelect"
+                    )}</td>
+                    <td>${mainBoardAdet}</td>
+                    <td>${Number(
+                      localStorage.getItem("mainBoardPrice")
+                    )} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromRamSelect"
+                    )}</td>
+                    <td>${ramAdet}</td>
+                    <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromGPUSelect"
+                    )}</td>
+                    <td>${gpuAdet}</td>
+                    <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${monitorData[3].name}</td>
+                    <td>${monitorAdet}</td>
+                    <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                    </tr>
+                    <th>TOPLAM</th>
+                    <td><td>
+                    <td style="font-weight: 700">${Number(
+                      localStorage.getItem("toplam")
+                    )} TL<td>
+                    </tbody>
+            `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "ASUS 23,8' ROG STRIX":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (monitorAdet > monitorStok[4]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${monitorAdet} adet  ${monitorData[4].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              monitorPrice = monitorData[4].price * monitorAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += monitorPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("monitorPrice", monitorPrice);
+              ozet.innerHTML = `
+                      <thead>
+                      <tr>
+                        <th scope="col">Sıra</th>
+                        <th scope="col">Ürün</th>
+                        <th scope="col">Adet</th>
+                        <th scope="col">Fiyatı</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                      </tr>
+                      <th scope="row">${count++}</th>
+                      <td>${localStorage.getItem(
+                        "selectedIndexFromCpuSelect"
+                      )}</td>
+                      <td>${cpuAdet}</td>
+                      <td>${localStorage.getItem("cpuPrice")} TL</td>
+                      <tr>
+                      <th scope="row">${count++}</th>
+                      <td>${localStorage.getItem(
+                        "selectedIndexFromMainBoardSelect"
+                      )}</td>
+                      <td>${mainBoardAdet}</td>
+                      <td>${Number(
+                        localStorage.getItem("mainBoardPrice")
+                      )} TL</td>
+                      </tr>
+                      <tr>
+                      <th scope="row">${count++}</th>
+                      <td>${localStorage.getItem(
+                        "selectedIndexFromRamSelect"
+                      )}</td>
+                      <td>${ramAdet}</td>
+                      <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                      </tr>
+                      <tr>
+                      <th scope="row">${count++}</th>
+                      <td>${localStorage.getItem(
+                        "selectedIndexFromGPUSelect"
+                      )}</td>
+                      <td>${gpuAdet}</td>
+                      <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                      </tr>
+                      <tr>
+                      <th scope="row">${count++}</th>
+                      <td>${monitorData[4].name}</td>
+                      <td>${monitorAdet}</td>
+                      <td>${Number(
+                        localStorage.getItem("monitorPrice")
+                      )} TL</td>
+                      </tr>
+                      <th>TOPLAM</th>
+                      <td><td>
+                      <td style="font-weight: 700">${Number(
+                        localStorage.getItem("toplam")
+                      )} TL<td>
+                      </tbody>
+              `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "ASUS 21,5' VP228QG Full HD":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (monitorAdet > monitorStok[5]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${monitorAdet} adet  ${monitorData[5].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              monitorPrice = monitorData[5].price * monitorAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += monitorPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("monitorPrice", monitorPrice);
+              ozet.innerHTML = `
+                        <thead>
+                        <tr>
+                          <th scope="col">Sıra</th>
+                          <th scope="col">Ürün</th>
+                          <th scope="col">Adet</th>
+                          <th scope="col">Fiyatı</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                        </tr>
+                        <th scope="row">${count++}</th>
+                        <td>${localStorage.getItem(
+                          "selectedIndexFromCpuSelect"
+                        )}</td>
+                        <td>${cpuAdet}</td>
+                        <td>${localStorage.getItem("cpuPrice")} TL</td>
+                        <tr>
+                        <th scope="row">${count++}</th>
+                        <td>${localStorage.getItem(
+                          "selectedIndexFromMainBoardSelect"
+                        )}</td>
+                        <td>${mainBoardAdet}</td>
+                        <td>${Number(
+                          localStorage.getItem("mainBoardPrice")
+                        )} TL</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">${count++}</th>
+                        <td>${localStorage.getItem(
+                          "selectedIndexFromRamSelect"
+                        )}</td>
+                        <td>${ramAdet}</td>
+                        <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">${count++}</th>
+                        <td>${localStorage.getItem(
+                          "selectedIndexFromGPUSelect"
+                        )}</td>
+                        <td>${gpuAdet}</td>
+                        <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">${count++}</th>
+                        <td>${monitorData[5].name}</td>
+                        <td>${monitorAdet}</td>
+                        <td>${Number(
+                          localStorage.getItem("monitorPrice")
+                        )} TL</td>
+                        </tr>
+                        <th>TOPLAM</th>
+                        <td><td>
+                        <td style="font-weight: 700">${Number(
+                          localStorage.getItem("toplam")
+                        )} TL<td>
+                        </tbody>
+                `;
             }
           } else if (secBtn.textContent === "Seçildi✓") {
             secBtn.textContent = "Seç";

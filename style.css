@@ -48,6 +48,7 @@ select {
 }
 
 .main-row-2 {
+  width: auto;
   top: 12vh;
   left: 62vw;
 }
