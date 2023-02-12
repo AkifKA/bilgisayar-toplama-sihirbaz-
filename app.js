@@ -12,7 +12,7 @@ let powerStok = [30, 20, 36, 28, 26, 40, 42];
 
 //? Stokları Local Storage'de Saklama
 localStorage.setItem("cpuStok", JSON.stringify(cpuStok));
-localStorage.setItem("mainBoardStok", mainBoardStok);
+localStorage.setItem("mainBoardStok", JSON.stringify(mainBoardStok));
 localStorage.setItem("ramStok", ramStok);
 localStorage.setItem("gpuStok", gpuStok);
 localStorage.setItem("monitorStok", monitorStok);
@@ -20,14 +20,14 @@ localStorage.setItem("hddStok", hddStok);
 localStorage.setItem("coldStok", coldStok);
 localStorage.setItem("powerStok", powerStok);
 
-//? Fiyatları Tanımla
-let cpuPrice = 0;
-
-//? Form'u tanımlama
+//? DOM Tanımları
 const form = document.querySelector("form");
-
-//? CPU Select Box'u Tanımla
 const cpuSelect = document.getElementById("cpu-select");
+const cpuAdetSpan = document.querySelector(".cpu-adet");
+const mainBoardSelect = document.getElementById("main-board-select");
+const mainBoardAdetSpan = document.querySelector(".main-board-adet");
+const ramSelect = document.querySelector(".ram-select");
+const ramAdetSpan = document.querySelector(".ram-adet");
 
 //? Özet Alanı Div'ini tanımla
 const ozet = document.querySelector(".ozet");
@@ -1682,7 +1682,6 @@ const getData = (data) => {
   });
 
   form.addEventListener("click", (e) => {
-    let cpuStok = JSON.parse(localStorage.getItem("cpuStok")); //? local storage'daki işlemci stok adedini çağır
     //? Eğer + butonuna tıklanılırsa
     if (e.target.className === "fa-solid fa-circle-plus") {
       e.target.closest(".row").nextElementSibling.firstChild.nextElementSibling
@@ -1690,35 +1689,50 @@ const getData = (data) => {
     }
     //? Eğer - butonuna tıklanırsa
     if (e.target.className === "fa-solid fa-circle-minus") {
-      e.target.closest(".row").previousSibling.previousSibling.firstChild
-        .nextElementSibling.firstChild.innerText--;
+      if (
+        e.target.closest(".row").previousSibling.previousSibling.firstChild
+          .nextElementSibling.firstChild.innerText > 0
+      )
+        e.target.closest(".row").previousSibling.previousSibling.firstChild
+          .nextElementSibling.firstChild.innerText--;
     }
-    //? Eğer Seç Butonununa Tıklanırsa
-    if (e.target.classList.contains("btn")) {
-      let count = 1; //? Sıra sayısı için sayaç
-      let cpuPrice = 0; //? Seçilen işelemcinin fiyatı
-      let toplam = 0; //? Seçilen tüm ürünlerin toplam fiyatı
-      let cpuAdet = Number(
-        //? Seçilen işlemin adedi
-        e.target.parentNode.previousSibling.previousSibling.previousSibling
-          .previousSibling.children[1].children[0].children[0].textContent
-      );
 
-      const secBtn = document.querySelector(".btn");
+    let cpuStok = JSON.parse(localStorage.getItem("cpuStok")); //? local storage'daki işlemci stok adedini çağır
+    let mainBoardStok = JSON.parse(localStorage.getItem("mainBoardStok")); //? local storage'daki anakart stok adedini çağır
+    let count = 1; //? Sıra sayısı için sayaç
+    let toplam = 0; //? Toplam fiyat
+    let cpuAdet = cpuAdetSpan.innerText; //? İşlemci adedi
+    let cpuPrice = 0; //? İşlemci Fiyatı
+    let mainBoardPrice = 0; //? Anakart fiyatı
+    let mainBoardAdet = mainBoardAdetSpan.innerText; //? Anakart adedi
+
+    //? Eğer CPU Seç Butonununa Tıklanırsa
+    if (e.target.classList.contains("btn-cpu")) {
+      //? CPU Seç Butonunu tanımla
+      const secBtn = document.querySelector(".btn-cpu");
+      //? Seçilen index'i tanımla
       let selectedIndex = cpuSelect[cpuSelect.selectedIndex].textContent;
-      switch (selectedIndex) {
+      localStorage.setItem("selectedIndexFromCpuSelect", selectedIndex);
+      switch (
+        selectedIndex //? seçilen index'i kontrol et
+      ) {
         case "Intel Core i9 12900KS":
           if (secBtn.textContent === "Seç") {
             secBtn.textContent = "Seçildi✓";
             secBtn.style = "background:blue";
             if (cpuAdet > cpuStok[0]) {
               //? seçilen aded stok sayısından büyük olursa
-              alert(`Yeteri kadar ${cpuData[0].name} stoğu bulunmamaktadır.`);
+              alert(
+                `Stoklarda ${cpuAdet} adet  ${cpuData[0].name} bulunmamaktadır.`
+              );
               secBtn.style = "background:#198754";
               secBtn.textContent = "Seç";
             } else {
+              //? hesap işleri ve doma basma
               cpuPrice = cpuData[0].price * cpuAdet;
+              localStorage.setItem("cpuPrice", cpuPrice);
               toplam += cpuPrice;
+              localStorage.setItem("toplam", toplam);
               ozet.innerHTML += `
               <thead>
               <tr>
@@ -1750,16 +1764,22 @@ const getData = (data) => {
           break;
         case "AMD Ryzen™ 9 7900X":
           if (secBtn.textContent === "Seç") {
+            //? seç butonu toogle
             secBtn.textContent = "Seçildi✓";
             secBtn.style = "background:blue";
             if (cpuAdet > cpuStok[1]) {
               //? seçilen aded stok sayısından büyük olursa
-              alert(`Yeteri kadar ${cpuData[1].name} stoğu bulunmamaktadır.`);
+              alert(
+                `Stoklarda ${cpuAdet} adet ${cpuData[1].name} bulunmamaktadır.`
+              );
               secBtn.style = "background:#198754";
               secBtn.textContent = "Seç";
             } else {
+              //? hesap işleri ve doma basma
               cpuPrice = cpuData[1].price * cpuAdet;
+              localStorage.setItem("cpuPrice", cpuPrice);
               toplam += cpuPrice;
+              localStorage.setItem("toplam", toplam);
               ozet.innerHTML += `
               <thead>
               <tr>
@@ -1788,21 +1808,654 @@ const getData = (data) => {
             ozet.innerHTML = "";
           }
           break;
+        case "Intel Core i7 12700K":
+          if (secBtn.textContent === "Seç") {
+            //? seç butonu toogle
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (cpuAdet > cpuStok[2]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${cpuAdet} adet ${cpuData[2].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              cpuPrice = cpuData[2].price * cpuAdet;
+              localStorage.setItem("cpuPrice", cpuPrice);
+              toplam += cpuPrice;
+              localStorage.setItem("toplam", toplam);
+              ozet.innerHTML += `
+              <thead>
+              <tr>
+                <th scope="col">Sıra</th>
+                <th scope="col">Ürün</th>
+                <th scope="col">Adet</th>
+                <th scope="col">Fiyatı</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <th scope="row">${count}</th>
+                <td>${cpuData[2].name}</td>
+                <td>${cpuAdet}</td>
+                <td>${cpuPrice} TL</td>
+              </tr>
+              <th>TOPLAM</th>
+              <td><td>
+              <td style="font-weight: 700">${toplam} TL<td>
+            </tbody>
+              `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "AMD Ryzen™5 7600X":
+          if (secBtn.textContent === "Seç") {
+            //? seç butonu toogle
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (cpuAdet > cpuStok[3]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${cpuAdet} adet  ${cpuData[3].name}  bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              cpuPrice = cpuData[3].price * cpuAdet;
+              localStorage.setItem("cpuPrice", cpuPrice);
+              toplam += cpuPrice;
+              localStorage.setItem("toplam", toplam);
+              ozet.innerHTML += `
+                <thead>
+                <tr>
+                  <th scope="col">Sıra</th>
+                  <th scope="col">Ürün</th>
+                  <th scope="col">Adet</th>
+                  <th scope="col">Fiyatı</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">${count}</th>
+                  <td>${cpuData[3].name}</td>
+                  <td>${cpuAdet}</td>
+                  <td>${cpuPrice} TL</td>
+                </tr>
+                <th>TOPLAM</th>
+                <td><td>
+                <td style="font-weight: 700">${toplam} TL<td>
+              </tbody>
+                `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "Intel Core i5 13600KF":
+          if (secBtn.textContent === "Seç") {
+            //? seç butonu toogle
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (cpuAdet > cpuStok[4]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${cpuAdet} adet ${cpuData[4].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              cpuPrice = cpuData[4].price * cpuAdet;
+              localStorage.setItem("cpuPrice", cpuPrice);
+              toplam += cpuPrice;
+              localStorage.setItem("toplam", toplam);
+              ozet.innerHTML += `
+                  <thead>
+                  <tr>
+                    <th scope="col">Sıra</th>
+                    <th scope="col">Ürün</th>
+                    <th scope="col">Adet</th>
+                    <th scope="col">Fiyatı</th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr>
+                    <th scope="row">${count}</th>
+                    <td>${cpuData[4].name}</td>
+                    <td>${cpuAdet}</td>
+                    <td>${cpuPrice} TL</td>
+                  </tr>
+                  <th>TOPLAM</th>
+                  <td><td>
+                  <td style="font-weight: 700">${toplam} TL<td>
+                </tbody>
+                  `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "AMD Ryzen™3 4100":
+          if (secBtn.textContent === "Seç") {
+            //? seç butonu toogle
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (cpuAdet > cpuStok[5]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${cpuAdet} adet ${cpuData[5].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              cpuPrice = cpuData[5].price * cpuAdet;
+              localStorage.setItem("cpuPrice", cpuPrice);
+              toplam += cpuPrice;
+              localStorage.setItem("toplam", toplam);
+              ozet.innerHTML += `
+                    <thead>
+                    <tr>
+                      <th scope="col">Sıra</th>
+                      <th scope="col">Ürün</th>
+                      <th scope="col">Adet</th>
+                      <th scope="col">Fiyatı</th>
+                    </tr>
+                  </thead>
+                  <tbody>
+                    <tr>
+                      <th scope="row">${count}</th>
+                      <td>${cpuData[5].name}</td>
+                      <td>${cpuAdet}</td>
+                      <td>${cpuPrice} TL</td>
+                    </tr>
+                    <th>TOPLAM</th>
+                    <td><td>
+                    <td style="font-weight: 700">${toplam} TL<td>
+                  </tbody>
+                    `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "Intel Core i3 10320":
+          if (secBtn.textContent === "Seç") {
+            //? seç butonu toogle
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (cpuAdet > cpuStok[6]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${cpuAdet} adet ${cpuData[6].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              cpuPrice = cpuData[6].price * cpuAdet;
+              localStorage.setItem("cpuPrice", cpuPrice);
+              toplam += cpuPrice;
+              localStorage.setItem("toplam", toplam);
+              ozet.innerHTML += `
+                      <thead>
+                      <tr>
+                        <th scope="col">Sıra</th>
+                        <th scope="col">Ürün</th>
+                        <th scope="col">Adet</th>
+                        <th scope="col">Fiyatı</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      <tr>
+                        <th scope="row">${count}</th>
+                        <td>${cpuData[6].name}</td>
+                        <td>${cpuAdet}</td>
+                        <td>${cpuPrice} TL</td>
+                      </tr>
+                      <th>TOPLAM</th>
+                      <td><td>
+                      <td style="font-weight: 700">${toplam} TL<td>
+                    </tbody>
+                      `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+      }
+    }
 
-        //
-        //
+    //? Eğer Main-Board Seç Butonununa Tıklanırsa
+    if (e.target.classList.contains("btn-main-board")) {
+      //? CPU Seç Butonunu tanımla
+      const secBtn = document.querySelector(".btn-main-board");
+      //? Seçilen index'i tanımla
+      let selectedIndex =
+        mainBoardSelect[mainBoardSelect.selectedIndex].textContent;
+      localStorage.setItem("selectedIndexFromMainBoardSelect", selectedIndex);
+
+      switch (
+        selectedIndex //? seçilen index'i kontrol et
+      ) {
+        case "MSI MPG Z790 EDGE WIFI":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (mainBoardAdet > mainBoardStok[0]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${mainBoardAdet} adet  ${mainBoardData[0].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              mainBoardPrice = mainBoardData[0].price * mainBoardAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += mainBoardPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("mainBoardPrice", mainBoardPrice);
+              ozet.innerHTML = `
+              <thead>
+                      <tr>
+                        <th scope="col">Sıra</th>
+                        <th scope="col">Ürün</th>
+                        <th scope="col">Adet</th>
+                        <th scope="col">Fiyatı</th>
+                      </tr>
+                    </thead>
+              <tbody>
+                <tr>
+                </tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+                <td>${cpuAdet}</td>
+                <td>${localStorage.getItem("cpuPrice")} TL</td>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${mainBoardData[0].name}</td>
+                <td>${mainBoardAdet}</td>
+                <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+              </tr>
+              <th>TOPLAM</th>
+              <td><td>
+              <td style="font-weight: 700">${Number(
+                localStorage.getItem("toplam")
+              )} TL<td>
+              </tbody>
+          `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "ASUS TUF GAMING H670-PRO WIFI D4":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (mainBoardAdet > mainBoardStok[1]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${mainBoardAdet} adet  ${mainBoardData[2].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              mainBoardPrice = mainBoardData[1].price * mainBoardAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += mainBoardPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("mainBoardPrice", mainBoardPrice);
+              ozet.innerHTML = `
+                  <thead>
+                          <tr>
+                            <th scope="col">Sıra</th>
+                            <th scope="col">Ürün</th>
+                            <th scope="col">Adet</th>
+                            <th scope="col">Fiyatı</th>
+                          </tr>
+                        </thead>
+                  <tbody>
+                    <tr>
+                    </tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromCpuSelect"
+                    )}</td>
+                    <td>${cpuAdet}</td>
+                    <td>${localStorage.getItem("cpuPrice")} TL</td>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${mainBoardData[1].name}</td>
+                    <td>${mainBoardAdet}</td>
+                    <td>${Number(
+                      localStorage.getItem("mainBoardPrice")
+                    )} TL</td>
+                  </tr>
+                  <th>TOPLAM</th>
+                  <td><td>
+                  <td style="font-weight: 700">${Number(
+                    localStorage.getItem("toplam")
+                  )} TL<td>
+                  </tbody>
+              `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "MSI MAG B660M BAZOOKA":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (mainBoardAdet > mainBoardStok[2]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${mainBoardAdet} adet  ${mainBoardData[3].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              mainBoardPrice = mainBoardData[2].price * mainBoardAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += mainBoardPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("mainBoardPrice", mainBoardPrice);
+              ozet.innerHTML = `
+                    <thead>
+                            <tr>
+                              <th scope="col">Sıra</th>
+                              <th scope="col">Ürün</th>
+                              <th scope="col">Adet</th>
+                              <th scope="col">Fiyatı</th>
+                            </tr>
+                          </thead>
+                    <tbody>
+                      <tr>
+                      </tr>
+                      <th scope="row">${count++}</th>
+                      <td>${localStorage.getItem(
+                        "selectedIndexFromCpuSelect"
+                      )}</td>
+                      <td>${cpuAdet}</td>
+                      <td>${localStorage.getItem("cpuPrice")} TL</td>
+                      <tr>
+                      <th scope="row">${count++}</th>
+                      <td>${mainBoardData[2].name}</td>
+                      <td>${mainBoardAdet}</td>
+                      <td>${Number(
+                        localStorage.getItem("mainBoardPrice")
+                      )} TL</td>
+                    </tr>
+                    <th>TOPLAM</th>
+                    <td><td>
+                    <td style="font-weight: 700">${Number(
+                      localStorage.getItem("toplam")
+                    )} TL<td>
+                    </tbody>
+                `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "MSI PRO B760-P WIFI":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (mainBoardAdet > mainBoardStok[3]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${mainBoardAdet} adet  ${mainBoardData[4].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              mainBoardPrice = mainBoardData[3].price * mainBoardAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += mainBoardPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("mainBoardPrice", mainBoardPrice);
+              ozet.innerHTML = `
+                      <thead>
+                              <tr>
+                                <th scope="col">Sıra</th>
+                                <th scope="col">Ürün</th>
+                                <th scope="col">Adet</th>
+                                <th scope="col">Fiyatı</th>
+                              </tr>
+                            </thead>
+                      <tbody>
+                        <tr>
+                        </tr>
+                        <th scope="row">${count++}</th>
+                        <td>${localStorage.getItem(
+                          "selectedIndexFromCpuSelect"
+                        )}</td>
+                        <td>${cpuAdet}</td>
+                        <td>${localStorage.getItem("cpuPrice")} TL</td>
+                        <tr>
+                        <th scope="row">${count++}</th>
+                        <td>${mainBoardData[3].name}</td>
+                        <td>${mainBoardAdet}</td>
+                        <td>${Number(
+                          localStorage.getItem("mainBoardPrice")
+                        )} TL</td>
+                      </tr>
+                      <th>TOPLAM</th>
+                      <td><td>
+                      <td style="font-weight: 700">${Number(
+                        localStorage.getItem("toplam")
+                      )} TL<td>
+                      </tbody>
+                  `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "MSI PRO B660M-P DDR4":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (mainBoardAdet > mainBoardStok[4]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${mainBoardAdet} adet  ${mainBoardData[4].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              mainBoardPrice = mainBoardData[4].price * mainBoardAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += mainBoardPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("mainBoardPrice", mainBoardPrice);
+              ozet.innerHTML = `
+                        <thead>
+                                <tr>
+                                  <th scope="col">Sıra</th>
+                                  <th scope="col">Ürün</th>
+                                  <th scope="col">Adet</th>
+                                  <th scope="col">Fiyatı</th>
+                                </tr>
+                              </thead>
+                        <tbody>
+                          <tr>
+                          </tr>
+                          <th scope="row">${count++}</th>
+                          <td>${localStorage.getItem(
+                            "selectedIndexFromCpuSelect"
+                          )}</td>
+                          <td>${cpuAdet}</td>
+                          <td>${localStorage.getItem("cpuPrice")} TL</td>
+                          <tr>
+                          <th scope="row">${count++}</th>
+                          <td>${mainBoardData[4].name}</td>
+                          <td>${mainBoardAdet}</td>
+                          <td>${Number(
+                            localStorage.getItem("mainBoardPrice")
+                          )} TL</td>
+                        </tr>
+                        <th>TOPLAM</th>
+                        <td><td>
+                        <td style="font-weight: 700">${Number(
+                          localStorage.getItem("toplam")
+                        )} TL<td>
+                        </tbody>
+                    `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "GIGABYTE B660M DS3H":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (mainBoardAdet > mainBoardStok[5]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${mainBoardAdet} adet  ${mainBoardData[4].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              mainBoardPrice = mainBoardData[5].price * mainBoardAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += mainBoardPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("mainBoardPrice", mainBoardPrice);
+              ozet.innerHTML = `
+                          <thead>
+                                  <tr>
+                                    <th scope="col">Sıra</th>
+                                    <th scope="col">Ürün</th>
+                                    <th scope="col">Adet</th>
+                                    <th scope="col">Fiyatı</th>
+                                  </tr>
+                                </thead>
+                          <tbody>
+                            <tr>
+                            </tr>
+                            <th scope="row">${count++}</th>
+                            <td>${localStorage.getItem(
+                              "selectedIndexFromCpuSelect"
+                            )}</td>
+                            <td>${cpuAdet}</td>
+                            <td>${localStorage.getItem("cpuPrice")} TL</td>
+                            <tr>
+                            <th scope="row">${count++}</th>
+                            <td>${mainBoardData[5].name}</td>
+                            <td>${mainBoardAdet}</td>
+                            <td>${Number(
+                              localStorage.getItem("mainBoardPrice")
+                            )} TL</td>
+                          </tr>
+                          <th>TOPLAM</th>
+                          <td><td>
+                          <td style="font-weight: 700">${Number(
+                            localStorage.getItem("toplam")
+                          )} TL<td>
+                          </tbody>
+                      `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "MSI PRO H610M-G":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (mainBoardAdet > mainBoardStok[6]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${mainBoardAdet} adet  ${mainBoardData[6].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              mainBoardPrice = mainBoardData[6].price * mainBoardAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += mainBoardPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("mainBoardPrice", mainBoardPrice);
+              ozet.innerHTML = `
+                            <thead>
+                                    <tr>
+                                      <th scope="col">Sıra</th>
+                                      <th scope="col">Ürün</th>
+                                      <th scope="col">Adet</th>
+                                      <th scope="col">Fiyatı</th>
+                                    </tr>
+                                  </thead>
+                            <tbody>
+                              <tr>
+                              </tr>
+                              <th scope="row">${count++}</th>
+                              <td>${localStorage.getItem(
+                                "selectedIndexFromCpuSelect"
+                              )}</td>
+                              <td>${cpuAdet}</td>
+                              <td>${localStorage.getItem("cpuPrice")} TL</td>
+                              <tr>
+                              <th scope="row">${count++}</th>
+                              <td>${mainBoardData[6].name}</td>
+                              <td>${mainBoardAdet}</td>
+                              <td>${Number(
+                                localStorage.getItem("mainBoardPrice")
+                              )} TL</td>
+                            </tr>
+                            <th>TOPLAM</th>
+                            <td><td>
+                            <td style="font-weight: 700">${Number(
+                              localStorage.getItem("toplam")
+                            )} TL<td>
+                            </tbody>
+                        `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
       }
     }
   });
-};
-
-const toggleSec = () => {
-  for (let i = 0; i < secBtn.length; i++) {
-    if (secBtn[i].innerText === "Seç") {
-      secBtn[i].innerText = "Seçildi✓";
-    }
-    if (secBtn[i].innerText === "Seçildi✓") {
-      secBtn[i].innerText = "Seç";
-    }
-  }
 };
