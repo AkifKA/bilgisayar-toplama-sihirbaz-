@@ -13,12 +13,12 @@ let powerStok = [30, 20, 36, 28, 26, 40, 42];
 //? Stokları Local Storage'de Saklama
 localStorage.setItem("cpuStok", JSON.stringify(cpuStok));
 localStorage.setItem("mainBoardStok", JSON.stringify(mainBoardStok));
-localStorage.setItem("ramStok", ramStok);
-localStorage.setItem("gpuStok", gpuStok);
-localStorage.setItem("monitorStok", monitorStok);
-localStorage.setItem("hddStok", hddStok);
-localStorage.setItem("coldStok", coldStok);
-localStorage.setItem("powerStok", powerStok);
+localStorage.setItem("ramStok", JSON.stringify(ramStok));
+localStorage.setItem("gpuStok", JSON.stringify(gpuStok));
+localStorage.setItem("monitorStok", JSON.stringify(monitorStok));
+localStorage.setItem("hddStok", JSON.stringify(hddStok));
+localStorage.setItem("coldStok", JSON.stringify(coldStok));
+localStorage.setItem("powerStok", JSON.stringify(powerStok));
 
 //? DOM Tanımları
 const form = document.querySelector("form");
@@ -28,6 +28,20 @@ const mainBoardSelect = document.getElementById("main-board-select");
 const mainBoardAdetSpan = document.querySelector(".main-board-adet");
 const ramSelect = document.querySelector(".ram-select");
 const ramAdetSpan = document.querySelector(".ram-adet");
+const kasaSelect = document.querySelector(".kasa-select");
+const kasaAdetSpan = document.querySelector(".kasa-adet");
+const gpuSelect = document.querySelector(".gpu-select");
+const gpuAdetSpan = document.querySelector(".gpu-adet");
+const monitorSelect = document.querySelector(".monitor-select");
+const monitorAdetSpan = document.querySelector(".monitor-adet");
+const ssdSelect = document.querySelector(".ram-select");
+const ssdAdetSpan = document.querySelector(".ram-adet");
+const hddSelect = document.querySelector(".hdd-select");
+const hddAdetSpan = document.querySelector(".hdd-adet");
+const coldAdetSelect = document.querySelector(".cold-select");
+const coldAdetSpan = document.querySelector(".cold-adet");
+const powerAdetSelect = document.querySelector(".power-select");
+const powerAdetSpan = document.querySelector(".power-adet");
 
 //? Özet Alanı Div'ini tanımla
 const ozet = document.querySelector(".ozet");
@@ -1699,12 +1713,33 @@ const getData = (data) => {
 
     let cpuStok = JSON.parse(localStorage.getItem("cpuStok")); //? local storage'daki işlemci stok adedini çağır
     let mainBoardStok = JSON.parse(localStorage.getItem("mainBoardStok")); //? local storage'daki anakart stok adedini çağır
+    let ramStok = JSON.parse(localStorage.getItem("ramStok")); //? local storage'daki ram stok adedini çağır
+    let kasaStok = JSON.parse(localStorage.getItem("kasaStok")); //? local storage'daki kasa stok adedini çağır
+    let gpuStok = JSON.parse(localStorage.getItem("gpuStok")); //? local storage'daki ekran kartı stok adedini çağır
+    let monitorStok = JSON.parse(localStorage.getItem("monitorStok")); //? local storage'daki monitor stok adedini çağır
+    let ssdStok = JSON.parse(localStorage.getItem("ssdStok")); //? local storage'daki ssd stok adedini çağır
+    let hddStok = JSON.parse(localStorage.getItem("hddStok")); //? local storage'daki hdd stok adedini çağır
+    let coldStok = JSON.parse(localStorage.getItem("coldStok")); //? local storage'daki soğıtma sistemi stok adedini çağır
+    let powerStok = JSON.parse(localStorage.getItem("coldStok")); //? local storage'daki soğıtma sistemi stok adedini çağır
+
     let count = 1; //? Sıra sayısı için sayaç
     let toplam = 0; //? Toplam fiyat
     let cpuAdet = cpuAdetSpan.innerText; //? İşlemci adedi
     let cpuPrice = 0; //? İşlemci Fiyatı
-    let mainBoardPrice = 0; //? Anakart fiyatı
     let mainBoardAdet = mainBoardAdetSpan.innerText; //? Anakart adedi
+    let mainBoardPrice = 0; //? Anakart fiyatı
+    let ramAdet = ramAdetSpan.innerText; //? Ram adedi
+    let ramPrice = 0; //? Ram fiyatı
+    let monitorAdet = monitorAdetSpan.innerText; //? Monitör adedi
+    let monitor = 0; //? Monitör fiyatı
+    let ssdAdet = ssdAdetSpan.innerText; //? SSD adedi
+    let ssdPrice = 0; //? SSD fiyatı
+    let hddBoardAdet = hddAdetSpan.innerText; //? HDD adedi
+    let hddPrice = 0; //? HDD fiyatı
+    let coldBoardAdet = coldAdetSpan.innerText; //? Soğutucu Sistemi adedi
+    let coldPrice = 0; //? Soğutucu Sistemi fiyatı
+    let power = coldAdetSpan.innerText; //? Güç Kaynağı adedi
+    let powerPrice = 0; //? Güç Kaynağı fiyatı
 
     //? Eğer CPU Seç Butonununa Tıklanırsa
     if (e.target.classList.contains("btn-cpu")) {
@@ -2043,7 +2078,7 @@ const getData = (data) => {
 
     //? Eğer Main-Board Seç Butonununa Tıklanırsa
     if (e.target.classList.contains("btn-main-board")) {
-      //? CPU Seç Butonunu tanımla
+      //? Ekran Kartı Seç Butonunu tanımla
       const secBtn = document.querySelector(".btn-main-board");
       //? Seçilen index'i tanımla
       let selectedIndex =
@@ -2454,6 +2489,80 @@ const getData = (data) => {
             secBtn.style = "background:#198754";
             ozet.innerHTML = "";
           }
+          break;
+      }
+    }
+
+    if (e.target.classList.contains("ram-btn")) {
+      //? Ekran Kartı Seç Butonunu tanımla
+      const secBtn = document.querySelector(".ram-btn");
+      //? Seçilen index'i tanımla
+      let selectedIndex = ramSelect[ramSelect.selectedIndex].textContent;
+      localStorage.setItem("selectedIndexFromMainBoardSelect", selectedIndex);
+
+      switch (
+        selectedIndex //? seçilen index'i kontrol et
+      ) {
+        case "GSKILL 16GB (2x8GB)":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (ramAdet > ramStok[0]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${ramAdet} adet  ${ramData[0].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              ramPrice = ramData[0].price * ramAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += ramPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("ramPrice", ramPrice);
+              ozet.innerHTML = `
+              <thead>
+                      <tr>
+                        <th scope="col">Sıra</th>
+                        <th scope="col">Ürün</th>
+                        <th scope="col">Adet</th>
+                        <th scope="col">Fiyatı</th>
+                      </tr>
+                    </thead>
+              <tbody>
+                <tr>
+                </tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+                <td>${cpuAdet}</td>
+                <td>${localStorage.getItem("cpuPrice")} TL</td>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${mainBoardData[0].name}</td>
+                <td>${mainBoardAdet}</td>
+                <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${ramData[0].name}</td>
+              <td>${ramAdet}</td>
+              <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+            </tr>
+              <th>TOPLAM</th>
+              <td><td>
+              <td style="font-weight: 700">${Number(
+                localStorage.getItem("toplam")
+              )} TL<td>
+              </tbody>
+            `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+
           break;
       }
     }
