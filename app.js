@@ -1529,7 +1529,6 @@ const getData = (data) => {
           break;
       }
     }
-
     //? Eğer Soğutma Sistemi Select Box'tan Seçim Yapılırsa
     if (e.target.className === "form-select cold-select") {
       const coldDiv = document.querySelector(".cold-div");
