@@ -219,7 +219,7 @@
    {
       "name":"XIGMATEK X7",
       "description": "7x120mm ARGB FANLI TEMPERED CAMLI GAMING KASA",
-      "price":5943,
+      "price":4650,
       "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/xigmatek/thumb/125905_small.jpg" 
       },
    {
@@ -328,49 +328,6 @@
       "img":"https://productimages.hepsiburada.net/s/140/550/110000093295294.jpg/format:webp" 
       }  
 ],
-"cold":[
-   {
-      "name":"MSI MPG CORELIQUID K240",
-      "description": "2x120mm ARGB FANLI SIVI SOĞUTMA SİSTEMİ",
-      "price":4709,
-      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/samsung/thumb/131162-1_small.jpg" 
-   },
-   
-   {
-      "name":"THERMALTAKE FLOE RİİNG RGB",
-      "description": "280 TT PREMIUM SIVI SOĞUTMA SİSTEMİ",
-      "price":4605,
-      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/thermaltake/thumb/TeoriV2-91531_small.jpg" 
-   },
-   
-   {
-      "name":"ASUS ROG RYUO 120 RGB",
-      "description": "RGB 1x120mm FANLI SIVI SOĞUTUCU",
-      "price":3882,
-      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/asus/thumb/asus-rog-ryuo-120-131152-gorsel-1_small.jpg" 
-   },
-   
-   {
-      "name":"COUGAR HELOR 240",
-      "description": "x120mm ARGB FANLI İŞLEMCİ SIVI SOĞUTUCU",
-      "price":3529,
-      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/cougar/thumb/117629_small.jpg" 
-   },
-   
-   {
-      "name":"RAMPAGE EXTREME X240",
-      "description": "2x120mm RGB FANLI SIVI SOĞUTMA SİSTEMİ",
-      "price":1970,
-      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/rampage/thumb/TeoriV2-106716_small.jpg" 
-   },
-   
-   {
-      "name":"COUGAR AQUA 120",
-      "description": "x120mm FANLI İŞLEMCİ SIVI SOĞUTUCU",
-      "price":1779,
-      "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/cougar/thumb/122673_small.jpg" 
-   }
-   ],
 "power":[
       {
          "name":"THERMALTAKE TOUGHPOWER GF3 1650W",
@@ -408,6 +365,49 @@
          "price":1519,
          "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/thermaltake/thumb/137129-1_small.jpg" 
       }
-      ]
+      ],
+      "cold":[
+         {
+            "name":"MSI MPG CORELIQUID K240",
+            "description": "2x120mm ARGB FANLI SIVI SOĞUTMA SİSTEMİ",
+            "price":4709,
+            "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/samsung/thumb/131162-1_small.jpg" 
+         },
+         
+         {
+            "name":"THERMALTAKE FLOE RİİNG RGB",
+            "description": "280 TT PREMIUM SIVI SOĞUTMA SİSTEMİ",
+            "price":4605,
+            "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/thermaltake/thumb/TeoriV2-91531_small.jpg" 
+         },
+         
+         {
+            "name":"ASUS ROG RYUO 120 RGB",
+            "description": "RGB 1x120mm FANLI SIVI SOĞUTUCU",
+            "price":3882,
+            "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/asus/thumb/asus-rog-ryuo-120-131152-gorsel-1_small.jpg" 
+         },
+         
+         {
+            "name":"COUGAR HELOR 240",
+            "description": "x120mm ARGB FANLI İŞLEMCİ SIVI SOĞUTUCU",
+            "price":3529,
+            "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/cougar/thumb/117629_small.jpg" 
+         },
+         
+         {
+            "name":"RAMPAGE EXTREME X240",
+            "description": "2x120mm RGB FANLI SIVI SOĞUTMA SİSTEMİ",
+            "price":1970,
+            "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/rampage/thumb/TeoriV2-106716_small.jpg" 
+         },
+         
+         {
+            "name":"COUGAR AQUA 120",
+            "description": "x120mm FANLI İŞLEMCİ SIVI SOĞUTUCU",
+            "price":1779,
+            "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/cougar/thumb/122673_small.jpg" 
+         }
+         ]
 }
 

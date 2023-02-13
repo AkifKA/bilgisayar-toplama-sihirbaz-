@@ -16,9 +16,11 @@ localStorage.setItem("mainBoardStok", JSON.stringify(mainBoardStok));
 localStorage.setItem("ramStok", JSON.stringify(ramStok));
 localStorage.setItem("gpuStok", JSON.stringify(gpuStok));
 localStorage.setItem("monitorStok", JSON.stringify(monitorStok));
+localStorage.setItem("kasaStok", JSON.stringify(kasaStok));
+localStorage.setItem("ssdStok", JSON.stringify(ssdStok));
 localStorage.setItem("hddStok", JSON.stringify(hddStok));
-localStorage.setItem("coldStok", JSON.stringify(coldStok));
 localStorage.setItem("powerStok", JSON.stringify(powerStok));
+localStorage.setItem("coldStok", JSON.stringify(coldStok));
 
 //? DOM Tanımları
 const form = document.querySelector("form");
@@ -28,20 +30,20 @@ const mainBoardSelect = document.getElementById("main-board-select");
 const mainBoardAdetSpan = document.querySelector(".main-board-adet");
 const ramSelect = document.querySelector(".ram-select");
 const ramAdetSpan = document.querySelector(".ram-adet");
-const kasaSelect = document.querySelector(".kasa-select");
-const kasaAdetSpan = document.querySelector(".kasa-adet");
 const gpuSelect = document.querySelector(".gpu-select");
 const gpuAdetSpan = document.querySelector(".gpu-adet");
 const monitorSelect = document.querySelector(".monitor-select");
 const monitorAdetSpan = document.querySelector(".monitor-adet");
-const ssdSelect = document.querySelector(".ram-select");
-const ssdAdetSpan = document.querySelector(".ram-adet");
+const kasaSelect = document.querySelector(".kasa-select");
+const kasaAdetSpan = document.querySelector(".kasa-adet");
+const ssdSelect = document.querySelector(".ssd-select");
+const ssdAdetSpan = document.querySelector(".ssd-adet");
 const hddSelect = document.querySelector(".hdd-select");
 const hddAdetSpan = document.querySelector(".hdd-adet");
-const coldAdetSelect = document.querySelector(".cold-select");
-const coldAdetSpan = document.querySelector(".cold-adet");
-const powerAdetSelect = document.querySelector(".power-select");
+const powerSelect = document.querySelector(".power-select");
 const powerAdetSpan = document.querySelector(".power-adet");
+const coldSelect = document.querySelector(".cold-select");
+const coldAdetSpan = document.querySelector(".cold-adet");
 
 //? Özet Alanı Div'ini tanımla
 const ozet = document.querySelector(".ozet");
@@ -1733,14 +1735,16 @@ const getData = (data) => {
     let gpuPrice = 0; //? Ram fiyatı
     let monitorAdet = monitorAdetSpan.innerText; //? Monitör adedi
     let monitorPrice = 0; //? Monitör fiyatı
+    let kasaAdet = kasaAdetSpan.innerText; //? Kasa adedi
+    let kasaPrice = 0; //? Kasa fiyatı
     let ssdAdet = ssdAdetSpan.innerText; //? SSD adedi
     let ssdPrice = 0; //? SSD fiyatı
-    let hddBoardAdet = hddAdetSpan.innerText; //? HDD adedi
+    let hddAdet = hddAdetSpan.innerText; //? HDD adedi
     let hddPrice = 0; //? HDD fiyatı
-    let coldBoardAdet = coldAdetSpan.innerText; //? Soğutucu Sistemi adedi
-    let coldPrice = 0; //? Soğutucu Sistemi fiyatı
-    let power = coldAdetSpan.innerText; //? Güç Kaynağı adedi
+    let powerAdet = powerAdetSpan.innerText; //? Güç Kaynağı adedi
     let powerPrice = 0; //? Güç Kaynağı fiyatı
+    let coldAdet = coldAdetSpan.innerText; //? Soğutucu Sistemi adedi
+    let coldPrice = 0; //? Soğutucu Sistemi fiyatı
 
     //? Eğer CPU Seç Butonununa Tıklanırsa
     if (e.target.classList.contains("btn-cpu")) {
@@ -3836,6 +3840,3050 @@ const getData = (data) => {
                         )} TL<td>
                         </tbody>
                 `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+      }
+    }
+    //? Eğer Kasa Seç Butonununa Tıklanırsa
+    if (e.target.classList.contains("kasa-btn")) {
+      //? Kasa Seç Butonunu tanımla
+      const secBtn = document.querySelector(".kasa-btn");
+      //? Seçilen index'i tanımla
+      let selectedIndex = kasaSelect[kasaSelect.selectedIndex].textContent;
+      localStorage.setItem("selectedIndexFromKasaSelect", selectedIndex);
+      switch (selectedIndex) {
+        case "COUGAR BLAZER":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (kasaAdet > kasaStok[0]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${kasaAdet} adet  ${kasaData[0].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              kasaPrice = kasaData[0].price * kasaAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += kasaPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("kasaPrice", kasaPrice);
+              ozet.innerHTML = `
+                  <thead>
+                  <tr>
+                    <th scope="col">Sıra</th>
+                    <th scope="col">Ürün</th>
+                    <th scope="col">Adet</th>
+                    <th scope="col">Fiyatı</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                  </tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+                  <td>${cpuAdet}</td>
+                  <td>${localStorage.getItem("cpuPrice")} TL</td>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromMainBoardSelect"
+                  )}</td>
+                  <td>${mainBoardAdet}</td>
+                  <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+                  <td>${ramAdet}</td>
+                  <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+                  <td>${gpuAdet}</td>
+                  <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromMonitorSelect"
+                  )}</td>
+                  <td>${monitorAdet}</td>
+                  <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${kasaData[0].name}</td>
+                  <td>${kasaAdet}</td>
+                  <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                  </tr>
+                  <th>TOPLAM</th>
+                  <td><td>
+                  <td style="font-weight: 700">${Number(
+                    localStorage.getItem("toplam")
+                  )} TL<td>
+                  </tbody>
+          `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "XIGMATEK X7":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (kasaAdet > kasaStok[1]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${kasaAdet} adet  ${kasaData[1].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              kasaPrice = kasaData[1].price * kasaAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += kasaPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("kasaPrice", kasaPrice);
+              ozet.innerHTML = `
+                    <thead>
+                    <tr>
+                      <th scope="col">Sıra</th>
+                      <th scope="col">Ürün</th>
+                      <th scope="col">Adet</th>
+                      <th scope="col">Fiyatı</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    </tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromCpuSelect"
+                    )}</td>
+                    <td>${cpuAdet}</td>
+                    <td>${localStorage.getItem("cpuPrice")} TL</td>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromMainBoardSelect"
+                    )}</td>
+                    <td>${mainBoardAdet}</td>
+                    <td>${Number(
+                      localStorage.getItem("mainBoardPrice")
+                    )} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromRamSelect"
+                    )}</td>
+                    <td>${ramAdet}</td>
+                    <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromGPUSelect"
+                    )}</td>
+                    <td>${gpuAdet}</td>
+                    <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromMonitorSelect"
+                    )}</td>
+                    <td>${monitorAdet}</td>
+                    <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${kasaData[1].name}</td>
+                    <td>${kasaAdet}</td>
+                    <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                    </tr>
+                    <th>TOPLAM</th>
+                    <td><td>
+                    <td style="font-weight: 700">${Number(
+                      localStorage.getItem("toplam")
+                    )} TL<td>
+                    </tbody>
+            `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "THERMALTAKE DIVIDER":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (kasaAdet > kasaStok[2]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${kasaAdet} adet  ${kasaData[2].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              kasaPrice = kasaData[2].price * kasaAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += kasaPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("kasaPrice", kasaPrice);
+              ozet.innerHTML = `
+                      <thead>
+                      <tr>
+                        <th scope="col">Sıra</th>
+                        <th scope="col">Ürün</th>
+                        <th scope="col">Adet</th>
+                        <th scope="col">Fiyatı</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                      </tr>
+                      <th scope="row">${count++}</th>
+                      <td>${localStorage.getItem(
+                        "selectedIndexFromCpuSelect"
+                      )}</td>
+                      <td>${cpuAdet}</td>
+                      <td>${localStorage.getItem("cpuPrice")} TL</td>
+                      <tr>
+                      <th scope="row">${count++}</th>
+                      <td>${localStorage.getItem(
+                        "selectedIndexFromMainBoardSelect"
+                      )}</td>
+                      <td>${mainBoardAdet}</td>
+                      <td>${Number(
+                        localStorage.getItem("mainBoardPrice")
+                      )} TL</td>
+                      </tr>
+                      <tr>
+                      <th scope="row">${count++}</th>
+                      <td>${localStorage.getItem(
+                        "selectedIndexFromRamSelect"
+                      )}</td>
+                      <td>${ramAdet}</td>
+                      <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                      </tr>
+                      <tr>
+                      <th scope="row">${count++}</th>
+                      <td>${localStorage.getItem(
+                        "selectedIndexFromGPUSelect"
+                      )}</td>
+                      <td>${gpuAdet}</td>
+                      <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                      </tr>
+                      <tr>
+                      <th scope="row">${count++}</th>
+                      <td>${localStorage.getItem(
+                        "selectedIndexFromMonitorSelect"
+                      )}</td>
+                      <td>${monitorAdet}</td>
+                      <td>${Number(
+                        localStorage.getItem("monitorPrice")
+                      )} TL</td>
+                      </tr>
+                      <tr>
+                      <th scope="row">${count++}</th>
+                      <td>${kasaData[2].name}</td>
+                      <td>${kasaAdet}</td>
+                      <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                      </tr>
+                      <th>TOPLAM</th>
+                      <td><td>
+                      <td style="font-weight: 700">${Number(
+                        localStorage.getItem("toplam")
+                      )} TL<td>
+                      </tbody>
+              `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "MSI MAG VAMPIRIC":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (kasaAdet > kasaStok[3]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${kasaAdet} adet  ${kasaData[3].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              kasaPrice = kasaData[3].price * kasaAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += kasaPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("kasaPrice", kasaPrice);
+              ozet.innerHTML = `
+                      <thead>
+                      <tr>
+                        <th scope="col">Sıra</th>
+                        <th scope="col">Ürün</th>
+                        <th scope="col">Adet</th>
+                        <th scope="col">Fiyatı</th>
+                      </tr>
+                      </thead>
+                      <tbody>
+                      <tr>
+                      </tr>
+                      <th scope="row">${count++}</th>
+                      <td>${localStorage.getItem(
+                        "selectedIndexFromCpuSelect"
+                      )}</td>
+                      <td>${cpuAdet}</td>
+                      <td>${localStorage.getItem("cpuPrice")} TL</td>
+                      <tr>
+                      <th scope="row">${count++}</th>
+                      <td>${localStorage.getItem(
+                        "selectedIndexFromMainBoardSelect"
+                      )}</td>
+                      <td>${mainBoardAdet}</td>
+                      <td>${Number(
+                        localStorage.getItem("mainBoardPrice")
+                      )} TL</td>
+                      </tr>
+                      <tr>
+                      <th scope="row">${count++}</th>
+                      <td>${localStorage.getItem(
+                        "selectedIndexFromRamSelect"
+                      )}</td>
+                      <td>${ramAdet}</td>
+                      <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                      </tr>
+                      <tr>
+                      <th scope="row">${count++}</th>
+                      <td>${localStorage.getItem(
+                        "selectedIndexFromGPUSelect"
+                      )}</td>
+                      <td>${gpuAdet}</td>
+                      <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                      </tr>
+                      <tr>
+                      <th scope="row">${count++}</th>
+                      <td>${localStorage.getItem(
+                        "selectedIndexFromMonitorSelect"
+                      )}</td>
+                      <td>${monitorAdet}</td>
+                      <td>${Number(
+                        localStorage.getItem("monitorPrice")
+                      )} TL</td>
+                      </tr>
+                      <tr>
+                      <th scope="row">${count++}</th>
+                      <td>${kasaData[3].name}</td>
+                      <td>${kasaAdet}</td>
+                      <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                      </tr>
+                      <th>TOPLAM</th>
+                      <td><td>
+                      <td style="font-weight: 700">${Number(
+                        localStorage.getItem("toplam")
+                      )} TL<td>
+                      </tbody>
+              `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "COUGAR MX440 MESH RGB":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (kasaAdet > kasaStok[4]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${kasaAdet} adet  ${kasaData[4].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              kasaPrice = kasaData[4].price * kasaAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += kasaPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("kasaPrice", kasaPrice);
+              ozet.innerHTML = `
+                        <thead>
+                        <tr>
+                          <th scope="col">Sıra</th>
+                          <th scope="col">Ürün</th>
+                          <th scope="col">Adet</th>
+                          <th scope="col">Fiyatı</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                        </tr>
+                        <th scope="row">${count++}</th>
+                        <td>${localStorage.getItem(
+                          "selectedIndexFromCpuSelect"
+                        )}</td>
+                        <td>${cpuAdet}</td>
+                        <td>${localStorage.getItem("cpuPrice")} TL</td>
+                        <tr>
+                        <th scope="row">${count++}</th>
+                        <td>${localStorage.getItem(
+                          "selectedIndexFromMainBoardSelect"
+                        )}</td>
+                        <td>${mainBoardAdet}</td>
+                        <td>${Number(
+                          localStorage.getItem("mainBoardPrice")
+                        )} TL</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">${count++}</th>
+                        <td>${localStorage.getItem(
+                          "selectedIndexFromRamSelect"
+                        )}</td>
+                        <td>${ramAdet}</td>
+                        <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">${count++}</th>
+                        <td>${localStorage.getItem(
+                          "selectedIndexFromGPUSelect"
+                        )}</td>
+                        <td>${gpuAdet}</td>
+                        <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">${count++}</th>
+                        <td>${localStorage.getItem(
+                          "selectedIndexFromMonitorSelect"
+                        )}</td>
+                        <td>${monitorAdet}</td>
+                        <td>${Number(
+                          localStorage.getItem("monitorPrice")
+                        )} TL</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">${count++}</th>
+                        <td>${kasaData[4].name}</td>
+                        <td>${kasaAdet}</td>
+                        <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                        </tr>
+                        <th>TOPLAM</th>
+                        <td><td>
+                        <td style="font-weight: 700">${Number(
+                          localStorage.getItem("toplam")
+                        )} TL<td>
+                        </tbody>
+                `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "POWERBOOST VK-M202B":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (kasaAdet > kasaStok[5]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${kasaAdet} adet  ${kasaData[4].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              kasaPrice = kasaData[5].price * kasaAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += kasaPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("kasaPrice", kasaPrice);
+              ozet.innerHTML = `
+                        <thead>
+                        <tr>
+                          <th scope="col">Sıra</th>
+                          <th scope="col">Ürün</th>
+                          <th scope="col">Adet</th>
+                          <th scope="col">Fiyatı</th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr>
+                        </tr>
+                        <th scope="row">${count++}</th>
+                        <td>${localStorage.getItem(
+                          "selectedIndexFromCpuSelect"
+                        )}</td>
+                        <td>${cpuAdet}</td>
+                        <td>${localStorage.getItem("cpuPrice")} TL</td>
+                        <tr>
+                        <th scope="row">${count++}</th>
+                        <td>${localStorage.getItem(
+                          "selectedIndexFromMainBoardSelect"
+                        )}</td>
+                        <td>${mainBoardAdet}</td>
+                        <td>${Number(
+                          localStorage.getItem("mainBoardPrice")
+                        )} TL</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">${count++}</th>
+                        <td>${localStorage.getItem(
+                          "selectedIndexFromRamSelect"
+                        )}</td>
+                        <td>${ramAdet}</td>
+                        <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">${count++}</th>
+                        <td>${localStorage.getItem(
+                          "selectedIndexFromGPUSelect"
+                        )}</td>
+                        <td>${gpuAdet}</td>
+                        <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">${count++}</th>
+                        <td>${localStorage.getItem(
+                          "selectedIndexFromMonitorSelect"
+                        )}</td>
+                        <td>${monitorAdet}</td>
+                        <td>${Number(
+                          localStorage.getItem("monitorPrice")
+                        )} TL</td>
+                        </tr>
+                        <tr>
+                        <th scope="row">${count++}</th>
+                        <td>${kasaData[5].name}</td>
+                        <td>${kasaAdet}</td>
+                        <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                        </tr>
+                        <th>TOPLAM</th>
+                        <td><td>
+                        <td style="font-weight: 700">${Number(
+                          localStorage.getItem("toplam")
+                        )} TL<td>
+                        </tbody>
+                `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+      }
+    }
+    //? Eğer SSD Seç Butonununa Tıklanırsa
+    if (e.target.classList.contains("ssd-btn")) {
+      //? SSD Seç Butonunu tanımla
+      const secBtn = document.querySelector(".ssd-btn");
+      //? Seçilen index'i tanımla
+      let selectedIndex = ssdSelect[ssdSelect.selectedIndex].textContent;
+      localStorage.setItem("selectedIndexFromSSDSelect", selectedIndex);
+      switch (selectedIndex) {
+        case "Samsung 2TB 980 PRO":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (ssdAdet > ssdStok[0]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${ssdAdet} adet  ${ssdData[0].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              ssdPrice = ssdData[0].price * ssdAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += ssdPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("ssdPrice", ssdPrice);
+              ozet.innerHTML = `
+            <thead>
+            <tr>
+              <th scope="col">Sıra</th>
+              <th scope="col">Ürün</th>
+              <th scope="col">Adet</th>
+              <th scope="col">Fiyatı</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            </tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+            <td>${cpuAdet}</td>
+            <td>${localStorage.getItem("cpuPrice")} TL</td>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+            <td>${mainBoardAdet}</td>
+            <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+            <td>${ramAdet}</td>
+            <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+            <td>${gpuAdet}</td>
+            <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+            <td>${monitorAdet}</td>
+            <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+            <td>${kasaAdet}</td>
+            <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${ssdData[0].name}</td>
+            <td>${ssdAdet}</td>
+            <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+            </tr>
+            <th>TOPLAM</th>
+            <td><td>
+            <td style="font-weight: 700">${Number(
+              localStorage.getItem("toplam")
+            )} TL<td>
+            </tbody>
+    `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "Crucial 2TB P5 Plus Serisi":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (ssdAdet > ssdStok[1]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${ssdAdet} adet  ${ssdData[1].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              ssdPrice = ssdData[1].price * ssdAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += ssdPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("ssdPrice", ssdPrice);
+              ozet.innerHTML = `
+              <thead>
+              <tr>
+                <th scope="col">Sıra</th>
+                <th scope="col">Ürün</th>
+                <th scope="col">Adet</th>
+                <th scope="col">Fiyatı</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              </tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+              <td>${cpuAdet}</td>
+              <td>${localStorage.getItem("cpuPrice")} TL</td>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem(
+                "selectedIndexFromMainBoardSelect"
+              )}</td>
+              <td>${mainBoardAdet}</td>
+              <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+              <td>${ramAdet}</td>
+              <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+              <td>${gpuAdet}</td>
+              <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+              <td>${monitorAdet}</td>
+              <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+              <td>${kasaAdet}</td>
+              <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${ssdData[1].name}</td>
+              <td>${ssdAdet}</td>
+              <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+              </tr>
+              <th>TOPLAM</th>
+              <td><td>
+              <td style="font-weight: 700">${Number(
+                localStorage.getItem("toplam")
+              )} TL<td>
+              </tbody>
+      `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "Samsung 2TB T7 Shield":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (ssdAdet > ssdStok[2]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${ssdAdet} adet  ${ssdData[2].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              ssdPrice = ssdData[2].price * ssdAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += ssdPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("ssdPrice", ssdPrice);
+              ozet.innerHTML = `
+                <thead>
+                <tr>
+                  <th scope="col">Sıra</th>
+                  <th scope="col">Ürün</th>
+                  <th scope="col">Adet</th>
+                  <th scope="col">Fiyatı</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                </tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+                <td>${cpuAdet}</td>
+                <td>${localStorage.getItem("cpuPrice")} TL</td>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem(
+                  "selectedIndexFromMainBoardSelect"
+                )}</td>
+                <td>${mainBoardAdet}</td>
+                <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+                <td>${ramAdet}</td>
+                <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+                <td>${gpuAdet}</td>
+                <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem(
+                  "selectedIndexFromMonitorSelect"
+                )}</td>
+                <td>${monitorAdet}</td>
+                <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+                <td>${kasaAdet}</td>
+                <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${ssdData[2].name}</td>
+                <td>${ssdAdet}</td>
+                <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+                </tr>
+                <th>TOPLAM</th>
+                <td><td>
+                <td style="font-weight: 700">${Number(
+                  localStorage.getItem("toplam")
+                )} TL<td>
+                </tbody>
+        `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "ROG Strix SQ7":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (ssdAdet > ssdStok[3]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${ssdAdet} adet  ${ssdData[3].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              ssdPrice = ssdData[3].price * ssdAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += ssdPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("ssdPrice", ssdPrice);
+              ozet.innerHTML = `
+                  <thead>
+                  <tr>
+                    <th scope="col">Sıra</th>
+                    <th scope="col">Ürün</th>
+                    <th scope="col">Adet</th>
+                    <th scope="col">Fiyatı</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                  </tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+                  <td>${cpuAdet}</td>
+                  <td>${localStorage.getItem("cpuPrice")} TL</td>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromMainBoardSelect"
+                  )}</td>
+                  <td>${mainBoardAdet}</td>
+                  <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+                  <td>${ramAdet}</td>
+                  <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+                  <td>${gpuAdet}</td>
+                  <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromMonitorSelect"
+                  )}</td>
+                  <td>${monitorAdet}</td>
+                  <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromKasaSelect"
+                  )}</td>
+                  <td>${kasaAdet}</td>
+                  <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${ssdData[3].name}</td>
+                  <td>${ssdAdet}</td>
+                  <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+                  </tr>
+                  <th>TOPLAM</th>
+                  <td><td>
+                  <td style="font-weight: 700">${Number(
+                    localStorage.getItem("toplam")
+                  )} TL<td>
+                  </tbody>
+          `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "Kioxia 2TB Exceria PRO Serisi":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (ssdAdet > ssdStok[4]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${ssdAdet} adet  ${ssdData[3].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              ssdPrice = ssdData[4].price * ssdAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += ssdPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("ssdPrice", ssdPrice);
+              ozet.innerHTML = `
+                  <thead>
+                  <tr>
+                    <th scope="col">Sıra</th>
+                    <th scope="col">Ürün</th>
+                    <th scope="col">Adet</th>
+                    <th scope="col">Fiyatı</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                  </tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+                  <td>${cpuAdet}</td>
+                  <td>${localStorage.getItem("cpuPrice")} TL</td>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromMainBoardSelect"
+                  )}</td>
+                  <td>${mainBoardAdet}</td>
+                  <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+                  <td>${ramAdet}</td>
+                  <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+                  <td>${gpuAdet}</td>
+                  <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromMonitorSelect"
+                  )}</td>
+                  <td>${monitorAdet}</td>
+                  <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromKasaSelect"
+                  )}</td>
+                  <td>${kasaAdet}</td>
+                  <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${ssdData[4].name}</td>
+                  <td>${ssdAdet}</td>
+                  <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+                  </tr>
+                  <th>TOPLAM</th>
+                  <td><td>
+                  <td style="font-weight: 700">${Number(
+                    localStorage.getItem("toplam")
+                  )} TL<td>
+                  </tbody>
+          `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "Samsung 2TB 870 EVO":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (ssdAdet > ssdStok[5]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${ssdAdet} adet  ${ssdData[5].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              ssdPrice = ssdData[5].price * ssdAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += ssdPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("ssdPrice", ssdPrice);
+              ozet.innerHTML = `
+                  <thead>
+                  <tr>
+                    <th scope="col">Sıra</th>
+                    <th scope="col">Ürün</th>
+                    <th scope="col">Adet</th>
+                    <th scope="col">Fiyatı</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                  </tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+                  <td>${cpuAdet}</td>
+                  <td>${localStorage.getItem("cpuPrice")} TL</td>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromMainBoardSelect"
+                  )}</td>
+                  <td>${mainBoardAdet}</td>
+                  <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+                  <td>${ramAdet}</td>
+                  <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+                  <td>${gpuAdet}</td>
+                  <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromMonitorSelect"
+                  )}</td>
+                  <td>${monitorAdet}</td>
+                  <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromKasaSelect"
+                  )}</td>
+                  <td>${kasaAdet}</td>
+                  <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${ssdData[5].name}</td>
+                  <td>${ssdAdet}</td>
+                  <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+                  </tr>
+                  <th>TOPLAM</th>
+                  <td><td>
+                  <td style="font-weight: 700">${Number(
+                    localStorage.getItem("toplam")
+                  )} TL<td>
+                  </tbody>
+          `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+      }
+    }
+    //? Eğer HDD Seç Butonununa Tıklanırsa
+    if (e.target.classList.contains("hdd-btn")) {
+      //? HHD Seç Butonunu tanımla
+      const secBtn = document.querySelector(".hdd-btn");
+      //? Seçilen index'i tanımla
+      let selectedIndex = hddSelect[hddSelect.selectedIndex].textContent;
+      localStorage.setItem("selectedIndexFromHDDSelect", selectedIndex);
+      switch (selectedIndex) {
+        case "Toshiba 3.5' 8TB":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (hddAdet > hddStok[0]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${hddAdet} adet  ${hddData[0].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              hddPrice = hddData[0].price * hddAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += hddPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("hddPrice", hddPrice);
+              ozet.innerHTML = `
+              <thead>
+              <tr>
+                <th scope="col">Sıra</th>
+                <th scope="col">Ürün</th>
+                <th scope="col">Adet</th>
+                <th scope="col">Fiyatı</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              </tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+              <td>${cpuAdet}</td>
+              <td>${localStorage.getItem("cpuPrice")} TL</td>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem(
+                "selectedIndexFromMainBoardSelect"
+              )}</td>
+              <td>${mainBoardAdet}</td>
+              <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+              <td>${ramAdet}</td>
+              <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+              <td>${gpuAdet}</td>
+              <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+              <td>${monitorAdet}</td>
+              <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+              <td>${kasaAdet}</td>
+              <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+              <td>${ssdAdet}</td>
+              <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${hddData[0].name}</td>
+              <td>${hddAdet}</td>
+              <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+              </tr>
+              <th>TOPLAM</th>
+              <td><td>
+              <td style="font-weight: 700">${Number(
+                localStorage.getItem("toplam")
+              )} TL<td>
+              </tbody>
+      `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "Seagate 2.5' 1TB Barracuda":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (hddAdet > hddStok[1]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${hddAdet} adet  ${hddData[1].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              hddPrice = hddData[1].price * hddAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += hddPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("hddPrice", hddPrice);
+              ozet.innerHTML = `
+                <thead>
+                <tr>
+                  <th scope="col">Sıra</th>
+                  <th scope="col">Ürün</th>
+                  <th scope="col">Adet</th>
+                  <th scope="col">Fiyatı</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                </tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+                <td>${cpuAdet}</td>
+                <td>${localStorage.getItem("cpuPrice")} TL</td>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem(
+                  "selectedIndexFromMainBoardSelect"
+                )}</td>
+                <td>${mainBoardAdet}</td>
+                <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+                <td>${ramAdet}</td>
+                <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+                <td>${gpuAdet}</td>
+                <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem(
+                  "selectedIndexFromMonitorSelect"
+                )}</td>
+                <td>${monitorAdet}</td>
+                <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+                <td>${kasaAdet}</td>
+                <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+                <td>${ssdAdet}</td>
+                <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${hddData[1].name}</td>
+                <td>${hddAdet}</td>
+                <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+                </tr>
+                <th>TOPLAM</th>
+                <td><td>
+                <td style="font-weight: 700">${Number(
+                  localStorage.getItem("toplam")
+                )} TL<td>
+                </tbody>
+        `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "Seagate Barracuda 3.5'":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (hddAdet > hddStok[2]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${hddAdet} adet  ${hddData[2].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              hddPrice = hddData[2].price * hddAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += hddPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("hddPrice", hddPrice);
+              ozet.innerHTML = `
+                  <thead>
+                  <tr>
+                    <th scope="col">Sıra</th>
+                    <th scope="col">Ürün</th>
+                    <th scope="col">Adet</th>
+                    <th scope="col">Fiyatı</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                  </tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+                  <td>${cpuAdet}</td>
+                  <td>${localStorage.getItem("cpuPrice")} TL</td>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromMainBoardSelect"
+                  )}</td>
+                  <td>${mainBoardAdet}</td>
+                  <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+                  <td>${ramAdet}</td>
+                  <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+                  <td>${gpuAdet}</td>
+                  <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromMonitorSelect"
+                  )}</td>
+                  <td>${monitorAdet}</td>
+                  <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromKasaSelect"
+                  )}</td>
+                  <td>${kasaAdet}</td>
+                  <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+                  <td>${ssdAdet}</td>
+                  <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${hddData[2].name}</td>
+                  <td>${hddAdet}</td>
+                  <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+                  </tr>
+                  <th>TOPLAM</th>
+                  <td><td>
+                  <td style="font-weight: 700">${Number(
+                    localStorage.getItem("toplam")
+                  )} TL<td>
+                  </tbody>
+          `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "Seagate Barracuda 3.5'":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (hddAdet > hddStok[3]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${hddAdet} adet  ${hddData[3].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              hddPrice = hddData[3].price * hddAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += hddPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("hddPrice", hddPrice);
+              ozet.innerHTML = `
+                    <thead>
+                    <tr>
+                      <th scope="col">Sıra</th>
+                      <th scope="col">Ürün</th>
+                      <th scope="col">Adet</th>
+                      <th scope="col">Fiyatı</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    </tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromCpuSelect"
+                    )}</td>
+                    <td>${cpuAdet}</td>
+                    <td>${localStorage.getItem("cpuPrice")} TL</td>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromMainBoardSelect"
+                    )}</td>
+                    <td>${mainBoardAdet}</td>
+                    <td>${Number(
+                      localStorage.getItem("mainBoardPrice")
+                    )} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromRamSelect"
+                    )}</td>
+                    <td>${ramAdet}</td>
+                    <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromGPUSelect"
+                    )}</td>
+                    <td>${gpuAdet}</td>
+                    <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromMonitorSelect"
+                    )}</td>
+                    <td>${monitorAdet}</td>
+                    <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromKasaSelect"
+                    )}</td>
+                    <td>${kasaAdet}</td>
+                    <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromSSDSelect"
+                    )}</td>
+                    <td>${ssdAdet}</td>
+                    <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${hddData[3].name}</td>
+                    <td>${hddAdet}</td>
+                    <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+                    </tr>
+                    <th>TOPLAM</th>
+                    <td><td>
+                    <td style="font-weight: 700">${Number(
+                      localStorage.getItem("toplam")
+                    )} TL<td>
+                    </tbody>
+            `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "Toshiba 2,5' 1TB L200'":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (hddAdet > hddStok[4]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${hddAdet} adet  ${hddData[4].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              hddPrice = hddData[4].price * hddAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += hddPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("hddPrice", hddPrice);
+              ozet.innerHTML = `
+                    <thead>
+                    <tr>
+                      <th scope="col">Sıra</th>
+                      <th scope="col">Ürün</th>
+                      <th scope="col">Adet</th>
+                      <th scope="col">Fiyatı</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    </tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromCpuSelect"
+                    )}</td>
+                    <td>${cpuAdet}</td>
+                    <td>${localStorage.getItem("cpuPrice")} TL</td>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromMainBoardSelect"
+                    )}</td>
+                    <td>${mainBoardAdet}</td>
+                    <td>${Number(
+                      localStorage.getItem("mainBoardPrice")
+                    )} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromRamSelect"
+                    )}</td>
+                    <td>${ramAdet}</td>
+                    <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromGPUSelect"
+                    )}</td>
+                    <td>${gpuAdet}</td>
+                    <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromMonitorSelect"
+                    )}</td>
+                    <td>${monitorAdet}</td>
+                    <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromKasaSelect"
+                    )}</td>
+                    <td>${kasaAdet}</td>
+                    <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromSSDSelect"
+                    )}</td>
+                    <td>${ssdAdet}</td>
+                    <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${hddData[4].name}</td>
+                    <td>${hddAdet}</td>
+                    <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+                    </tr>
+                    <th>TOPLAM</th>
+                    <td><td>
+                    <td style="font-weight: 700">${Number(
+                      localStorage.getItem("toplam")
+                    )} TL<td>
+                    </tbody>
+            `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "WD 1TB Purple Intellipower":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (hddAdet > hddStok[5]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${hddAdet} adet  ${hddData[5].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              hddPrice = hddData[5].price * hddAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += hddPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("hddPrice", hddPrice);
+              ozet.innerHTML = `
+                    <thead>
+                    <tr>
+                      <th scope="col">Sıra</th>
+                      <th scope="col">Ürün</th>
+                      <th scope="col">Adet</th>
+                      <th scope="col">Fiyatı</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    </tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromCpuSelect"
+                    )}</td>
+                    <td>${cpuAdet}</td>
+                    <td>${localStorage.getItem("cpuPrice")} TL</td>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromMainBoardSelect"
+                    )}</td>
+                    <td>${mainBoardAdet}</td>
+                    <td>${Number(
+                      localStorage.getItem("mainBoardPrice")
+                    )} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromRamSelect"
+                    )}</td>
+                    <td>${ramAdet}</td>
+                    <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromGPUSelect"
+                    )}</td>
+                    <td>${gpuAdet}</td>
+                    <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromMonitorSelect"
+                    )}</td>
+                    <td>${monitorAdet}</td>
+                    <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromKasaSelect"
+                    )}</td>
+                    <td>${kasaAdet}</td>
+                    <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromSSDSelect"
+                    )}</td>
+                    <td>${ssdAdet}</td>
+                    <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${hddData[5].name}</td>
+                    <td>${hddAdet}</td>
+                    <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+                    </tr>
+                    <th>TOPLAM</th>
+                    <td><td>
+                    <td style="font-weight: 700">${Number(
+                      localStorage.getItem("toplam")
+                    )} TL<td>
+                    </tbody>
+            `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+      }
+    }
+    //? Eğer Güç Kaynağı Seç Butonununa Tıklanırsa
+    if (e.target.classList.contains("power-btn")) {
+      //? Güç kaynağı Seç Butonunu tanımla
+      const secBtn = document.querySelector(".power-btn");
+      //? Seçilen index'i tanımla
+      let selectedIndex = powerSelect[powerSelect.selectedIndex].textContent;
+      localStorage.setItem("selectedIndexFromPowerSelect", selectedIndex);
+      switch (selectedIndex) {
+        case "THERMALTAKE TOUGHPOWER GF3 1650W":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (powerAdet > powerStok[0]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${powerAdet} adet  ${powerData[0].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              powerPrice = powerData[0].price * powerAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += powerPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("powerPrice", powerPrice);
+              ozet.innerHTML = `
+            <thead>
+            <tr>
+              <th scope="col">Sıra</th>
+              <th scope="col">Ürün</th>
+              <th scope="col">Adet</th>
+              <th scope="col">Fiyatı</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            </tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+            <td>${cpuAdet}</td>
+            <td>${localStorage.getItem("cpuPrice")} TL</td>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+            <td>${mainBoardAdet}</td>
+            <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+            <td>${ramAdet}</td>
+            <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+            <td>${gpuAdet}</td>
+            <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+            <td>${monitorAdet}</td>
+            <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+            <td>${kasaAdet}</td>
+            <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+            <td>${ssdAdet}</td>
+            <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+            <td>${hddAdet}</td>
+            <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${powerData[0].name}</td>
+            <td>${powerAdet}</td>
+            <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+            </tr>
+            <th>TOPLAM</th>
+            <td><td>
+            <td style="font-weight: 700">${Number(
+              localStorage.getItem("toplam")
+            )} TL<td>
+            </tbody>
+    `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "THERMALTAKE TOUGHPOWER GF3 1350W":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (powerAdet > powerStok[1]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${powerAdet} adet  ${powerData[1].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              powerPrice = powerData[1].price * powerAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += powerPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("powerPrice", powerPrice);
+              ozet.innerHTML = `
+              <thead>
+              <tr>
+                <th scope="col">Sıra</th>
+                <th scope="col">Ürün</th>
+                <th scope="col">Adet</th>
+                <th scope="col">Fiyatı</th>
+              </tr>
+              </thead>
+              <tbody>
+              <tr>
+              </tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+              <td>${cpuAdet}</td>
+              <td>${localStorage.getItem("cpuPrice")} TL</td>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem(
+                "selectedIndexFromMainBoardSelect"
+              )}</td>
+              <td>${mainBoardAdet}</td>
+              <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+              <td>${ramAdet}</td>
+              <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+              <td>${gpuAdet}</td>
+              <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+              <td>${monitorAdet}</td>
+              <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+              <td>${kasaAdet}</td>
+              <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+              <td>${ssdAdet}</td>
+              <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+              <td>${hddAdet}</td>
+              <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+              </tr>
+              <tr>
+              <th scope="row">${count++}</th>
+              <td>${powerData[1].name}</td>
+              <td>${powerAdet}</td>
+              <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+              </tr>
+              <th>TOPLAM</th>
+              <td><td>
+              <td style="font-weight: 700">${Number(
+                localStorage.getItem("toplam")
+              )} TL<td>
+              </tbody>
+      `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "COOLER MASTER MWE V2 80 PLUS":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (powerAdet > powerStok[2]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${powerAdet} adet  ${powerData[2].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              powerPrice = powerData[1].price * powerAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += powerPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("powerPrice", powerPrice);
+              ozet.innerHTML = `
+                <thead>
+                <tr>
+                  <th scope="col">Sıra</th>
+                  <th scope="col">Ürün</th>
+                  <th scope="col">Adet</th>
+                  <th scope="col">Fiyatı</th>
+                </tr>
+                </thead>
+                <tbody>
+                <tr>
+                </tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+                <td>${cpuAdet}</td>
+                <td>${localStorage.getItem("cpuPrice")} TL</td>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem(
+                  "selectedIndexFromMainBoardSelect"
+                )}</td>
+                <td>${mainBoardAdet}</td>
+                <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+                <td>${ramAdet}</td>
+                <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+                <td>${gpuAdet}</td>
+                <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem(
+                  "selectedIndexFromMonitorSelect"
+                )}</td>
+                <td>${monitorAdet}</td>
+                <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+                <td>${kasaAdet}</td>
+                <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+                <td>${ssdAdet}</td>
+                <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+                <td>${hddAdet}</td>
+                <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+                </tr>
+                <tr>
+                <th scope="row">${count++}</th>
+                <td>${powerData[2].name}</td>
+                <td>${powerAdet}</td>
+                <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+                </tr>
+                <th>TOPLAM</th>
+                <td><td>
+                <td style="font-weight: 700">${Number(
+                  localStorage.getItem("toplam")
+                )} TL<td>
+                </tbody>
+        `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "ASUS ROG STRIX 850W":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (powerAdet > powerStok[3]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${powerAdet} adet  ${powerData[3].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              powerPrice = powerData[3].price * powerAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += powerPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("powerPrice", powerPrice);
+              ozet.innerHTML = `
+                  <thead>
+                  <tr>
+                    <th scope="col">Sıra</th>
+                    <th scope="col">Ürün</th>
+                    <th scope="col">Adet</th>
+                    <th scope="col">Fiyatı</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                  </tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+                  <td>${cpuAdet}</td>
+                  <td>${localStorage.getItem("cpuPrice")} TL</td>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromMainBoardSelect"
+                  )}</td>
+                  <td>${mainBoardAdet}</td>
+                  <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+                  <td>${ramAdet}</td>
+                  <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+                  <td>${gpuAdet}</td>
+                  <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromMonitorSelect"
+                  )}</td>
+                  <td>${monitorAdet}</td>
+                  <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromKasaSelect"
+                  )}</td>
+                  <td>${kasaAdet}</td>
+                  <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+                  <td>${ssdAdet}</td>
+                  <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+                  <td>${hddAdet}</td>
+                  <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${powerData[3].name}</td>
+                  <td>${powerAdet}</td>
+                  <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+                  </tr>
+                  <th>TOPLAM</th>
+                  <td><td>
+                  <td style="font-weight: 700">${Number(
+                    localStorage.getItem("toplam")
+                  )} TL<td>
+                  </tbody>
+          `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "THERMALTAKE TOUGHPOWER GF1 850W":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (powerAdet > powerStok[4]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${powerAdet} adet  ${powerData[4].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              powerPrice = powerData[4].price * powerAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += powerPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("powerPrice", powerPrice);
+              ozet.innerHTML = `
+                  <thead>
+                  <tr>
+                    <th scope="col">Sıra</th>
+                    <th scope="col">Ürün</th>
+                    <th scope="col">Adet</th>
+                    <th scope="col">Fiyatı</th>
+                  </tr>
+                  </thead>
+                  <tbody>
+                  <tr>
+                  </tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+                  <td>${cpuAdet}</td>
+                  <td>${localStorage.getItem("cpuPrice")} TL</td>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromMainBoardSelect"
+                  )}</td>
+                  <td>${mainBoardAdet}</td>
+                  <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+                  <td>${ramAdet}</td>
+                  <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+                  <td>${gpuAdet}</td>
+                  <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromMonitorSelect"
+                  )}</td>
+                  <td>${monitorAdet}</td>
+                  <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem(
+                    "selectedIndexFromKasaSelect"
+                  )}</td>
+                  <td>${kasaAdet}</td>
+                  <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+                  <td>${ssdAdet}</td>
+                  <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+                  <td>${hddAdet}</td>
+                  <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+                  </tr>
+                  <tr>
+                  <th scope="row">${count++}</th>
+                  <td>${powerData[4].name}</td>
+                  <td>${powerAdet}</td>
+                  <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+                  </tr>
+                  <th>TOPLAM</th>
+                  <td><td>
+                  <td style="font-weight: 700">${Number(
+                    localStorage.getItem("toplam")
+                  )} TL<td>
+                  </tbody>
+          `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "COOLER MASTER MWE 80 PLUS":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (powerAdet > powerStok[5]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${powerAdet} adet  ${powerData[5].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              powerPrice = powerData[5].price * powerAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += powerPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("powerPrice", powerPrice);
+              ozet.innerHTML = `
+                    <thead>
+                    <tr>
+                      <th scope="col">Sıra</th>
+                      <th scope="col">Ürün</th>
+                      <th scope="col">Adet</th>
+                      <th scope="col">Fiyatı</th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr>
+                    </tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromCpuSelect"
+                    )}</td>
+                    <td>${cpuAdet}</td>
+                    <td>${localStorage.getItem("cpuPrice")} TL</td>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromMainBoardSelect"
+                    )}</td>
+                    <td>${mainBoardAdet}</td>
+                    <td>${Number(
+                      localStorage.getItem("mainBoardPrice")
+                    )} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromRamSelect"
+                    )}</td>
+                    <td>${ramAdet}</td>
+                    <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromGPUSelect"
+                    )}</td>
+                    <td>${gpuAdet}</td>
+                    <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromMonitorSelect"
+                    )}</td>
+                    <td>${monitorAdet}</td>
+                    <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromKasaSelect"
+                    )}</td>
+                    <td>${kasaAdet}</td>
+                    <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromSSDSelect"
+                    )}</td>
+                    <td>${ssdAdet}</td>
+                    <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${localStorage.getItem(
+                      "selectedIndexFromHDDSelect"
+                    )}</td>
+                    <td>${hddAdet}</td>
+                    <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+                    </tr>
+                    <tr>
+                    <th scope="row">${count++}</th>
+                    <td>${powerData[5].name}</td>
+                    <td>${powerAdet}</td>
+                    <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+                    </tr>
+                    <th>TOPLAM</th>
+                    <td><td>
+                    <td style="font-weight: 700">${Number(
+                      localStorage.getItem("toplam")
+                    )} TL<td>
+                    </tbody>
+            `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+      }
+    }
+    //? Eğer Soğutma Sisyemi Seç Butonununa Tıklanırsa
+    if (e.target.classList.contains("cold-btn")) {
+      //? Soğutma Sisyemi Seç Butonunu tanımla
+      const secBtn = document.querySelector(".cold-btn");
+      //? Seçilen index'i tanımla
+      let selectedIndex = coldSelect[coldSelect.selectedIndex].textContent;
+      localStorage.setItem("selectedIndexFromColdSelect", selectedIndex);
+      switch (selectedIndex) {
+        case "MSI MPG CORELIQUID K240":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (coldAdet > coldStok[0]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${coldAdet} adet  ${coldData[0].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              coldPrice = coldData[0].price * coldAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += powerPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("coldPrice", coldPrice);
+              ozet.innerHTML = `
+        <thead>
+        <tr>
+          <th scope="col">Sıra</th>
+          <th scope="col">Ürün</th>
+          <th scope="col">Adet</th>
+          <th scope="col">Fiyatı</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        </tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+        <td>${cpuAdet}</td>
+        <td>${localStorage.getItem("cpuPrice")} TL</td>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+        <td>${mainBoardAdet}</td>
+        <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+        <td>${ramAdet}</td>
+        <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+        <td>${gpuAdet}</td>
+        <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+        <td>${monitorAdet}</td>
+        <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+        <td>${kasaAdet}</td>
+        <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+        <td>${ssdAdet}</td>
+        <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+        <td>${hddAdet}</td>
+        <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>$localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+        <td>${powerAdet}</td>
+        <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${coldData[0].name}</td>
+        <td>${coldAdet}</td>
+        <td>${Number(localStorage.getItem("coldPrice"))} TL</td>
+        </tr>
+        <th>TOPLAM</th>
+        <td><td>
+        <td style="font-weight: 700">${Number(
+          localStorage.getItem("toplam")
+        )} TL<td>
+        </tbody>
+`;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "THERMALTAKE FLOE RİİNG RGB":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (coldAdet > coldStok[1]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${coldAdet} adet  ${coldData[1].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              coldPrice = coldData[1].price * coldAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += powerPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("coldPrice", coldPrice);
+              ozet.innerHTML = `
+        <thead>
+        <tr>
+          <th scope="col">Sıra</th>
+          <th scope="col">Ürün</th>
+          <th scope="col">Adet</th>
+          <th scope="col">Fiyatı</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        </tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+        <td>${cpuAdet}</td>
+        <td>${localStorage.getItem("cpuPrice")} TL</td>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+        <td>${mainBoardAdet}</td>
+        <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+        <td>${ramAdet}</td>
+        <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+        <td>${gpuAdet}</td>
+        <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+        <td>${monitorAdet}</td>
+        <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+        <td>${kasaAdet}</td>
+        <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+        <td>${ssdAdet}</td>
+        <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+        <td>${hddAdet}</td>
+        <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>$localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+        <td>${powerAdet}</td>
+        <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${coldData[1].name}</td>
+        <td>${coldAdet}</td>
+        <td>${Number(localStorage.getItem("coldPrice"))} TL</td>
+        </tr>
+        <th>TOPLAM</th>
+        <td><td>
+        <td style="font-weight: 700">${Number(
+          localStorage.getItem("toplam")
+        )} TL<td>
+        </tbody>
+`;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "ASUS ROG RYUO 120 RGB":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (coldAdet > coldStok[2]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${coldAdet} adet  ${coldData[2].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              coldPrice = coldData[2].price * coldAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += powerPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("coldPrice", coldPrice);
+              ozet.innerHTML = `
+          <thead>
+          <tr>
+            <th scope="col">Sıra</th>
+            <th scope="col">Ürün</th>
+            <th scope="col">Adet</th>
+            <th scope="col">Fiyatı</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          </tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+          <td>${cpuAdet}</td>
+          <td>${localStorage.getItem("cpuPrice")} TL</td>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+          <td>${mainBoardAdet}</td>
+          <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+          <td>${ramAdet}</td>
+          <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+          <td>${gpuAdet}</td>
+          <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+          <td>${monitorAdet}</td>
+          <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+          <td>${kasaAdet}</td>
+          <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+          <td>${ssdAdet}</td>
+          <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+          <td>${hddAdet}</td>
+          <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>$localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+          <td>${powerAdet}</td>
+          <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${coldData[2].name}</td>
+          <td>${coldAdet}</td>
+          <td>${Number(localStorage.getItem("coldPrice"))} TL</td>
+          </tr>
+          <th>TOPLAM</th>
+          <td><td>
+          <td style="font-weight: 700">${Number(
+            localStorage.getItem("toplam")
+          )} TL<td>
+          </tbody>
+  `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "COUGAR HELOR 240":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (coldAdet > coldStok[3]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${coldAdet} adet  ${coldData[3].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              coldPrice = coldData[2].price * coldAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += powerPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("coldPrice", coldPrice);
+              ozet.innerHTML = `
+          <thead>
+          <tr>
+            <th scope="col">Sıra</th>
+            <th scope="col">Ürün</th>
+            <th scope="col">Adet</th>
+            <th scope="col">Fiyatı</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          </tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+          <td>${cpuAdet}</td>
+          <td>${localStorage.getItem("cpuPrice")} TL</td>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+          <td>${mainBoardAdet}</td>
+          <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+          <td>${ramAdet}</td>
+          <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+          <td>${gpuAdet}</td>
+          <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+          <td>${monitorAdet}</td>
+          <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+          <td>${kasaAdet}</td>
+          <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+          <td>${ssdAdet}</td>
+          <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+          <td>${hddAdet}</td>
+          <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>$localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+          <td>${powerAdet}</td>
+          <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${coldData[3].name}</td>
+          <td>${coldAdet}</td>
+          <td>${Number(localStorage.getItem("coldPrice"))} TL</td>
+          </tr>
+          <th>TOPLAM</th>
+          <td><td>
+          <td style="font-weight: 700">${Number(
+            localStorage.getItem("toplam")
+          )} TL<td>
+          </tbody>
+  `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "COUGAR HELOR 240":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (coldAdet > coldStok[3]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${coldAdet} adet  ${coldData[3].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              coldPrice = coldData[3].price * coldAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += powerPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("coldPrice", coldPrice);
+              ozet.innerHTML = `
+          <thead>
+          <tr>
+            <th scope="col">Sıra</th>
+            <th scope="col">Ürün</th>
+            <th scope="col">Adet</th>
+            <th scope="col">Fiyatı</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          </tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+          <td>${cpuAdet}</td>
+          <td>${localStorage.getItem("cpuPrice")} TL</td>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+          <td>${mainBoardAdet}</td>
+          <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+          <td>${ramAdet}</td>
+          <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+          <td>${gpuAdet}</td>
+          <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+          <td>${monitorAdet}</td>
+          <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+          <td>${kasaAdet}</td>
+          <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+          <td>${ssdAdet}</td>
+          <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+          <td>${hddAdet}</td>
+          <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>$localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+          <td>${powerAdet}</td>
+          <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${coldData[3].name}</td>
+          <td>${coldAdet}</td>
+          <td>${Number(localStorage.getItem("coldPrice"))} TL</td>
+          </tr>
+          <th>TOPLAM</th>
+          <td><td>
+          <td style="font-weight: 700">${Number(
+            localStorage.getItem("toplam")
+          )} TL<td>
+          </tbody>
+  `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "COUGAR HELOR 240":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (coldAdet > coldStok[4]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${coldAdet} adet  ${coldData[4].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              coldPrice = coldData[4].price * coldAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += powerPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("coldPrice", coldPrice);
+              ozet.innerHTML = `
+            <thead>
+            <tr>
+              <th scope="col">Sıra</th>
+              <th scope="col">Ürün</th>
+              <th scope="col">Adet</th>
+              <th scope="col">Fiyatı</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            </tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+            <td>${cpuAdet}</td>
+            <td>${localStorage.getItem("cpuPrice")} TL</td>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+            <td>${mainBoardAdet}</td>
+            <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+            <td>${ramAdet}</td>
+            <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+            <td>${gpuAdet}</td>
+            <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+            <td>${monitorAdet}</td>
+            <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+            <td>${kasaAdet}</td>
+            <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+            <td>${ssdAdet}</td>
+            <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+            <td>${hddAdet}</td>
+            <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>$localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+            <td>${powerAdet}</td>
+            <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${coldData[4].name}</td>
+            <td>${coldAdet}</td>
+            <td>${Number(localStorage.getItem("coldPrice"))} TL</td>
+            </tr>
+            <th>TOPLAM</th>
+            <td><td>
+            <td style="font-weight: 700">${Number(
+              localStorage.getItem("toplam")
+            )} TL<td>
+            </tbody>
+    `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "COUGAR HELOR 240":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (coldAdet > coldStok[5]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${coldAdet} adet  ${coldData[5].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              coldPrice = coldData[5].price * coldAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += powerPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("coldPrice", coldPrice);
+              ozet.innerHTML = `
+            <thead>
+            <tr>
+              <th scope="col">Sıra</th>
+              <th scope="col">Ürün</th>
+              <th scope="col">Adet</th>
+              <th scope="col">Fiyatı</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            </tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+            <td>${cpuAdet}</td>
+            <td>${localStorage.getItem("cpuPrice")} TL</td>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+            <td>${mainBoardAdet}</td>
+            <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+            <td>${ramAdet}</td>
+            <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+            <td>${gpuAdet}</td>
+            <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+            <td>${monitorAdet}</td>
+            <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+            <td>${kasaAdet}</td>
+            <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+            <td>${ssdAdet}</td>
+            <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+            <td>${hddAdet}</td>
+            <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>$localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+            <td>${powerAdet}</td>
+            <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${coldData[5].name}</td>
+            <td>${coldAdet}</td>
+            <td>${Number(localStorage.getItem("coldPrice"))} TL</td>
+            </tr>
+            <th>TOPLAM</th>
+            <td><td>
+            <td style="font-weight: 700">${Number(
+              localStorage.getItem("toplam")
+            )} TL<td>
+            </tbody>
+    `;
             }
           } else if (secBtn.textContent === "Seçildi✓") {
             secBtn.textContent = "Seç";
