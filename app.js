@@ -6357,7 +6357,7 @@ const getData = (data) => {
         </tr>
         <tr>
         <th scope="row">${count++}</th>
-        <td>$localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+        <td>${localStorage.getItem("selectedIndexFromPowerSelect")}</td>
         <td>${powerAdet}</td>
         <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
         </tr>
@@ -6459,7 +6459,7 @@ const getData = (data) => {
           </tr>
           <tr>
           <th scope="row">${count++}</th>
-          <td>$localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+          <td>${localStorage.getItem("selectedIndexFromPowerSelect")}</td>
           <td>${powerAdet}</td>
           <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
           </tr>
@@ -6561,7 +6561,7 @@ const getData = (data) => {
           </tr>
           <tr>
           <th scope="row">${count++}</th>
-          <td>$localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+          <td>${localStorage.getItem("selectedIndexFromPowerSelect")}</td>
           <td>${powerAdet}</td>
           <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
           </tr>
@@ -6585,14 +6585,14 @@ const getData = (data) => {
             ozet.innerHTML = "";
           }
           break;
-        case "COUGAR HELOR 240":
+        case "RAMPAGE EXTREME X240":
           if (secBtn.textContent === "Seç") {
             secBtn.textContent = "Seçildi✓";
             secBtn.style = "background:blue";
-            if (coldAdet > coldStok[3]) {
+            if (coldAdet > coldStok[4]) {
               //? seçilen aded stok sayısından büyük olursa
               alert(
-                `Stoklarda ${coldAdet} adet  ${coldData[3].name} bulunmamaktadır.`
+                `Stoklarda ${coldAdet} adet  ${coldData[4].name} bulunmamaktadır.`
               );
               secBtn.style = "background:#198754";
               secBtn.textContent = "Seç";
@@ -6663,13 +6663,13 @@ const getData = (data) => {
           </tr>
           <tr>
           <th scope="row">${count++}</th>
-          <td>$localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+          <td>${localStorage.getItem("selectedIndexFromPowerSelect")}</td>
           <td>${powerAdet}</td>
           <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
           </tr>
           <tr>
           <th scope="row">${count++}</th>
-          <td>${coldData[3].name}</td>
+          <td>${coldData[4].name}</td>
           <td>${coldAdet}</td>
           <td>${Number(localStorage.getItem("coldPrice"))} TL</td>
           </tr>
@@ -6687,14 +6687,14 @@ const getData = (data) => {
             ozet.innerHTML = "";
           }
           break;
-        case "COUGAR HELOR 240":
+        case "COUGAR AQUA 120":
           if (secBtn.textContent === "Seç") {
             secBtn.textContent = "Seçildi✓";
             secBtn.style = "background:blue";
-            if (coldAdet > coldStok[4]) {
+            if (coldAdet > coldStok[5]) {
               //? seçilen aded stok sayısından büyük olursa
               alert(
-                `Stoklarda ${coldAdet} adet  ${coldData[4].name} bulunmamaktadır.`
+                `Stoklarda ${coldAdet} adet  ${coldData[5].name} bulunmamaktadır.`
               );
               secBtn.style = "background:#198754";
               secBtn.textContent = "Seç";
@@ -6765,109 +6765,7 @@ const getData = (data) => {
             </tr>
             <tr>
             <th scope="row">${count++}</th>
-            <td>$localStorage.getItem("selectedIndexFromPowerSelect")}</td>
-            <td>${powerAdet}</td>
-            <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
-            </tr>
-            <tr>
-            <th scope="row">${count++}</th>
-            <td>${coldData[4].name}</td>
-            <td>${coldAdet}</td>
-            <td>${Number(localStorage.getItem("coldPrice"))} TL</td>
-            </tr>
-            <th>TOPLAM</th>
-            <td><td>
-            <td style="font-weight: 700">${Number(
-              localStorage.getItem("toplam")
-            )} TL<td>
-            </tbody>
-    `;
-            }
-          } else if (secBtn.textContent === "Seçildi✓") {
-            secBtn.textContent = "Seç";
-            secBtn.style = "background:#198754";
-            ozet.innerHTML = "";
-          }
-          break;
-        case "COUGAR HELOR 240":
-          if (secBtn.textContent === "Seç") {
-            secBtn.textContent = "Seçildi✓";
-            secBtn.style = "background:blue";
-            if (coldAdet > coldStok[5]) {
-              //? seçilen aded stok sayısından büyük olursa
-              alert(
-                `Stoklarda ${coldAdet} adet  ${coldData[5].name} bulunmamaktadır.`
-              );
-              secBtn.style = "background:#198754";
-              secBtn.textContent = "Seç";
-            } else {
-              //? hesap işleri ve doma basma
-              coldPrice = coldData[5].price * coldAdet;
-              toplam = Number(localStorage.getItem("toplam"));
-              toplam += powerPrice;
-              localStorage.setItem("toplam", toplam);
-              localStorage.setItem("coldPrice", coldPrice);
-              ozet.innerHTML = `
-            <thead>
-            <tr>
-              <th scope="col">Sıra</th>
-              <th scope="col">Ürün</th>
-              <th scope="col">Adet</th>
-              <th scope="col">Fiyatı</th>
-            </tr>
-            </thead>
-            <tbody>
-            <tr>
-            </tr>
-            <th scope="row">${count++}</th>
-            <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
-            <td>${cpuAdet}</td>
-            <td>${localStorage.getItem("cpuPrice")} TL</td>
-            <tr>
-            <th scope="row">${count++}</th>
-            <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
-            <td>${mainBoardAdet}</td>
-            <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
-            </tr>
-            <tr>
-            <th scope="row">${count++}</th>
-            <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
-            <td>${ramAdet}</td>
-            <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
-            </tr>
-            <tr>
-            <th scope="row">${count++}</th>
-            <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
-            <td>${gpuAdet}</td>
-            <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
-            </tr>
-            <tr>
-            <th scope="row">${count++}</th>
-            <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
-            <td>${monitorAdet}</td>
-            <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
-            </tr>
-            <tr>
-            <th scope="row">${count++}</th>
-            <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
-            <td>${kasaAdet}</td>
-            <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
-            </tr>
-            <tr>
-            <th scope="row">${count++}</th>
-            <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
-            <td>${ssdAdet}</td>
-            <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
-            </tr>
-            <tr>
-            <th scope="row">${count++}</th>
-            <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
-            <td>${hddAdet}</td>
-            <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
-            </tr>
-            <tr>
-            <th scope="row">${count++}</th>
-            <td>$localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+            <td>${localStorage.getItem("selectedIndexFromPowerSelect")}</td>
             <td>${powerAdet}</td>
             <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
             </tr>
