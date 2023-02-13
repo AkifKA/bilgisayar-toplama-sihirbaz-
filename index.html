@@ -465,6 +465,47 @@
               </div>
             </section>
 
+             <!--? Mouse-Klavye Bölümü -->
+             <section class="contanier mouse-keyboard-section border border-1 mt-3">
+              <div class="row p-1"><h4 class="text-start">Mouse-Klavye</h4></div>
+              <div class="row justify-content-between align-items-start p-1">
+                <!--! Select Box sütunu -->
+                <div class="col-2">
+                  <select
+                    class="form-select mouse-keyboard-select"
+                    name="mouse-keyboard"
+                    id="mouse-keyboard-select"
+                  >
+                    <option value="">Mouse-Klavye Seçiniz</option>
+                  </select>
+                </div>
+                <!--! Seçilen nesnenin özellikleri -->
+                <div class="col-5 mouse-keyboard-div">
+                  <p class="text-danger">
+                    Seçilen mouse-klavye özellikleri burada görüntülecektir.
+                  </p>
+                </div>
+                <!--! Adet arttır ya da azalt butonları  -->
+                <div
+                  class="col-2 d-flex justify-content-center align-items-baseline gap-2"
+                >
+                  <div class="row">
+                    <i class="fa-solid fa-circle-plus"></i>
+                  </div>
+                  <div class="row">
+                    <p><span class="mouse-keyboard-adet">1</span> <span>Adet</span></p>
+                  </div>
+                  <div class="row">
+                    <i class="fa-solid fa-circle-minus"></i>
+                  </div>
+                </div>
+                <!--! ekle çıkar butonları,  -->
+                <div class="col-2 d-flex justify-content-center gap-2">
+                  <button type="button" class="btn btn-success mouse-keyboard-btn">Seç</button>
+                </div>
+              </div>
+            </section>
+
             <!--? Soğutma Sistemleri -->
             <section class="contanier cold-section border border-1 mt-3">
               <div class="row p-1">
@@ -510,7 +551,7 @@
           </form>
         </div>
         <!--? ANA SÜTUN 2 >> Seçim Özeti  -->
-        <div class="col-3 main-row-2 position-fixed border border-1 justify-content-center">
+        <div class="col-3 main-row-2 position-fixed border border-1 ">
           <div class="row"><h5 class="main-container-2 m-2">Seçim Özeti</h5></div>
           <table class="table table-borderless ozet">
             <thead>

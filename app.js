@@ -7,8 +7,9 @@ let monitorStok = [22, 18, 20, 36, 18, 16, 20];
 let kasaStok = [20, 18, 22, 26, 28, 36, 30];
 let ssdStok = [22, 20, 18, 36, 18, 26, 40];
 let hddStok = [20, 22, 24, 26, 20, 32, 34];
-let coldStok = [28, 16, 14, 24, 26, 46, 40];
 let powerStok = [30, 20, 36, 28, 26, 40, 42];
+let mouseKeyboardStok = [24, 26, 18, 20, 22, 32, 34];
+let coldStok = [28, 16, 14, 24, 26, 46, 40];
 
 //? Stokları Local Storage'de Saklama
 localStorage.setItem("cpuStok", JSON.stringify(cpuStok));
@@ -20,6 +21,7 @@ localStorage.setItem("kasaStok", JSON.stringify(kasaStok));
 localStorage.setItem("ssdStok", JSON.stringify(ssdStok));
 localStorage.setItem("hddStok", JSON.stringify(hddStok));
 localStorage.setItem("powerStok", JSON.stringify(powerStok));
+localStorage.setItem("mouseKeyboardStok", JSON.stringify(mouseKeyboardStok));
 localStorage.setItem("coldStok", JSON.stringify(coldStok));
 
 //? DOM Tanımları
@@ -42,6 +44,8 @@ const hddSelect = document.querySelector(".hdd-select");
 const hddAdetSpan = document.querySelector(".hdd-adet");
 const powerSelect = document.querySelector(".power-select");
 const powerAdetSpan = document.querySelector(".power-adet");
+const mouseKeyboardSelect = document.querySelector(".mouse-keyboard-select");
+const mouseKeyboardAdetSpan = document.querySelector(".mouse-keyboard-adet");
 const coldSelect = document.querySelector(".cold-select");
 const coldAdetSpan = document.querySelector(".cold-adet");
 
@@ -134,6 +138,16 @@ const getData = (data) => {
   powerData.map((power) => {
     document.getElementById("power-select").innerHTML += `
   <option value="${power.name}">${power.name}</option>
+  `;
+  });
+
+  //? Mouse-Keyboard verisini ayıkla
+  const mouseKeyboardData = data.mouseKeyboard;
+  //?
+  //? Mouse-Keyboard isimlerini map() ile Select-Box'a bastır
+  mouseKeyboardData.map((mk) => {
+    document.getElementById("mouse-keyboard-select").innerHTML += `
+  <option value="${mk.name}">${mk.name}</option>
   `;
   });
 
@@ -1531,6 +1545,151 @@ const getData = (data) => {
           break;
       }
     }
+    //? Eğer Mouse-Klavye Select Box'tan Seçim Yapılırsa
+    if (e.target.className === "form-select mouse-keyboard-select") {
+      const mouseKeyboardDiv = document.querySelector(".mouse-keyboard-div");
+      switch (e.target.value) {
+        case "LOGITECH G G413 SE":
+          mouseKeyboardDiv.innerHTML = `
+          <div class="card mb-3" style="max-width: 540px">
+        <div class="row g-0 justify-content-center align-content-center">
+          <div class="col-md-4">
+            <img
+              src=${mouseKeyboardData[0].img}
+              class="img-fluid"
+              alt=" "
+            />
+          </div>
+          <div class="col-md-8 text-start">
+            <div class="card-body">
+              <h5 class="card-title">${mouseKeyboardData[0].name}</h5>
+              <p class="card-text">Özellikleri: ${mouseKeyboardData[0].description}</p>
+              <p>Fiyatı: ${mouseKeyboardData[0].price} TL</p>
+              <p>Stok Adedi: ${mouseKeyboardStok[0]} </p>
+            </div>
+          </div>
+        </div>
+        </div>
+          `;
+          break;
+        case "LOGITECH G213":
+          mouseKeyboardDiv.innerHTML = `
+            <div class="card mb-3" style="max-width: 540px">
+          <div class="row g-0 justify-content-center align-content-center">
+            <div class="col-md-4">
+              <img
+                src=${mouseKeyboardData[1].img}
+                class="img-fluid"
+                alt=" "
+              />
+            </div>
+            <div class="col-md-8 text-start">
+              <div class="card-body">
+                <h5 class="card-title">${mouseKeyboardData[1].name}</h5>
+                <p class="card-text">Özellikleri: ${mouseKeyboardData[1].description}</p>
+                <p>Fiyatı: ${mouseKeyboardData[1].price} TL</p>
+                <p>Stok Adedi: ${mouseKeyboardStok[1]} </p>
+              </div>
+            </div>
+          </div>
+          </div>
+            `;
+          break;
+        case "LOGITECH K650":
+          mouseKeyboardDiv.innerHTML = `
+            <div class="card mb-3" style="max-width: 540px">
+          <div class="row g-0 justify-content-center align-content-center">
+            <div class="col-md-4">
+              <img
+                src=${mouseKeyboardData[2].img}
+                class="img-fluid"
+                alt=" "
+              />
+            </div>
+            <div class="col-md-8 text-start">
+              <div class="card-body">
+                <h5 class="card-title">${mouseKeyboardData[2].name}</h5>
+                <p class="card-text">Özellikleri: ${mouseKeyboardData[1].description}</p>
+                <p>Fiyatı: ${mouseKeyboardData[2].price} TL</p>
+                <p>Stok Adedi: ${mouseKeyboardStok[2]} </p>
+              </div>
+            </div>
+          </div>
+          </div>
+            `;
+          break;
+        case "LOGITECH MK470":
+          mouseKeyboardDiv.innerHTML = `
+            <div class="card mb-3" style="max-width: 540px">
+          <div class="row g-0 justify-content-center align-content-center">
+            <div class="col-md-4">
+              <img
+                src=${mouseKeyboardData[3].img}
+                class="img-fluid"
+                alt=" "
+              />
+            </div>
+            <div class="col-md-8 text-start">
+              <div class="card-body">
+                <h5 class="card-title">${mouseKeyboardData[3].name}</h5>
+                <p class="card-text">Özellikleri: ${mouseKeyboardData[3].description}</p>
+                <p>Fiyatı: ${mouseKeyboardData[3].price} TL</p>
+                <p>Stok Adedi: ${mouseKeyboardStok[3]} </p>
+              </div>
+            </div>
+          </div>
+          </div>
+            `;
+          break;
+        case "LOGITECH G203":
+          mouseKeyboardDiv.innerHTML = `
+            <div class="card mb-3" style="max-width: 540px">
+          <div class="row g-0 justify-content-center align-content-center">
+            <div class="col-md-4">
+              <img
+                src=${mouseKeyboardData[4].img}
+                class="img-fluid"
+                alt=" "
+              />
+            </div>
+            <div class="col-md-8 text-start">
+              <div class="card-body">
+                <h5 class="card-title">${mouseKeyboardData[4].name}</h5>
+                <p class="card-text">Özellikleri: ${mouseKeyboardData[4].description}</p>
+                <p>Fiyatı: ${mouseKeyboardData[4].price} TL</p>
+                <p>Stok Adedi: ${mouseKeyboardStok[4]} </p>
+              </div>
+            </div>
+          </div>
+          </div>
+            `;
+          break;
+        case "LOGITECH K120":
+          mouseKeyboardDiv.innerHTML = `
+            <div class="card mb-3" style="max-width: 540px">
+          <div class="row g-0 justify-content-center align-content-center">
+            <div class="col-md-4">
+              <img
+                src=${mouseKeyboardData[5].img}
+                class="img-fluid"
+                alt=" "
+              />
+            </div>
+            <div class="col-md-8 text-start">
+              <div class="card-body">
+                <h5 class="card-title">${mouseKeyboardData[5].name}</h5>
+                <p class="card-text">Özellikleri: ${mouseKeyboardData[5].description}</p>
+                <p>Fiyatı: ${mouseKeyboardData[5].price} TL</p>
+                <p>Stok Adedi: ${mouseKeyboardStok[5]} </p>
+              </div>
+            </div>
+          </div>
+          </div>
+            `;
+          break;
+      }
+    }
+
     //? Eğer Soğutma Sistemi Select Box'tan Seçim Yapılırsa
     if (e.target.className === "form-select cold-select") {
       const coldDiv = document.querySelector(".cold-div");
@@ -1711,7 +1870,7 @@ const getData = (data) => {
         e.target.closest(".row").previousSibling.previousSibling.firstChild
           .nextElementSibling.firstChild.innerText--;
     }
-
+    //? Stok bilgilerini localStorage'den getir
     let cpuStok = JSON.parse(localStorage.getItem("cpuStok")); //? local storage'daki işlemci stok adedini çağır
     let mainBoardStok = JSON.parse(localStorage.getItem("mainBoardStok")); //? local storage'daki anakart stok adedini çağır
     let ramStok = JSON.parse(localStorage.getItem("ramStok")); //? local storage'daki ram stok adedini çağır
@@ -1720,9 +1879,13 @@ const getData = (data) => {
     let kasaStok = JSON.parse(localStorage.getItem("kasaStok")); //? local storage'daki kasa stok adedini çağır
     let ssdStok = JSON.parse(localStorage.getItem("ssdStok")); //? local storage'daki ssd stok adedini çağır
     let hddStok = JSON.parse(localStorage.getItem("hddStok")); //? local storage'daki hdd stok adedini çağır
+    let powerStok = JSON.parse(localStorage.getItem("coldStok")); //? local storage'daki soğutma sistemi stok adedini çağır
+    let mouseKeyboardStok = JSON.parse(
+      localStorage.getItem("mouseKeyboardStok")
+    ); //? local storage'daki mouse-keyboard sistemi stok adedini çağır
     let coldStok = JSON.parse(localStorage.getItem("coldStok")); //? local storage'daki soğıtma sistemi stok adedini çağır
-    let powerStok = JSON.parse(localStorage.getItem("coldStok")); //? local storage'daki soğıtma sistemi stok adedini çağır
 
+    //? Hesap ile ilgili değişkenleri tanımlama
     let count = 1; //? Sıra sayısı için sayaç
     let toplam = 0; //? Toplam fiyat
     let cpuAdet = cpuAdetSpan.innerText; //? İşlemci adedi
@@ -1743,6 +1906,8 @@ const getData = (data) => {
     let hddPrice = 0; //? HDD fiyatı
     let powerAdet = powerAdetSpan.innerText; //? Güç Kaynağı adedi
     let powerPrice = 0; //? Güç Kaynağı fiyatı
+    let mouseKeyboardAdet = mouseKeyboardAdetSpan.innerText; //? Güç Kaynağı adedi
+    let mouseKeyboardPrice = 0; //? Güç Kaynağı fiyatı
     let coldAdet = coldAdetSpan.innerText; //? Soğutucu Sistemi adedi
     let coldPrice = 0; //? Soğutucu Sistemi fiyatı
 
@@ -5227,7 +5392,7 @@ const getData = (data) => {
             ozet.innerHTML = "";
           }
           break;
-        case "Seagate Barracuda 3.5'":
+        case "Toshiba 2,5' 1TB L200'":
           if (secBtn.textContent === "Seç") {
             secBtn.textContent = "Seçildi✓";
             secBtn.style = "background:blue";
@@ -5333,7 +5498,7 @@ const getData = (data) => {
             ozet.innerHTML = "";
           }
           break;
-        case "Toshiba 2,5' 1TB L200'":
+        case "Toshiba 3.5'":
           if (secBtn.textContent === "Seç") {
             secBtn.textContent = "Seçildi✓";
             secBtn.style = "background:blue";
@@ -6169,6 +6334,122 @@ const getData = (data) => {
           break;
       }
     }
+    //? Eğer Mouse-Klavye Seç Butonununa Tıklanırsa
+    if (e.target.classList.contains("mouse-keyboard-btn")) {
+      //? Güç kaynağı Seç Butonunu tanımla
+      const secBtn = document.querySelector(".mouse-keyboard-btn");
+      //? Seçilen index'i tanımla
+      let selectedIndex =
+        mouseKeyboardSelect[mouseKeyboardSelect.selectedIndex].textContent;
+      localStorage.setItem(
+        "selectedIndexFromMouseKeyboardSelect",
+        selectedIndex
+      );
+      switch (selectedIndex) {
+        case "LOGITECH G G413 SE":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (mouseKeyboardAdet > mouseKeyboardStok[0]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${mouseKeyboardAdet} adet  ${mouseKeyboardData[0].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              mouseKeyboardPrice =
+                mouseKeyboardData[0].price * mouseKeyboardAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += mouseKeyboardPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("mouseKeyboardPrice", mouseKeyboardPrice);
+              ozet.innerHTML = `
+  <thead>
+  <tr>
+    <th scope="col">Sıra</th>
+    <th scope="col">Ürün</th>
+    <th scope="col">Adet</th>
+    <th scope="col">Fiyatı</th>
+  </tr>
+  </thead>
+  <tbody>
+  <tr>
+  </tr>
+  <th scope="row">${count++}</th>
+  <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+  <td>${cpuAdet}</td>
+  <td>${localStorage.getItem("cpuPrice")} TL</td>
+  <tr>
+  <th scope="row">${count++}</th>
+  <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+  <td>${mainBoardAdet}</td>
+  <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+  </tr>
+  <tr>
+  <th scope="row">${count++}</th>
+  <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+  <td>${ramAdet}</td>
+  <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+  </tr>
+  <tr>
+  <th scope="row">${count++}</th>
+  <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+  <td>${gpuAdet}</td>
+  <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+  </tr>
+  <tr>
+  <th scope="row">${count++}</th>
+  <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+  <td>${monitorAdet}</td>
+  <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+  </tr>
+  <tr>
+  <th scope="row">${count++}</th>
+  <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+  <td>${kasaAdet}</td>
+  <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+  </tr>
+  <tr>
+  <th scope="row">${count++}</th>
+  <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+  <td>${ssdAdet}</td>
+  <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+  </tr>
+  <tr>
+  <th scope="row">${count++}</th>
+  <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+  <td>${hddAdet}</td>
+  <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+  </tr>
+  <tr>
+  <th scope="row">${count++}</th>
+  <td>${localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+  <td>${powerAdet}</td>
+  <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+  </tr>
+  <tr>
+  <th scope="row">${count++}</th>
+  <td>${mouseKeyboardData[0].name}</td>
+  <td>${mouseKeyboardAdet}</td>
+  <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+  </tr>
+  <th>TOPLAM</th>
+  <td><td>
+  <td style="font-weight: 700">${Number(localStorage.getItem("toplam"))} TL<td>
+  </tbody>
+`;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+      }
+    }
+
     //? Eğer Soğutma Sisyemi Seç Butonununa Tıklanırsa
     if (e.target.classList.contains("cold-btn")) {
       //? Soğutma Sisyemi Seç Butonunu tanımla
