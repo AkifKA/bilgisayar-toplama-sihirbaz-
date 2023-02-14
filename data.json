@@ -121,7 +121,7 @@
       "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/kingston/thumb/133724_small.jpg" 
       },
       {
-      "name":"Kıngston 8GB (1x8GB) Fury Beast",
+      "name":"Kıngston 8GB (1x8GB) Fury Beast-2",
       "description": "RGB DDR4 3200MHz CL16 PC Ram",
       "price":636,
       "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/kingston/thumb/133724_small.jpg" 
@@ -286,7 +286,7 @@
       {
          "name":"Samsung 2TB 870 EVO",
          "description": " SATA 3.0 (Okuma 560MB / Yazma 530MB)",
-         "price":53386239,
+         "price":3862,
          "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/samsung/thumb/118046_small.jpg" 
          }
 ],
@@ -396,13 +396,13 @@
             "name":"LOGITECH G203",
             "description": "Lightsync Kablolu Oyuncu Mouse Siyah",
             "price":429,
-            "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/logitech/thumb/v2-61380-2_small.jpg" 
+            "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/logitech/thumb/TeoriV2-108018_small.jpg" 
          },
          {
             "name":"LOGITECH K120",
             "description": "KABLOLU USB F KLAVYE",
             "price":219,
-            "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/logitech/thumb/TeoriV2-108018_small.jpg" 
+            "img":"https://cdn.vatanbilgisayar.com/Upload/PRODUCT/logitech/thumb/v2-61380-2_small.jpg" 
          }
       ],     
 "cold":[

@@ -545,7 +545,7 @@ const getData = (data) => {
               <div class="col-md-8 text-start">
                 <div class="card-body">
                 <h5 class="card-title">${ramData[1].name}</h5>
-                <p class="card-text">Özellikleri: ${ramData[0].description}
+                <p class="card-text">Özellikleri: ${ramData[1].description}
                   <p>Fiyatı: ${ramData[1].price} TL</p>
                   <p>Stok Adedi: ${ramStok[1]} </p>
                 </div>
@@ -560,17 +560,17 @@ const getData = (data) => {
                 <div class="row g-0 justify-content-center align-content-center">
                   <div class="col-md-4">
                     <img
-                      src=${mainBoardData[2].img}
+                      src=${ramData[2].img}
                       class="img-fluid"
                       alt=" "
                     />
                   </div>
                   <div class="col-md-8 text-start">
                     <div class="card-body">
-                      <h5 class="card-title">${mainBoardData[2].name}</h5>
-                      <p class="card-text">Özellikleri: ${mainBoardData[2].description}</p>
-                      <p>Fiyatı: ${mainBoardData[2].price} TL</p>
-                      <p>Stok Adedi: ${mainBoardStok[2]} </p>
+                      <h5 class="card-title">${ramData[2].name}</h5>
+                      <p class="card-text">Özellikleri: ${ramData[2].description}</p>
+                      <p>Fiyatı: ${ramData[2].price} TL</p>
+                      <p>Stok Adedi: ${ramStok[2]} </p>
                     </div>
                   </div>
                 </div>
@@ -591,6 +591,7 @@ const getData = (data) => {
                       <div class="col-md-8 text-start">
                         <div class="card-body">
                           <h5 class="card-title">${ramData[3].name}</h5>
+                          <p class="card-text">Özellikleri: ${ramData[3].description}</p>
                           <p class="card-text">Özellikleri: ${ramData[3].price} TL</p>
                           <p>Stok Adedi: ${ramStok[3]} </p>
                         </div>
@@ -613,7 +614,7 @@ const getData = (data) => {
                           <div class="col-md-8 text-start">
                             <div class="card-body">
                               <h5 class="card-title">${ramData[4].name}</h5>
-                              <p class="card-text">Özellikleri: ${cpuData[4].description}</p>
+                              <p class="card-text">Özellikleri: ${ramData[4].description}</p>
                               <p>Fiyatı: ${ramData[4].price} TL</p>
                               <p>Stok Adedi: ${ramStok[4]} </p>
                             </div>
@@ -622,7 +623,7 @@ const getData = (data) => {
                         </div>
                         `;
           break;
-        case "Kıngston 8GB (1x8GB) Fury Beast":
+        case "Kıngston 8GB (1x8GB) Fury Beast-2":
           ramDiv.innerHTML = `
                             <div class="card mb-3" style="max-width: 540px">
                             <div class="row g-0 justify-content-center align-content-center">
@@ -636,7 +637,7 @@ const getData = (data) => {
                               <div class="col-md-8 text-start">
                                 <div class="card-body">
                                   <h5 class="card-title">${ramData[5].name}</h5>
-                                  <p class="card-text">Özellikleri: ${cpuData[5].description}</p>
+                                  <p class="card-text">Özellikleri: ${ramData[5].description}</p>
                                   <p>Fiyatı: ${ramData[5].price} TL</p>
                                   <p>Stok Adedi: ${ramStok[5]} </p>
                                 </div>
@@ -715,7 +716,7 @@ const getData = (data) => {
             <div class="col-md-8 text-start">
               <div class="card-body">
               <h5 class="card-title">${kasaData[1].name}</h5>
-              <p class="card-text">Özellikleri: ${kasaData[0].description}
+              <p class="card-text">Özellikleri: ${kasaData[1].description}
                 <p>Stok Adedi: ${kasaStok[1]} </p>
               </div>
             </div>
@@ -761,6 +762,7 @@ const getData = (data) => {
                     <div class="col-md-8 text-start">
                       <div class="card-body">
                         <h5 class="card-title">${kasaData[3].name}</h5>
+                        <p class="card-text">Özellikleri: ${kasaData[3].description}</p>
                         <p class="card-text">Özellikleri: ${kasaData[3].price} TL</p>
                         <p>Stok Adedi: ${kasaStok[3]} </p>
                       </div>
@@ -908,6 +910,7 @@ const getData = (data) => {
                     <div class="col-md-8 text-start">
                       <div class="card-body">
                         <h5 class="card-title">${gpuData[3].name}</h5>
+                        <p class="card-text">Özellikleri: ${gpuData[3].description}</p>
                         <p class="card-text">Özellikleri: ${gpuData[3].price} TL</p>
                         <p>Stok Adedi: ${gpuStok[3]} </p>
                       </div>
@@ -1010,6 +1013,8 @@ const getData = (data) => {
               <div class="card-body">
               <h5 class="card-title">${monitorData[1].name}</h5>
               <p class="card-text">Özellikleri: ${monitorData[1].description}>
+              <p>Fiyatı: ${monitorData[1].price} TL</p>
+              <p>Stok Adedi: ${monitorStok[1]} </p>
              `;
         case "ASUS 27' PA279CV":
           monitorDiv.innerHTML = `
@@ -1441,7 +1446,7 @@ const getData = (data) => {
               <div class="col-md-8 text-start">
                 <div class="card-body">
                 <h5 class="card-title">${powerData[1].name}</h5>
-                <p class="card-text">Özellikleri: ${powerData[0].description}
+                <p class="card-text">Özellikleri: ${powerData[1].description}
                   <p>Stok Adedi: ${powerStok[1]} </p>
                 </div>
               </div>
@@ -1739,17 +1744,17 @@ const getData = (data) => {
             <div class="row g-0 justify-content-center align-content-center">
               <div class="col-md-4">
                 <img
-                  src=${coldData[1].img}
+                  src=${coldData[2].img}
                   class="img-fluid"
                   alt=" "
                 />
               </div>
               <div class="col-md-8 text-start">
                 <div class="card-body">
-                  <h5 class="card-title">${coldData[1].name}</h5>
-                  <p class="card-text">Özellikleri: ${coldData[1].description}</p>
-                  <p>Fiyatı: ${coldData[1].price} TL</p>
-                  <p>Stok Adedi: ${coldStok[1]} </p>
+                  <h5 class="card-title">${coldData[2].name}</h5>
+                  <p class="card-text">Özellikleri: ${coldData[2].description}</p>
+                  <p>Fiyatı: ${coldData[2].price} TL</p>
+                  <p>Stok Adedi: ${coldStok[2]} </p>
                 </div>
               </div>
             </div>
@@ -1831,17 +1836,17 @@ const getData = (data) => {
                         <div class="row g-0 justify-content-center align-content-center">
                           <div class="col-md-4">
                             <img
-                              src=${coldData[5].img}
+                              src=${coldData[6].img}
                               class="img-fluid"
                               alt=" "
                             />
                           </div>
                           <div class="col-md-8 text-start">
                             <div class="card-body">
-                              <h5 class="card-title">${coldData[5].name}</h5>
-                              <p class="card-text">Özellikleri: ${coldData[5].description}</p>
-                              <p>Fiyatı: ${coldData[5].price} TL</p>
-                              <p>Stok Adedi: ${coldStok[5]} </p>
+                              <h5 class="card-title">${coldData[6].name}</h5>
+                              <p class="card-text">Özellikleri: ${coldData[6].description}</p>
+                              <p>Fiyatı: ${coldData[6].price} TL</p>
+                              <p>Stok Adedi: ${coldStok[6]} </p>
                             </div>
                           </div>
                         </div>
@@ -2987,7 +2992,7 @@ const getData = (data) => {
             ozet.innerHTML = "";
           }
           break;
-        case "Kıngston 8GB (1x8GB) Fury Beast":
+        case "Kıngston 8GB (1x8GB) Fury Beast-2":
           if (secBtn.textContent === "Seç") {
             secBtn.textContent = "Seçildi✓";
             secBtn.style = "background:blue";
@@ -6431,15 +6436,531 @@ const getData = (data) => {
   </tr>
   <tr>
   <th scope="row">${count++}</th>
-  <td>${mouseKeyboardData[0].name}</td>
+  <td>${mouseKeyboardData[1].name}</td>
   <td>${mouseKeyboardAdet}</td>
-  <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+  <td>${Number(localStorage.getItem("mouseKeyboardPrice"))} TL</td>
   </tr>
   <th>TOPLAM</th>
   <td><td>
   <td style="font-weight: 700">${Number(localStorage.getItem("toplam"))} TL<td>
   </tbody>
 `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "LOGITECH G213":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (mouseKeyboardAdet > mouseKeyboardStok[1]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${mouseKeyboardAdet} adet  ${mouseKeyboardData[1].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              mouseKeyboardPrice =
+                mouseKeyboardData[1].price * mouseKeyboardAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += mouseKeyboardPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("mouseKeyboardPrice", mouseKeyboardPrice);
+              ozet.innerHTML = `
+    <thead>
+    <tr>
+      <th scope="col">Sıra</th>
+      <th scope="col">Ürün</th>
+      <th scope="col">Adet</th>
+      <th scope="col">Fiyatı</th>
+    </tr>
+    </thead>
+    <tbody>
+    <tr>
+    </tr>
+    <th scope="row">${count++}</th>
+    <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+    <td>${cpuAdet}</td>
+    <td>${localStorage.getItem("cpuPrice")} TL</td>
+    <tr>
+    <th scope="row">${count++}</th>
+    <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+    <td>${mainBoardAdet}</td>
+    <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+    </tr>
+    <tr>
+    <th scope="row">${count++}</th>
+    <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+    <td>${ramAdet}</td>
+    <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+    </tr>
+    <tr>
+    <th scope="row">${count++}</th>
+    <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+    <td>${gpuAdet}</td>
+    <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+    </tr>
+    <tr>
+    <th scope="row">${count++}</th>
+    <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+    <td>${monitorAdet}</td>
+    <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+    </tr>
+    <tr>
+    <th scope="row">${count++}</th>
+    <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+    <td>${kasaAdet}</td>
+    <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+    </tr>
+    <tr>
+    <th scope="row">${count++}</th>
+    <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+    <td>${ssdAdet}</td>
+    <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+    </tr>
+    <tr>
+    <th scope="row">${count++}</th>
+    <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+    <td>${hddAdet}</td>
+    <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+    </tr>
+    <tr>
+    <th scope="row">${count++}</th>
+    <td>${localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+    <td>${powerAdet}</td>
+    <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+    </tr>
+    <tr>
+    <th scope="row">${count++}</th>
+    <td>${mouseKeyboardData[1].name}</td>
+    <td>${mouseKeyboardAdet}</td>
+    <td>${Number(localStorage.getItem("mouseKeyboardPrice"))} TL</td>
+    </tr>
+    <th>TOPLAM</th>
+    <td><td>
+    <td style="font-weight: 700">${Number(
+      localStorage.getItem("toplam")
+    )} TL<td>
+    </tbody>
+  `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "LOGITECH K650":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (mouseKeyboardAdet > mouseKeyboardStok[2]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${mouseKeyboardAdet} adet  ${mouseKeyboardData[1].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              mouseKeyboardPrice =
+                mouseKeyboardData[2].price * mouseKeyboardAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += mouseKeyboardPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("mouseKeyboardPrice", mouseKeyboardPrice);
+              ozet.innerHTML = `
+      <thead>
+      <tr>
+        <th scope="col">Sıra</th>
+        <th scope="col">Ürün</th>
+        <th scope="col">Adet</th>
+        <th scope="col">Fiyatı</th>
+      </tr>
+      </thead>
+      <tbody>
+      <tr>
+      </tr>
+      <th scope="row">${count++}</th>
+      <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+      <td>${cpuAdet}</td>
+      <td>${localStorage.getItem("cpuPrice")} TL</td>
+      <tr>
+      <th scope="row">${count++}</th>
+      <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+      <td>${mainBoardAdet}</td>
+      <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+      </tr>
+      <tr>
+      <th scope="row">${count++}</th>
+      <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+      <td>${ramAdet}</td>
+      <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+      </tr>
+      <tr>
+      <th scope="row">${count++}</th>
+      <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+      <td>${gpuAdet}</td>
+      <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+      </tr>
+      <tr>
+      <th scope="row">${count++}</th>
+      <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+      <td>${monitorAdet}</td>
+      <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+      </tr>
+      <tr>
+      <th scope="row">${count++}</th>
+      <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+      <td>${kasaAdet}</td>
+      <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+      </tr>
+      <tr>
+      <th scope="row">${count++}</th>
+      <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+      <td>${ssdAdet}</td>
+      <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+      </tr>
+      <tr>
+      <th scope="row">${count++}</th>
+      <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+      <td>${hddAdet}</td>
+      <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+      </tr>
+      <tr>
+      <th scope="row">${count++}</th>
+      <td>${localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+      <td>${powerAdet}</td>
+      <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+      </tr>
+      <tr>
+      <th scope="row">${count++}</th>
+      <td>${mouseKeyboardData[2].name}</td>
+      <td>${mouseKeyboardAdet}</td>
+      <td>${Number(localStorage.getItem("mouseKeyboardPrice"))} TL</td>
+      </tr>
+      <th>TOPLAM</th>
+      <td><td>
+      <td style="font-weight: 700">${Number(
+        localStorage.getItem("toplam")
+      )} TL<td>
+      </tbody>
+    `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "LOGITECH MK470":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (mouseKeyboardAdet > mouseKeyboardStok[3]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${mouseKeyboardAdet} adet  ${mouseKeyboardData[1].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              mouseKeyboardPrice =
+                mouseKeyboardData[3].price * mouseKeyboardAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += mouseKeyboardPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("mouseKeyboardPrice", mouseKeyboardPrice);
+              ozet.innerHTML = `
+        <thead>
+        <tr>
+          <th scope="col">Sıra</th>
+          <th scope="col">Ürün</th>
+          <th scope="col">Adet</th>
+          <th scope="col">Fiyatı</th>
+        </tr>
+        </thead>
+        <tbody>
+        <tr>
+        </tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+        <td>${cpuAdet}</td>
+        <td>${localStorage.getItem("cpuPrice")} TL</td>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+        <td>${mainBoardAdet}</td>
+        <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+        <td>${ramAdet}</td>
+        <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+        <td>${gpuAdet}</td>
+        <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+        <td>${monitorAdet}</td>
+        <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+        <td>${kasaAdet}</td>
+        <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+        <td>${ssdAdet}</td>
+        <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+        <td>${hddAdet}</td>
+        <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+        <td>${powerAdet}</td>
+        <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${mouseKeyboardData[3].name}</td>
+        <td>${mouseKeyboardAdet}</td>
+        <td>${Number(localStorage.getItem("mouseKeyboardPrice"))} TL</td>
+        </tr>
+        <th>TOPLAM</th>
+        <td><td>
+        <td style="font-weight: 700">${Number(
+          localStorage.getItem("toplam")
+        )} TL<td>
+        </tbody>
+      `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+        case "LOGITECH G203":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (mouseKeyboardAdet > mouseKeyboardStok[4]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${mouseKeyboardAdet} adet  ${mouseKeyboardData[1].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              mouseKeyboardPrice =
+                mouseKeyboardData[4].price * mouseKeyboardAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += mouseKeyboardPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("mouseKeyboardPrice", mouseKeyboardPrice);
+              ozet.innerHTML = `
+          <thead>
+          <tr>
+            <th scope="col">Sıra</th>
+            <th scope="col">Ürün</th>
+            <th scope="col">Adet</th>
+            <th scope="col">Fiyatı</th>
+          </tr>
+          </thead>
+          <tbody>
+          <tr>
+          </tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+          <td>${cpuAdet}</td>
+          <td>${localStorage.getItem("cpuPrice")} TL</td>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+          <td>${mainBoardAdet}</td>
+          <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+          <td>${ramAdet}</td>
+          <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+          <td>${gpuAdet}</td>
+          <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+          <td>${monitorAdet}</td>
+          <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+          <td>${kasaAdet}</td>
+          <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+          <td>${ssdAdet}</td>
+          <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+          <td>${hddAdet}</td>
+          <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+          <td>${powerAdet}</td>
+          <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${mouseKeyboardData[4].name}</td>
+          <td>${mouseKeyboardAdet}</td>
+          <td>${Number(localStorage.getItem("mouseKeyboardPrice"))} TL</td>
+          </tr>
+          <th>TOPLAM</th>
+          <td><td>
+          <td style="font-weight: 700">${Number(
+            localStorage.getItem("toplam")
+          )} TL<td>
+          </tbody>
+        `;
+            }
+          } else if (secBtn.textContent === "Seçildi✓") {
+            secBtn.textContent = "Seç";
+            secBtn.style = "background:#198754";
+            ozet.innerHTML = "";
+          }
+          break;
+          break;
+        case "LOGITECH K120":
+          if (secBtn.textContent === "Seç") {
+            secBtn.textContent = "Seçildi✓";
+            secBtn.style = "background:blue";
+            if (mouseKeyboardAdet > mouseKeyboardStok[5]) {
+              //? seçilen aded stok sayısından büyük olursa
+              alert(
+                `Stoklarda ${mouseKeyboardAdet} adet  ${mouseKeyboardData[5].name} bulunmamaktadır.`
+              );
+              secBtn.style = "background:#198754";
+              secBtn.textContent = "Seç";
+            } else {
+              //? hesap işleri ve doma basma
+              mouseKeyboardPrice =
+                mouseKeyboardData[5].price * mouseKeyboardAdet;
+              toplam = Number(localStorage.getItem("toplam"));
+              toplam += mouseKeyboardPrice;
+              localStorage.setItem("toplam", toplam);
+              localStorage.setItem("mouseKeyboardPrice", mouseKeyboardPrice);
+              ozet.innerHTML = `
+            <thead>
+            <tr>
+              <th scope="col">Sıra</th>
+              <th scope="col">Ürün</th>
+              <th scope="col">Adet</th>
+              <th scope="col">Fiyatı</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr>
+            </tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromCpuSelect")}</td>
+            <td>${cpuAdet}</td>
+            <td>${localStorage.getItem("cpuPrice")} TL</td>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromMainBoardSelect")}</td>
+            <td>${mainBoardAdet}</td>
+            <td>${Number(localStorage.getItem("mainBoardPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromRamSelect")}</td>
+            <td>${ramAdet}</td>
+            <td>${Number(localStorage.getItem("ramPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromGPUSelect")}</td>
+            <td>${gpuAdet}</td>
+            <td>${Number(localStorage.getItem("gpuPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromMonitorSelect")}</td>
+            <td>${monitorAdet}</td>
+            <td>${Number(localStorage.getItem("monitorPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromKasaSelect")}</td>
+            <td>${kasaAdet}</td>
+            <td>${Number(localStorage.getItem("kasaPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromSSDSelect")}</td>
+            <td>${ssdAdet}</td>
+            <td>${Number(localStorage.getItem("ssdPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromHDDSelect")}</td>
+            <td>${hddAdet}</td>
+            <td>${Number(localStorage.getItem("hddPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+            <td>${powerAdet}</td>
+            <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+            </tr>
+            <tr>
+            <th scope="row">${count++}</th>
+            <td>${mouseKeyboardData[5].name}</td>
+            <td>${mouseKeyboardAdet}</td>
+            <td>${Number(localStorage.getItem("mouseKeyboardPrice"))} TL</td>
+            </tr>
+            <th>TOPLAM</th>
+            <td><td>
+            <td style="font-weight: 700">${Number(
+              localStorage.getItem("toplam")
+            )} TL<td>
+            </tbody>
+          `;
             }
           } else if (secBtn.textContent === "Seçildi✓") {
             secBtn.textContent = "Seç";
@@ -6456,7 +6977,6 @@ const getData = (data) => {
       const secBtn = document.querySelector(".cold-btn");
       //? Seçilen index'i tanımla
       let selectedIndex = coldSelect[coldSelect.selectedIndex].textContent;
-      localStorage.setItem("selectedIndexFromColdSelect", selectedIndex);
       switch (selectedIndex) {
         case "MSI MPG CORELIQUID K240":
           if (secBtn.textContent === "Seç") {
@@ -6536,9 +7056,15 @@ const getData = (data) => {
         </tr>
         <tr>
         <th scope="row">${count++}</th>
-        <td>$localStorage.getItem("selectedIndexFromPowerSelect")}</td>
+        <td>${localStorage.getItem("selectedIndexFromPowerSelect")}</td>
         <td>${powerAdet}</td>
         <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromMouseKeyboardSelect")}</td>
+        <td>${mouseKeyboardAdet}</td>
+        <td>${Number(localStorage.getItem("mouseKeyboardPrice"))} TL</td>
         </tr>
         <tr>
         <th scope="row">${count++}</th>
@@ -6644,6 +7170,12 @@ const getData = (data) => {
         </tr>
         <tr>
         <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromMouseKeyboardSelect")}</td>
+        <td>${mouseKeyboardAdet}</td>
+        <td>${Number(localStorage.getItem("mouseKeyboardPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
         <td>${coldData[1].name}</td>
         <td>${coldAdet}</td>
         <td>${Number(localStorage.getItem("coldPrice"))} TL</td>
@@ -6743,6 +7275,14 @@ const getData = (data) => {
           <td>${localStorage.getItem("selectedIndexFromPowerSelect")}</td>
           <td>${powerAdet}</td>
           <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
+          </tr>
+          <tr>
+          <th scope="row">${count++}</th>
+          <td>${localStorage.getItem(
+            "selectedIndexFromMouseKeyboardSelect"
+          )}</td>
+          <td>${mouseKeyboardAdet}</td>
+          <td>${Number(localStorage.getItem("mouseKeyboardPrice"))} TL</td>
           </tr>
           <tr>
           <th scope="row">${count++}</th>
@@ -6847,11 +7387,17 @@ const getData = (data) => {
           <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
           </tr>
           <tr>
-          <th scope="row">${count++}</th>
-          <td>${coldData[3].name}</td>
-          <td>${coldAdet}</td>
-          <td>${Number(localStorage.getItem("coldPrice"))} TL</td>
-          </tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromMouseKeyboardSelect")}</td>
+        <td>${mouseKeyboardAdet}</td>
+        <td>${Number(localStorage.getItem("mouseKeyboardPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${coldData[3].name}</td>
+        <td>${coldAdet}</td>
+        <td>${Number(localStorage.getItem("coldPrice"))} TL</td>
+        </tr>
           <th>TOPLAM</th>
           <td><td>
           <td style="font-weight: 700">${Number(
@@ -6949,11 +7495,17 @@ const getData = (data) => {
           <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
           </tr>
           <tr>
-          <th scope="row">${count++}</th>
-          <td>${coldData[4].name}</td>
-          <td>${coldAdet}</td>
-          <td>${Number(localStorage.getItem("coldPrice"))} TL</td>
-          </tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromMouseKeyboardSelect")}</td>
+        <td>${mouseKeyboardAdet}</td>
+        <td>${Number(localStorage.getItem("mouseKeyboardPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${coldData[4].name}</td>
+        <td>${coldAdet}</td>
+        <td>${Number(localStorage.getItem("coldPrice"))} TL</td>
+        </tr>
           <th>TOPLAM</th>
           <td><td>
           <td style="font-weight: 700">${Number(
@@ -7051,11 +7603,17 @@ const getData = (data) => {
             <td>${Number(localStorage.getItem("powerPrice"))} TL</td>
             </tr>
             <tr>
-            <th scope="row">${count++}</th>
-            <td>${coldData[5].name}</td>
-            <td>${coldAdet}</td>
-            <td>${Number(localStorage.getItem("coldPrice"))} TL</td>
-            </tr>
+        <th scope="row">${count++}</th>
+        <td>${localStorage.getItem("selectedIndexFromMouseKeyboardSelect")}</td>
+        <td>${mouseKeyboardAdet}</td>
+        <td>${Number(localStorage.getItem("mouseKeyboardPrice"))} TL</td>
+        </tr>
+        <tr>
+        <th scope="row">${count++}</th>
+        <td>${coldData[5].name}</td>
+        <td>${coldAdet}</td>
+        <td>${Number(localStorage.getItem("coldPrice"))} TL</td>
+        </tr>
             <th>TOPLAM</th>
             <td><td>
             <td style="font-weight: 700">${Number(
